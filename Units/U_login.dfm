@@ -6144,7 +6144,6 @@ object FrmLogin: TFrmLogin
         Top = 26
         Width = 364
         Height = 28
-        TabStop = False
         BevelInner = bvNone
         BevelOuter = bvNone
         BorderStyle = bsNone
@@ -6194,7 +6193,6 @@ object FrmLogin: TFrmLogin
         Top = 27
         Width = 364
         Height = 28
-        TabStop = False
         BevelInner = bvNone
         BevelOuter = bvNone
         BorderStyle = bsNone
@@ -6230,6 +6228,7 @@ object FrmLogin: TFrmLogin
       Color = clWhite
       ParentBackground = False
       TabOrder = 4
+      TabStop = True
       object btnCancelar: TSpeedButton
         Left = 0
         Top = 0
@@ -6262,6 +6261,7 @@ object FrmLogin: TFrmLogin
       ParentBiDiMode = False
       ParentBackground = False
       TabOrder = 3
+      TabStop = True
       object btnEntrar: TSpeedButton
         Left = 0
         Top = 0

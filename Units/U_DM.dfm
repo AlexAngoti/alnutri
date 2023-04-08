@@ -1,17 +1,6 @@
-object dm: Tdm
-  Left = 0
-  Top = 0
-  BorderStyle = bsNone
-  Caption = 'dm'
-  ClientHeight = 480
-  ClientWidth = 640
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -12
-  Font.Name = 'Segoe UI'
-  Font.Style = []
-  TextHeight = 15
+object DM: TDM
+  Height = 480
+  Width = 640
   object FDConnection: TFDConnection
     Params.Strings = (
       'Database=alnutri'

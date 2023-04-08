@@ -3,10 +3,13 @@ unit U_login;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls,
+  Vcl.StdCtrls,
   Vcl.Imaging.pngimage, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Phys.PGDef, FireDAC.Phys.PG, Data.DB, FireDAC.Comp.Client,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
@@ -38,13 +41,13 @@ type
     procedure btnFecharAplClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnEntrarClick(Sender: TObject);
-  private
+    private
     { Private declarations }
     procedure fazLogin;
     procedure Validalogin;
-  public
+    public
     { Public declarations }
-  end;
+    end;
 
 var
   FrmLogin: TFrmLogin;
@@ -65,7 +68,7 @@ end;
 procedure TFrmLogin.btnEntrarClick(Sender: TObject);
 begin
   Self.Validalogin;
-  self.fazLogin;
+  Self.fazLogin;
 end;
 
 procedure TFrmLogin.btnFecharAplClick(Sender: TObject);
@@ -88,7 +91,8 @@ begin
   else
   begin
     FrmMenu.ShowModal;
-
+    FrmLogin.Close;
+    FrmLogin.Free;
   end;
 end;
 
@@ -99,8 +103,8 @@ end;
 
 procedure TFrmLogin.FormResize(Sender: TObject);
 begin
-  PnlPrincipal.Top  := Round (FrmLogin.Height / 2 - PnlPrincipal.Height / 2);
-  PnlPrincipal.Left := Round (FrmLogin.Width / 2 - PnlPrincipal.Width / 2);
+  pnlPrincipal.Top  := Round(FrmLogin.Height / 2 - pnlPrincipal.Height / 2);
+  pnlPrincipal.Left := Round(FrmLogin.Width / 2 - pnlPrincipal.Width / 2);
 end;
 
 procedure TFrmLogin.Validalogin;
