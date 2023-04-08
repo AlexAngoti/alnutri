@@ -3,8 +3,8 @@ object FrmMenu: TFrmMenu
   Top = 0
   Align = alClient
   BorderStyle = bsNone
-  ClientHeight = 563
-  ClientWidth = 938
+  ClientHeight = 502
+  ClientWidth = 932
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,31 +16,34 @@ object FrmMenu: TFrmMenu
   object pnlCentral: TPanel
     Left = 0
     Top = 0
-    Width = 938
-    Height = 563
+    Width = 932
+    Height = 502
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 938
+    ExplicitHeight = 563
     object pnlSubCentral: TPanel
       Left = 0
       Top = 0
-      Width = 938
-      Height = 563
+      Width = 932
+      Height = 502
       Align = alClient
       BevelOuter = bvNone
-      Color = 14630457
+      Color = clWhite
       ParentBackground = False
       TabOrder = 0
       OnMouseEnter = pnlSubCentralMouseEnter
-      ExplicitLeft = 64
-      ExplicitTop = -72
+      ExplicitTop = 24
+      ExplicitWidth = 938
+      ExplicitHeight = 563
       object pnlTop: TPanel
         Left = 0
         Top = 0
-        Width = 938
-        Height = 57
+        Width = 932
+        Height = 65
         Align = alTop
         BevelOuter = bvNone
         Color = clWhite
@@ -48,38 +51,44 @@ object FrmMenu: TFrmMenu
         TabOrder = 0
         OnMouseEnter = pnlSubCentralMouseEnter
         ExplicitTop = -6
+        ExplicitWidth = 938
         object SpeedButton6: TSpeedButton
-          Left = 904
+          Left = 898
           Top = 0
           Width = 34
-          Height = 56
+          Height = 64
           Align = alRight
           Caption = '[]'
           Flat = True
           OnMouseEnter = pnlSubCentralMouseEnter
+          ExplicitLeft = 904
+          ExplicitHeight = 56
         end
         object SpeedButton9: TSpeedButton
-          Left = 872
+          Left = 866
           Top = 0
           Width = 32
-          Height = 56
+          Height = 64
           Align = alRight
           Caption = 'X'
           Flat = True
           OnMouseEnter = pnlSubCentralMouseEnter
+          ExplicitLeft = 872
+          ExplicitHeight = 56
         end
         object Image1: TImage
           Left = 0
           Top = 0
           Width = 89
-          Height = 56
+          Height = 64
           Align = alLeft
           OnMouseEnter = pnlSubCentralMouseEnter
           ExplicitTop = -5
+          ExplicitHeight = 56
         end
         object Label1: TLabel
           Left = 95
-          Top = 16
+          Top = 22
           Width = 56
           Height = 21
           Caption = 'AlNutri'
@@ -95,72 +104,74 @@ object FrmMenu: TFrmMenu
         end
         object Panel3: TPanel
           Left = 0
-          Top = 56
-          Width = 938
+          Top = 64
+          Width = 932
           Height = 1
           Align = alBottom
           BevelOuter = bvNone
           Color = 13882323
           ParentBackground = False
           TabOrder = 0
+          ExplicitTop = 56
+          ExplicitWidth = 938
         end
       end
       object pnlSubTop: TPanel
         Left = 0
-        Top = 57
-        Width = 938
-        Height = 56
+        Top = 65
+        Width = 932
+        Height = 57
         Align = alTop
         BevelOuter = bvNone
-        Color = clSilver
+        Color = 13882323
         ParentBackground = False
         TabOrder = 1
         OnMouseEnter = pnlSubCentralMouseEnter
+        ExplicitTop = 70
+        ExplicitWidth = 938
         object SpeedButton1: TSpeedButton
           Tag = 2
           Left = 151
           Top = 0
-          Width = 122
-          Height = 56
+          Width = 82
+          Height = 57
           Align = alLeft
           Caption = 'Usuario'
           Flat = True
-          Margin = 0
+          Margin = 5
           OnMouseEnter = SpeedButton4MouseEnter
-          ExplicitLeft = 152
+          ExplicitLeft = 145
         end
         object SpeedButton2: TSpeedButton
           Tag = 4
-          Left = 433
+          Left = 353
           Top = 0
-          Width = 72
-          Height = 56
+          Width = 88
+          Height = 57
           Align = alLeft
           Caption = 'Suporte'
           Flat = True
-          Margin = 0
+          Margin = 5
           OnMouseEnter = SpeedButton4MouseEnter
-          ExplicitLeft = 353
         end
         object SpeedButton3: TSpeedButton
           Tag = 3
-          Left = 273
+          Left = 233
           Top = 0
-          Width = 160
-          Height = 56
+          Width = 120
+          Height = 57
           Align = alLeft
           Caption = 'Configura'#231#245'es'
           Flat = True
-          Margin = 0
+          Margin = 5
           OnMouseEnter = SpeedButton4MouseEnter
-          ExplicitLeft = 233
         end
         object SpeedButton4: TSpeedButton
           Tag = 1
           Left = 0
           Top = 0
           Width = 151
-          Height = 56
+          Height = 57
           Align = alLeft
           Caption = 'Op'#231#245'es do Sistema'
           Flat = True
@@ -299,23 +310,23 @@ object FrmMenu: TFrmMenu
           Margin = 0
           OnMouseEnter = SpeedButton4MouseEnter
           ExplicitLeft = -6
+          ExplicitHeight = 56
         end
       end
       object pnlEsquedar: TPanel
         Tag = 3
-        Left = 280
-        Top = 113
+        Left = 225
+        Top = 128
         Width = 151
-        Height = 246
-        BevelOuter = bvNone
-        Color = clRed
+        Height = 272
+        Color = 13882323
         ParentBackground = False
         TabOrder = 2
         Visible = False
         object SpeedButton8: TSpeedButton
-          Left = 0
-          Top = 41
-          Width = 151
+          Left = 1
+          Top = 42
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'funcionario'
@@ -455,11 +466,12 @@ object FrmMenu: TFrmMenu
           Margin = 0
           ExplicitLeft = -6
           ExplicitTop = 47
+          ExplicitWidth = 151
         end
         object SpeedButton11: TSpeedButton
-          Left = 0
-          Top = 0
-          Width = 151
+          Left = 1
+          Top = 1
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Clientes'
@@ -599,11 +611,12 @@ object FrmMenu: TFrmMenu
           Margin = 0
           ExplicitLeft = -6
           ExplicitTop = -6
+          ExplicitWidth = 151
         end
         object SpeedButton10: TSpeedButton
-          Left = 0
-          Top = 123
-          Width = 151
+          Left = 1
+          Top = 124
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Relatorios'
@@ -741,12 +754,14 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
+          ExplicitLeft = 0
           ExplicitTop = 8
+          ExplicitWidth = 151
         end
         object SpeedButton12: TSpeedButton
-          Left = 0
-          Top = 205
-          Width = 151
+          Left = 1
+          Top = 206
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Mensalidade'
@@ -884,12 +899,14 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
+          ExplicitLeft = 0
           ExplicitTop = 8
+          ExplicitWidth = 151
         end
         object SpeedButton5: TSpeedButton
-          Left = 0
-          Top = 164
-          Width = 151
+          Left = 1
+          Top = 165
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Contas a Pagar'
@@ -1027,12 +1044,14 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
+          ExplicitLeft = 0
           ExplicitTop = 8
+          ExplicitWidth = 151
         end
         object SpeedButton7: TSpeedButton
-          Left = 0
-          Top = 82
-          Width = 151
+          Left = 1
+          Top = 83
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Avalia'#231#227'o'
@@ -1170,27 +1189,26 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
+          ExplicitLeft = 0
           ExplicitTop = 76
+          ExplicitWidth = 151
         end
       end
       object Panel1: TPanel
         Tag = 1
         Left = 0
-        Top = 113
+        Top = 128
         Width = 151
-        Height = 450
-        Align = alLeft
-        BevelOuter = bvNone
-        Color = clRed
+        Height = 256
+        Align = alCustom
+        Color = 13882323
         ParentBackground = False
         TabOrder = 3
         Visible = False
-        ExplicitLeft = -6
-        ExplicitTop = 119
         object SpeedButton13: TSpeedButton
-          Left = 0
-          Top = 205
-          Width = 151
+          Left = 1
+          Top = 206
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Relatorios'
@@ -1328,12 +1346,13 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
-          ExplicitTop = 8
+          ExplicitLeft = 2
+          ExplicitTop = 190
         end
         object SpeedButton14: TSpeedButton
-          Left = 0
-          Top = 123
-          Width = 151
+          Left = 1
+          Top = 124
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Contas a Pagar'
@@ -1471,12 +1490,14 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
-          ExplicitTop = 8
+          ExplicitLeft = 0
+          ExplicitTop = 117
+          ExplicitWidth = 151
         end
         object SpeedButton15: TSpeedButton
-          Left = 0
-          Top = 82
-          Width = 151
+          Left = 1
+          Top = 83
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Avalia'#231#227'o'
@@ -1614,12 +1635,14 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
+          ExplicitLeft = 0
           ExplicitTop = 76
+          ExplicitWidth = 151
         end
         object SpeedButton16: TSpeedButton
-          Left = 0
-          Top = 41
-          Width = 151
+          Left = 1
+          Top = 42
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'funcionario'
@@ -1757,12 +1780,14 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
+          ExplicitLeft = 0
           ExplicitTop = 8
+          ExplicitWidth = 151
         end
         object SpeedButton17: TSpeedButton
-          Left = 0
-          Top = 0
-          Width = 151
+          Left = 1
+          Top = 1
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Clientes'
@@ -1902,11 +1927,12 @@ object FrmMenu: TFrmMenu
           Margin = 0
           ExplicitLeft = -6
           ExplicitTop = -6
+          ExplicitWidth = 151
         end
         object SpeedButton18: TSpeedButton
-          Left = 0
-          Top = 164
-          Width = 151
+          Left = 1
+          Top = 165
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Mensalidade'
@@ -2044,24 +2070,25 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
+          ExplicitLeft = 0
           ExplicitTop = 8
+          ExplicitWidth = 151
         end
       end
       object Panel2: TPanel
         Tag = 4
-        Left = 428
-        Top = 113
+        Left = 151
+        Top = 128
         Width = 151
-        Height = 41
-        BevelOuter = bvNone
-        Color = clRed
+        Height = 56
+        Color = 13882323
         ParentBackground = False
         TabOrder = 4
         Visible = False
         object SpeedButton23: TSpeedButton
-          Left = 0
-          Top = 0
-          Width = 151
+          Left = 1
+          Top = 1
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Clientes'
@@ -2199,24 +2226,26 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
+          ExplicitLeft = 0
           ExplicitTop = -6
+          ExplicitWidth = 151
         end
       end
       object Panel4: TPanel
         Tag = 2
-        Left = 157
-        Top = 119
+        Left = 321
+        Top = 128
         Width = 151
-        Height = 136
-        BevelOuter = bvNone
-        Color = clRed
+        Height = 269
+        Align = alCustom
+        Color = 13882323
         ParentBackground = False
         TabOrder = 5
         Visible = False
         object SpeedButton27: TSpeedButton
-          Left = 0
-          Top = 82
-          Width = 151
+          Left = 1
+          Top = 83
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Avalia'#231#227'o'
@@ -2354,12 +2383,13 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
-          ExplicitTop = 76
+          ExplicitLeft = -1
+          ExplicitTop = 89
         end
         object SpeedButton28: TSpeedButton
-          Left = 0
-          Top = 41
-          Width = 151
+          Left = 1
+          Top = 42
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'funcionario'
@@ -2497,12 +2527,14 @@ object FrmMenu: TFrmMenu
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           Margin = 0
+          ExplicitLeft = 0
           ExplicitTop = 8
+          ExplicitWidth = 151
         end
         object SpeedButton29: TSpeedButton
-          Left = 0
-          Top = 0
-          Width = 151
+          Left = 1
+          Top = 1
+          Width = 149
           Height = 41
           Align = alTop
           Caption = 'Clientes'
@@ -2642,6 +2674,7 @@ object FrmMenu: TFrmMenu
           Margin = 0
           ExplicitLeft = -6
           ExplicitTop = -6
+          ExplicitWidth = 151
         end
       end
     end
