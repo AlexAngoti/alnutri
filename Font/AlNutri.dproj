@@ -109,6 +109,7 @@
         <DCCReference Include="..\Units\U_DM.pas">
             <Form>dm</Form>
             <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
