@@ -1,4 +1,4 @@
-unit U_login;
+unit ULogin;
 
 interface
 
@@ -13,12 +13,11 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Phys.PGDef, FireDAC.Phys.PG, Data.DB, FireDAC.Comp.Client,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet;
+  FireDAC.Comp.DataSet, Winapi.ActiveX;
 
 type
   TFrmLogin = class(TForm)
     pnlPrincipal: TPanel;
-    btnFecharApl: TSpeedButton;
     shpBorda: TShape;
     pnlVisual: TPanel;
     imLogin: TImage;
@@ -36,18 +35,19 @@ type
     pnlCancelar: TPanel;
     btnCancelar: TSpeedButton;
     btnEntrar: TSpeedButton;
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    btnFechar: TSpeedButton;
     procedure FormResize(Sender: TObject);
     procedure btnFecharAplClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnEntrarClick(Sender: TObject);
-    private
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+  private
     { Private declarations }
     procedure fazLogin;
     procedure Validalogin;
-    public
+  public
     { Public declarations }
-    end;
+  end;
 
 var
   FrmLogin: TFrmLogin;
@@ -55,7 +55,7 @@ var
 implementation
 
 uses
-  U_Menu, U_DM;
+  UMenu, UDm;
 
 {$R *.dfm}
 
@@ -83,27 +83,28 @@ begin
   dm.cdsLogin.ParamByName('SENHA').AsString := edtSenha.Text;
   dm.cdsLogin.Open;
 
-  if ((dm.cdsLoginlogin.AsString = EmptyStr) or (dm.cdsLoginsenha.AsString = EmptyStr)) then
+  if ((edtUsuario.Text <> dm.cdsLoginlogin.AsString) and (edtSenha.Text <> dm.cdsLoginsenha.AsString)) then
   begin
-    ShowMessage('Nome de usuario ou senha não existem!!');
-    Abort
+    ShowMessage('Nome de usuario não existe!!');
+    Abort;
   end
   else
   begin
-    FrmMenu.ShowModal;
-    FrmLogin.Close;
-    FrmLogin.Free;
+    Self.Close;
   end;
 end;
 
-procedure TFrmLogin.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TFrmLogin.FormKeyPress(Sender: TObject; var Key: Char);
 begin
-  Action := caFree;
+  if Key = #13 then
+  begin
+    Self.btnEntrarClick(Self);
+  end;
 end;
 
 procedure TFrmLogin.FormResize(Sender: TObject);
 begin
-  pnlPrincipal.Top  := Round(FrmLogin.Height / 2 - pnlPrincipal.Height / 2);
+  pnlPrincipal.Top := Round(FrmLogin.Height / 2 - pnlPrincipal.Height / 2);
   pnlPrincipal.Left := Round(FrmLogin.Width / 2 - pnlPrincipal.Width / 2);
 end;
 
