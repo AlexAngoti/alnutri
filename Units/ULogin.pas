@@ -90,7 +90,8 @@ begin
   end
   else
   begin
-    Self.Close;
+    FrmMenu := TFrmMenu.Create(Self);
+    FrmMenu.Show ;
   end;
 end;
 

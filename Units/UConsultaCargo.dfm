@@ -5,7 +5,6 @@ inherited FrmConsultaCargos: TFrmConsultaCargos
   TextHeight = 13
   inherited pnlPrincipal: TPanel
     inherited dbgdConsulta: TDBGrid
-      DataSource = dm.dsConsultaCargos
       Columns = <
         item
           Expanded = False
@@ -34,9 +33,6 @@ inherited FrmConsultaCargos: TFrmConsultaCargos
       end
       inherited btnInserir: TSpeedButton
         OnClick = btnInserirClick
-      end
-      inherited btnExcluir: TSpeedButton
-        OnClick = btnExcluirClick
       end
       inherited btnEditar: TSpeedButton
         OnClick = btnEditarClick

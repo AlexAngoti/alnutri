@@ -4,7 +4,7 @@ object frmMsgConfirmar: TfrmMsgConfirmar
   BorderStyle = bsNone
   Caption = 'frmMsgConfirmar'
   ClientHeight = 288
-  ClientWidth = 766
+  ClientWidth = 676
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,13 +19,14 @@ object frmMsgConfirmar: TfrmMsgConfirmar
   object pnlBackGround: TPanel
     Left = 0
     Top = 0
-    Width = 766
+    Width = 676
     Height = 288
     Align = alClient
     BevelOuter = bvNone
     Color = 15395562
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 766
     object imgFormulario: TImage
       Left = 56
       Top = 104
@@ -259,13 +260,14 @@ object frmMsgConfirmar: TfrmMsgConfirmar
     object pnlTop: TPanel
       Left = 0
       Top = 0
-      Width = 766
+      Width = 676
       Height = 49
       Align = alTop
       BevelOuter = bvNone
       Color = 15395562
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 766
       object lblNomeEmpresa: TLabel
         Left = 71
         Top = 12
@@ -282,17 +284,18 @@ object frmMsgConfirmar: TfrmMsgConfirmar
       object pnlLine: TPanel
         Left = 0
         Top = 48
-        Width = 766
+        Width = 676
         Height = 1
         Align = alBottom
         Color = clGray
         ParentBackground = False
         TabOrder = 0
+        ExplicitWidth = 766
       end
     end
     object pnlSalvar: TPanel
       AlignWithMargins = True
-      Left = 440
+      Left = 344
       Top = 234
       Width = 150
       Height = 36
@@ -325,7 +328,7 @@ object frmMsgConfirmar: TfrmMsgConfirmar
   end
   object pnlCancelar: TPanel
     AlignWithMargins = True
-    Left = 600
+    Left = 520
     Top = 234
     Width = 151
     Height = 36

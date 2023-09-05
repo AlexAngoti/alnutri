@@ -12,8 +12,6 @@ type
   TFrmMenu = class(TForm)
     pnlCentral: TPanel;
     pnlSubCentral: TPanel;
-    pnlTop: TPanel;
-    pnlSupPriTop: TPanel;
     pnlSubTop: TPanel;
     btnMovimentacao: TSpeedButton;
     btnRelatorio: TSpeedButton;
@@ -31,10 +29,6 @@ type
     btnBaixarMens: TSpeedButton;
     btnAbrirMens: TSpeedButton;
     btnBaixarTitu: TSpeedButton;
-    lblEmpresa: TLabel;
-    imgLogo: TImage;
-    btnMinimizar: TSpeedButton;
-    btnFechar: TSpeedButton;
     btnAgendamentos: TSpeedButton;
     btnAvaliacao: TSpeedButton;
     btnFuncionarios: TSpeedButton;
@@ -48,6 +42,10 @@ type
     btnUsuarios: TSpeedButton;
     btnTrocarUser: TSpeedButton;
     anvFundo: TApplicationEvents;
+    Panel1: TPanel;
+    btnFechar: TSpeedButton;
+    lblEmpresa: TLabel;
+    pnlLinha: TPanel;
     procedure btnCadastrosMouseEnter(Sender: TObject);
     procedure pnlSubCentralMouseEnter(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
@@ -60,6 +58,7 @@ type
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnTrocarUserClick(Sender: TObject);
     procedure anvFundoModalBegin(Sender: TObject);
+    procedure anvFundoModalEnd(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     procedure prcControlaMenu(botao: TSpeedButton; Ativar: Boolean);
@@ -82,27 +81,20 @@ uses
 procedure TFrmMenu.btnClientesClick(Sender: TObject);
 begin
   FrmConsultaCliente := TFrmConsultaCliente.Create(Self);
-  try
-    FrmConsultaCliente.ShowModal;
-  finally
-    FrmConsultaCliente.Free;
-  end;
+  FrmConsultaCliente.Show;
 end;
 
 procedure TFrmMenu.btnFecharClick(Sender: TObject);
 begin
-  Self.Close;
+  Application.Terminate;
 end;
 
 procedure TFrmMenu.btnFuncionariosClick(Sender: TObject);
 begin
   FrmConsultaColab := TFrmConsultaColab.Create(Self);
-  try
-    FrmConsultaColab.ShowModal;
-  finally
-    FrmConsultaColab.Free;
-  end;
+  FrmConsultaColab.ShowModal;
 end;
+
 
 procedure TFrmMenu.btnMinimizarClick(Sender: TObject);
 begin
@@ -112,17 +104,12 @@ end;
 procedure TFrmMenu.btnUsuariosClick(Sender: TObject);
 begin
   FrmConsultaUsuario := TFrmConsultaUsuario.Create(Self);
-  try
-    FrmConsultaUsuario.ShowModal;
-  finally
-    FrmConsultaUsuario.Free;
-  end;
+  FrmConsultaUsuario.Show;
 end;
 
 procedure TFrmMenu.FormCreate(Sender: TObject);
 begin
-  frmLogin.Show;
-  FrmLogin.Free;
+  frmFundo.Visible := True;
 end;
 
 procedure TFrmMenu.pnlSubCentralMouseEnter(Sender: TObject);
@@ -178,24 +165,21 @@ begin
   frmFundo.Show;
 end;
 
+procedure TFrmMenu.anvFundoModalEnd(Sender: TObject);
+begin
+  frmFundo.Hide;
+end;
+
 procedure TFrmMenu.brnAlimentosClick(Sender: TObject);
 begin
   FrmConsultaProd := TFrmConsultaProd.Create(Self);
-  try
-    FrmConsultaProd.ShowModal;
-  finally
-    FrmConsultaProd.Free;
-  end;
+  FrmConsultaProd.ShowModal;
 end;
 
 procedure TFrmMenu.btnAgendamentosClick(Sender: TObject);
 begin
   frmAgendamento := TfrmAgendamento.Create(Self);
-  try
-    frmAgendamento.ShowModal;
-  finally
-    frmAgendamento.Free;
-  end;
+  frmAgendamento.Show;
 end;
 
 procedure TFrmMenu.btnCadastrosMouseEnter(Sender: TObject);
@@ -206,11 +190,7 @@ end;
 procedure TFrmMenu.btnCargosClick(Sender: TObject);
 begin
   FrmConsultaCargos := TFrmConsultaCargos.Create(Self);
-  try
-    FrmConsultaCargos.ShowModal;
-  finally
-    FrmConsultaCargos.Free;
-  end;
+  FrmConsultaCargos.ShowModal;
 end;
 
 end.

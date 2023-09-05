@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.Buttons,
-  UConsulaPadrao;
+  UConsulaPadrao, Datasnap.Provider, Datasnap.DBClient;
 
 type
   TFrmConsultaCargos = class(TFrmConsultaPadrao)
@@ -37,41 +37,41 @@ uses
 procedure TFrmConsultaCargos.btnEditarClick(Sender: TObject);
 begin
   inherited;
-  dm.cdsConsultaCargos.Edit;
-  self.OpenScreen;
-  self.OpenDataSet;
+//  dm.cdsConsultaCargos.Edit;
+//  self.OpenScreen;
+//  self.OpenDataSet;
 end;
 
 procedure TFrmConsultaCargos.btnExcluirClick(Sender: TObject);
 begin
   inherited;
-  if Application.MessageBox('Tem certeza que deseja excluir?', 'Excluir',
-    MB_YESNO + MB_ICONWARNING) = idYes then
-  begin
-    dm.cdsConsultaCargos.Delete;
-    dm.cdsConsultaCargos.ApplyUpdates(-1);
-    self.OpenDataSet;
-  end;
+//  if Application.MessageBox('Tem certeza que deseja excluir?', 'Excluir',
+//    MB_YESNO + MB_ICONWARNING) = idYes then
+//  begin
+//    dm.cdsConsultaCargos.Delete;
+//    dm.cdsConsultaCargos.ApplyUpdates(-1);
+//    self.OpenDataSet;
+//  end;
 end;
 
 procedure TFrmConsultaCargos.btnInserirClick(Sender: TObject);
 begin
-  inherited;
-  dm.cdsConsultaCargos.Insert;
-  self.OpenScreen;
-  self.OpenDataSet;
+//  inherited;
+//  dm.cdsConsultaCargos.Insert;
+//  self.OpenScreen;
+//  self.OpenDataSet;
 end;
 
 procedure TFrmConsultaCargos.btnPesquisaClick(Sender: TObject);
 begin
   inherited;
-  dm.dsConsultaCargos.DataSet.Filtered := False;
-  if edtPesquisa.Text <> EmptyStr then
-  begin
-    dm.dsConsultaCargos.DataSet.Filter := 'UPPER(nome) LIKE ' +
-      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
-    dm.dsConsultaCargos.DataSet.Filtered := True;
-  end;
+//  dm.dsConsultaCargos.DataSet.Filtered := False;
+//  if edtPesquisa.Text <> EmptyStr then
+//  begin
+//    dm.dsConsultaCargos.DataSet.Filter := 'UPPER(nome) LIKE ' +
+//      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
+//    dm.dsConsultaCargos.DataSet.Filtered := True;
+//  end;
 end;
 
 procedure TFrmConsultaCargos.FormCreate(Sender: TObject);
@@ -82,8 +82,8 @@ end;
 
 procedure TFrmConsultaCargos.OpenDataSet;
 begin
-  dm.cdsConsultaCargos.Close;
-  dm.cdsConsultaCargos.Open;
+//  dm.cdsConsultaCargos.Close;
+//  dm.cdsConsultaCargos.Open;
 end;
 
 procedure TFrmConsultaCargos.OpenScreen;
@@ -97,3 +97,4 @@ begin
 end;
 
 end.
+

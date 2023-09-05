@@ -268,7 +268,6 @@ object frmNovoAgendamento: TfrmNovoAgendamento
       DataSource = dm.dsAgendamento
       KeyField = 'id'
       ListField = 'name'
-      ListSource = dm.dsConsultaColab
       TabOrder = 0
     end
     object dbCbxCli: TDBLookupComboBox
@@ -280,7 +279,6 @@ object frmNovoAgendamento: TfrmNovoAgendamento
       DataSource = dm.dsAgendamento
       KeyField = 'id'
       ListField = 'name'
-      ListSource = dm.dsConsultaCli
       TabOrder = 3
     end
     object dbEdtHora: TDBEdit

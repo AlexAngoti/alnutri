@@ -14,14 +14,9 @@ uses
 
 type
   TFrmConsultaCliente = class(TFrmConsultaPadrao)
-    procedure btnInserirClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure btnEditarClick(Sender: TObject);
-    procedure btnExcluirClick(Sender: TObject);
     procedure btnPesquisaClick(Sender: TObject);
   private
-    procedure OpenDataSet;
-    procedure OpenScreen;
+    procedure OpenScreen; override;
     { Private declarations }
   public
     { Public declarations }
@@ -33,61 +28,15 @@ var
 implementation
 
 uses
-  UDm, UCadastroCliente;
+  UDm, UCadastroCliente, UMsgConfirmar, UFuncoes;
 
 {$R *.dfm}
 
-procedure TFrmConsultaCliente.btnEditarClick(Sender: TObject);
-begin
-  inherited;
-  dm.cdsConsultaCli.Edit;
-  Self.OpenScreen;
-  Self.OpenDataSet;
-end;
-
-procedure TFrmConsultaCliente.btnExcluirClick(Sender: TObject);
-begin
-  inherited;
-  if Application.MessageBox('Tem certeza que deseja excluir?', 'Excluir',
-    MB_YESNO + MB_ICONWARNING) = idYes then
-  begin
-    dm.cdsConsultaCli.Delete;
-    dm.cdsConsultaCli.ApplyUpdates(-1);
-    Self.OpenDataSet;
-  end;
-end;
-
-procedure TFrmConsultaCliente.btnInserirClick(Sender: TObject);
-begin
-  inherited;
-  dm.cdsConsultaCli.Insert;
-  Self.OpenScreen;
-  Self.OpenDataSet;
-end;
-
 procedure TFrmConsultaCliente.btnPesquisaClick(Sender: TObject);
 begin
-  inherited;
-  dm.dsConsultaCli.DataSet.Filtered := False;
-  if edtPesquisa.Text <> EmptyStr then
-  begin
-    dm.dsConsultaCli.DataSet.Filter := 'UPPER(name) LIKE ' +
-      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
-    dm.dsConsultaCli.DataSet.Filtered := True;
-  end;
+  Self.FiltrarPorCampo('name');
 end;
 
-procedure TFrmConsultaCliente.FormCreate(Sender: TObject);
-begin
-  inherited;
-  Self.OpenDataSet;
-end;
-
-procedure TFrmConsultaCliente.OpenDataSet;
-begin
-  dm.cdsConsultaCli.Close;
-  dm.cdsConsultaCli.Open;
-end;
 
 procedure TFrmConsultaCliente.OpenScreen;
 begin

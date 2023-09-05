@@ -6,22 +6,20 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Buttons,
-  Vcl.Imaging.pngimage, Vcl.Imaging.jpeg, Vcl.StdCtrls;
+  Vcl.Imaging.pngimage, Vcl.Imaging.jpeg, Vcl.StdCtrls, Data.DB,
+  Datasnap.DBClient, Datasnap.Provider, Vcl.ComCtrls;
 
 type
   TfrmCadastroPadrao = class(TForm)
-    pnlPrincipal: TPanel;
+    dspCadastroPadrao: TDataSetProvider;
+    cdsCadastroPadrao: TClientDataSet;
+    dsCadastroPadrao: TDataSource;
     pnlSubTop: TPanel;
-    imgLogo: TImage;
     btnFechar: TSpeedButton;
-    pnlLinha: TPanel;
-    pnlSubTops: TPanel;
-    pnlSalvar: TPanel;
-    pnlCancelar: TPanel;
-    btnCancelar: TSpeedButton;
-    btnSalvar: TSpeedButton;
     lblEmpresa: TLabel;
-    procedure btnFecharClick(Sender: TObject);
+    pnlCentral: TPanel;
+    Panel1: TPanel;
+    Label1: TLabel;
   private
     { Private declarations }
   public
@@ -34,10 +32,5 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TfrmCadastroPadrao.btnFecharClick(Sender: TObject);
-begin
-  close;
-end;
 
 end.

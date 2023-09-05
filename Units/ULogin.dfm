@@ -3,7 +3,6 @@ object frmLogin: TfrmLogin
   Top = 0
   Align = alClient
   BorderStyle = bsNone
-  Caption = 'V'
   ClientHeight = 560
   ClientWidth = 863
   Color = clBtnFace
@@ -15,6 +14,7 @@ object frmLogin: TfrmLogin
   KeyPreview = True
   OldCreateOrder = False
   Visible = True
+  WindowState = wsMaximized
   OnKeyPress = FormKeyPress
   OnResize = FormResize
   PixelsPerInch = 96
@@ -6278,7 +6278,6 @@ object frmLogin: TfrmLogin
         Color = clSilver
         ParentBackground = False
         TabOrder = 1
-        TabStop = True
       end
       object edtUsuario: TEdit
         Left = 8

@@ -7,24 +7,10 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   Vcl.Buttons, Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask,
-  Vcl.DBCtrls, Ucadastropadrao;
+  Vcl.DBCtrls, Ucadastropadrao, Data.DB, Datasnap.DBClient, Datasnap.Provider;
 
 type
   TfrmCadastroColab = class(TfrmCadastroPadrao)
-    lblName: TLabel;
-    edtName: TDBEdit;
-    lblCpf: TLabel;
-    edtCpf: TDBEdit;
-    lblEmail: TLabel;
-    dbEdtEmail: TDBEdit;
-    dtpDataNasc: TDateTimePicker;
-    lblDataNasc: TLabel;
-    lblTelefone: TLabel;
-    dbEdtSalario: TDBEdit;
-    Label1: TLabel;
-    Label2: TLabel;
-    dtpDataContratacao: TDateTimePicker;
-    dbCbxCargo: TDBLookupComboBox;
     procedure btnSalvarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -46,21 +32,21 @@ uses
 procedure TfrmCadastroColab.btnSalvarClick(Sender: TObject);
 begin
   inherited;
-  dm.cdsConsultaColab.FieldByName('datanascimento').AsDateTime :=
-    dtpDataNasc.Date;
-  dm.cdsConsultaColab.FieldByName('datacontratacao').AsDateTime :=
-    dtpDataContratacao.Date;
-  dm.cdsConsultaColab.Post;
-  dm.cdsConsultaColab.ApplyUpdates(-1);
+//  dm.cdsConsultaColab.FieldByName('datanascimento').AsDateTime :=
+//    dtpDataNasc.Date;
+//  dm.cdsConsultaColab.FieldByName('datacontratacao').AsDateTime :=
+//    dtpDataContratacao.Date;
+//  dm.cdsConsultaColab.Post;
+//  dm.cdsConsultaColab.ApplyUpdates(-1);
 end;
 
 procedure TfrmCadastroColab.FormCreate(Sender: TObject);
 begin
   inherited;
-  dtpDataNasc.Date := dm.cdsConsultaColab.FieldByName('datanascimento')
-    .AsDateTime;
-  dtpDataContratacao.Date := dm.cdsConsultaColab.FieldByName('datacontratacao')
-    .AsDateTime;
+//  dtpDataNasc.Date := dm.cdsConsultaColab.FieldByName('datanascimento')
+//    .AsDateTime;
+//  dtpDataContratacao.Date := dm.cdsConsultaColab.FieldByName('datacontratacao')
+//    .AsDateTime;
 end;
 
 end.

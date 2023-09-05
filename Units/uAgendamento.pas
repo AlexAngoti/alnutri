@@ -85,11 +85,11 @@ end;
 
 procedure TfrmAgendamento.dbCbxColabClick(Sender: TObject);
 begin
-  dm.cdsAgendamento.Close;
-  dm.cdsAgendamento.ParamByName('DATA').AsDate := dtpData.Date;
-  dm.cdsAgendamento.ParamByName('COLAB').AsInteger :=
-    dm.cdsConsultaColab.FieldByName('id').AsInteger;
-  dm.cdsAgendamento.Open;
+//  dm.cdsAgendamento.Close;
+//  dm.cdsAgendamento.ParamByName('DATA').AsDate := dtpData.Date;
+//  dm.cdsAgendamento.ParamByName('COLAB').AsInteger :=
+//    dm.cdsConsultaColab.FieldByName('id').AsInteger;
+//  dm.cdsAgendamento.Open;
 
   if dm.cdsAgendamento.FieldByName('diaagendamento').AsDateTime <> dtpData.Date
   then
@@ -113,11 +113,11 @@ end;
 
 procedure TfrmAgendamento.OpenDataSet;
 begin
-  dm.cdsConsultaColab.Close;
-  dm.cdsConsultaColab.Open;
-
-  dm.cdsConsultaCli.Close;
-  dm.cdsConsultaCli.Open;
+//  dm.cdsConsultaColab.Close;
+//  dm.cdsConsultaColab.Open;
+//
+//  dm.cdsConsultaCli.Close;
+//  dm.cdsConsultaCli.Open;
 
   dm.cdsAgendamento.Close;
   dm.cdsAgendamento.ParamByName('DATA').AsDate := 0;
@@ -143,8 +143,8 @@ begin
   finally
     FrmPesquisaColab.Free;
   end;
-  dbCbxColab.KeyValue := dm.cdsConsultaColab.FieldByName('id').AsInteger;
-  dbCbxColabClick(Self);
+//  dbCbxColab.KeyValue := dm.cdsConsultaColab.FieldByName('id').AsInteger;
+//  dbCbxColabClick(Self);
 end;
 
 end.

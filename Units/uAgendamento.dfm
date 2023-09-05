@@ -210,7 +210,6 @@ object frmAgendamento: TfrmAgendamento
         DataSource = dm.dsAgendamento
         KeyField = 'id'
         ListField = 'name'
-        ListSource = dm.dsConsultaColab
         TabOrder = 2
         OnClick = dbCbxColabClick
         OnEnter = dbCbxColabEnter
@@ -224,7 +223,6 @@ object frmAgendamento: TfrmAgendamento
         DataSource = dm.dsAgendamento
         KeyField = 'id'
         ListField = 'name'
-        ListSource = dm.dsConsultaCli
         TabOrder = 3
       end
       object pnlEditar: TPanel

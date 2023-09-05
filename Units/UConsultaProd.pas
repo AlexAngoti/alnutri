@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.Buttons,
-  UConsulaPadrao;
+  UConsulaPadrao, Datasnap.Provider, Datasnap.DBClient;
 
 type
   TFrmConsultaProd = class(TFrmConsultaPadrao)
@@ -36,39 +36,39 @@ uses
 
 procedure TFrmConsultaProd.btnEditarClick(Sender: TObject);
 begin
-  inherited;
-  dm.cdsConsultaProd.Edit;
-  Self.OpenScreen;
+//  inherited;
+//  dm.cdsConsultaProd.Edit;
+//  Self.OpenScreen;
 end;
 
 procedure TFrmConsultaProd.btnExcluirClick(Sender: TObject);
 begin
   inherited;
-  if Application.MessageBox('Tem certeza que deseja excluir?', 'Excluir',
-    MB_YESNO + MB_ICONWARNING) = idYes then
-  begin
-    dm.cdsConsultaProd.Delete;
-    dm.cdsConsultaProd.ApplyUpdates(-1);
-  end;
+//  if Application.MessageBox('Tem certeza que deseja excluir?', 'Excluir',
+//    MB_YESNO + MB_ICONWARNING) = idYes then
+//  begin
+//    dm.cdsConsultaProd.Delete;
+//    dm.cdsConsultaProd.ApplyUpdates(-1);
+//  end;
 end;
 
 procedure TFrmConsultaProd.btnInserirClick(Sender: TObject);
 begin
   inherited;
-  dm.cdsConsultaProd.Insert;
-  Self.OpenScreen;
+//  dm.cdsConsultaProd.Insert;
+//  Self.OpenScreen;
 end;
 
 procedure TFrmConsultaProd.btnPesquisaClick(Sender: TObject);
 begin
   inherited;
-  dm.dsConsultaProd.DataSet.Filtered := False;
-  if edtPesquisa.Text <> EmptyStr then
-  begin
-    dm.dsConsultaProd.DataSet.Filter := 'UPPER(nome) LIKE ' +
-      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
-    dm.dsConsultaProd.DataSet.Filtered := True;
-  end;
+//  dm.dsConsultaProd.DataSet.Filtered := False;
+//  if edtPesquisa.Text <> EmptyStr then
+//  begin
+//    dm.dsConsultaProd.DataSet.Filter := 'UPPER(nome) LIKE ' +
+//      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
+//    dm.dsConsultaProd.DataSet.Filtered := True;
+//  end;
 end;
 
 procedure TFrmConsultaProd.FormCreate(Sender: TObject);
@@ -79,8 +79,8 @@ end;
 
 procedure TFrmConsultaProd.OpenDataSet;
 begin
-  dm.cdsConsultaProd.Close;
-  dm.cdsConsultaProd.Open;
+//  dm.cdsConsultaProd.Close;
+//  dm.cdsConsultaProd.Open;
 end;
 
 procedure TFrmConsultaProd.OpenScreen;

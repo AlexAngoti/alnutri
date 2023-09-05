@@ -30,7 +30,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdm, dm);
-  Application.CreateForm(TfrmMenu, frmMenu);
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmFundo, frmFundo);
   Application.Run;

@@ -98,13 +98,13 @@ end;
 
 procedure TfrmNovoAgendamento.SaveReg;
 begin
-  dm.cdsAgendamento.FieldByName('nomecliente').AsString :=
-    dm.cdsConsultaCli.FieldByName('name').AsString;
-  dm.cdsAgendamento.FieldByName('nomecolaborador').AsString :=
-    dm.cdsConsultaColab.FieldByName('name').AsString;
-  dm.cdsAgendamento.FieldByName('situacao').AsString := 'A';
-  dm.cdsAgendamento.Post;
-  dm.cdsAgendamento.ApplyUpdates(-1);
+//  dm.cdsAgendamento.FieldByName('nomecliente').AsString :=
+//    dm.cdsConsultaCli.FieldByName('name').AsString;
+//  dm.cdsAgendamento.FieldByName('nomecolaborador').AsString :=
+//    dm.cdsConsultaColab.FieldByName('name').AsString;
+//  dm.cdsAgendamento.FieldByName('situacao').AsString := 'A';
+//  dm.cdsAgendamento.Post;
+//  dm.cdsAgendamento.ApplyUpdates(-1);
 end;
 
 procedure TfrmNovoAgendamento.btnPesquisaColabClick(Sender: TObject);
@@ -116,22 +116,22 @@ begin
     FrmPesquisaColab.Free;
   end;
 
-  dm.cdsAgendamento.FieldByName('idcolaborador').AsInteger :=
-    dm.cdsConsultaColab.FieldByName('id').AsInteger;
+//  dm.cdsAgendamento.FieldByName('idcolaborador').AsInteger :=
+//    dm.cdsConsultaColab.FieldByName('id').AsInteger;
 end;
 
 procedure TfrmNovoAgendamento.btnPesquisaCliClick(Sender: TObject);
 begin
-  FrmPesquisaColab := TFrmPesquisaColab.Create(Self);
-  try
-    FrmPesquisaColab.dbgdConsulta.DataSource := dm.dsConsultaCli;
-    FrmPesquisaColab.ShowModal;
-  finally
-    FrmPesquisaColab.Free;
-  end;
-
-  dm.cdsAgendamento.FieldByName('idcliente').AsInteger :=
-    dm.cdsConsultaCli.FieldByName('id').AsInteger;
+//  FrmPesquisaColab := TFrmPesquisaColab.Create(Self);
+//  try
+//    FrmPesquisaColab.dbgdConsulta.DataSource := dm.dsConsultaCli;
+//    FrmPesquisaColab.ShowModal;
+//  finally
+//    FrmPesquisaColab.Free;
+//  end;
+//
+//  dm.cdsAgendamento.FieldByName('idcliente').AsInteger :=
+//    dm.cdsConsultaCli.FieldByName('id').AsInteger;
 end;
 
 procedure TfrmNovoAgendamento.ValidaTela;

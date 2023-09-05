@@ -18,9 +18,8 @@ var
   Rgn: HRGN;
   Dc: HDC;
 begin
-  Rgn := CreateRoundRectRgn(0, 0, Painel.Width, Painel.Height, ITamanho,
-    ITamanho);
-  Dc := GetDC(Painel.Handle);
+  Rgn := CreateRoundRectRgn(0, 0, Painel.Width, Painel.Height, ITamanho, ITamanho);
+  Dc  := GetDC(Painel.Handle);
   SetWindowRgn(Painel.Handle, Rgn, True);
   ReleaseDC(Painel.Handle, Dc);
   DeleteObject(Rgn);

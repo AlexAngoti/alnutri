@@ -3,7 +3,7 @@ object frmFundo: TfrmFundo
   Top = 0
   Align = alClient
   AlphaBlend = True
-  AlphaBlendValue = 200
+  AlphaBlendValue = 210
   BorderStyle = bsNone
   ClientHeight = 426
   ClientWidth = 773
@@ -15,7 +15,6 @@ object frmFundo: TfrmFundo
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  Visible = True
   WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13

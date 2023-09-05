@@ -7,7 +7,7 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.Buttons,
-  UConsulaPadrao;
+  UConsulaPadrao, Datasnap.Provider, Datasnap.DBClient;
 
 type
   TFrmConsultaUsuario = class(TFrmConsultaPadrao)
@@ -36,7 +36,7 @@ uses
 procedure TFrmConsultaUsuario.btnEditarClick(Sender: TObject);
 begin
   inherited;
-  dm.cdsConsultaUsuario.Edit;
+  cdsConsultaPadrao.Edit;
   Self.OpenScreen;
 end;
 
@@ -46,15 +46,15 @@ begin
   if Application.MessageBox('Tem certeza que deseja excluir?', 'Excluir',
     MB_YESNO + MB_ICONWARNING) = idYes then
   begin
-    dm.cdsConsultaUsuario.Delete;
-    dm.cdsConsultaUsuario.ApplyUpdates(-1);
+    cdsConsultaPadrao.Delete;
+    cdsConsultaPadrao.ApplyUpdates(-1);
   end;
 end;
 
 procedure TFrmConsultaUsuario.btnInserirClick(Sender: TObject);
 begin
   inherited;
-  dm.cdsConsultaUsuario.Insert;
+  cdsConsultaPadrao.Insert;
   Self.OpenScreen;
   Self.OpenDataSet;
 end;
@@ -62,13 +62,13 @@ end;
 procedure TFrmConsultaUsuario.btnPesquisaClick(Sender: TObject);
 begin
   inherited;
-  dm.dsConsultaUsuario.DataSet.Filtered := False;
-  if edtPesquisa.Text <> EmptyStr then
-  begin
-    dm.dsConsultaUsuario.DataSet.Filter := 'UPPER(name) LIKE ' +
-      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
-    dm.dsConsultaUsuario.DataSet.Filtered := True;
-  end;
+//  dm.dsConsultaUsuario.DataSet.Filtered := False;
+//  if edtPesquisa.Text <> EmptyStr then
+//  begin
+//    dm.dsConsultaUsuario.DataSet.Filter := 'UPPER(name) LIKE ' +
+//      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
+//    dm.dsConsultaUsuario.DataSet.Filtered := True;
+//  end;
 end;
 
 procedure TFrmConsultaUsuario.FormCreate(Sender: TObject);
@@ -79,11 +79,11 @@ end;
 
 procedure TFrmConsultaUsuario.OpenDataSet;
 begin
-  dm.cdsConsultaUsuario.Close;
-  dm.cdsConsultaUsuario.Open;
-
-  dm.cdsConsultaColab.Close;
-  dm.cdsConsultaColab.Open;
+//  dm.cdsConsultaPadrao.Close;
+//  dm.cdsConsultaPadrao.Open;
+//
+//  dm.cdsConsultaColab.Close;
+//  dm.cdsConsultaColab.Open;
 end;
 
 procedure TFrmConsultaUsuario.OpenScreen;
