@@ -1,10 +1,28 @@
-program AlNutri;
+program Alnutri;
 
 uses
   Vcl.Forms,
-  U_login in '..\Units\U_login.pas' {FrmLogin},
-  U_Menu in '..\Units\U_Menu.pas' {FrmMenu},
-  U_DM in '..\Units\U_DM.pas' {dm: TDataModule};
+  ULogin in '..\Units\ULogin.pas' {frmLogin},
+  UDm in '..\Units\UDm.pas' {dm: TDataModule},
+  UMenu in '..\Units\UMenu.pas' {frmMenu},
+  Ucadastropadrao in '..\Units\Ucadastropadrao.pas' {frmCadastroPadrao},
+  UConsulaPadrao in '..\Units\UConsulaPadrao.pas' {FrmConsultaPadrao},
+  UConsultaCliente in '..\Units\UConsultaCliente.pas' {FrmConsultaCliente},
+  uCadastroCliente in '..\Units\uCadastroCliente.pas' {frmCadastroCliente},
+  UConsultaProd in '..\Units\UConsultaProd.pas' {FrmConsultaProd},
+  UCadastroProd in '..\Units\UCadastroProd.pas' {frmCadastroProd},
+  uAgendamento in '..\Units\uAgendamento.pas' {frmAgendamento},
+  UNovoAgendamento in '..\Units\UNovoAgendamento.pas' {frmNovoAgendamento},
+  UConsultaCargo in '..\Units\UConsultaCargo.pas' {FrmConsultaCargos},
+  uCadastroCargo in '..\Units\uCadastroCargo.pas' {frmCadastroCargos},
+  UPesquisaColab in '..\Units\UPesquisaColab.pas' {FrmPesquisaColab},
+  UConsultaUsuario in '..\Units\UConsultaUsuario.pas' {FrmConsultaUsuario},
+  UCadastroUsuario in '..\Units\UCadastroUsuario.pas' {frmCadastroUsuario},
+  UFuncoes in '..\Units\UFuncoes.pas',
+  UMsgConfirmar in '..\Units\UMsgConfirmar.pas' {frmMsgConfirmar},
+  UFundo in '..\Units\UFundo.pas' {frmFundo},
+  UManutencaoPagar in '..\Units\UManutencaoPagar.pas' {frmManutencaoPagar},
+  UContasReceber in '..\Units\UContasReceber.pas' {frmContasReceber};
 
 {$R *.res}
 
@@ -12,7 +30,9 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdm, dm);
-  Application.CreateForm(TFrmLogin, FrmLogin);
-  Application.CreateForm(TFrmMenu, FrmMenu);
+  Application.CreateForm(TfrmLogin, frmLogin);
+  Application.CreateForm(TfrmFundo, frmFundo);
+  Application.CreateForm(TfrmManutencaoPagar, frmManutencaoPagar);
+  Application.CreateForm(TfrmContasReceber, frmContasReceber);
   Application.Run;
 end.

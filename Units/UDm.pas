@@ -1,4 +1,4 @@
-unit U_DM;
+unit UDm;
 
 interface
 
@@ -21,6 +21,12 @@ type
     cdsLoginsenha: TWideStringField;
     dspLogin: TDataSetProvider;
     dsLogin: TDataSource;
+    qryPessoa: TFDQuery;
+    qryConsultaProd: TFDQuery;
+    dspAgendamento: TDataSetProvider;
+    dsAgendamento: TDataSource;
+    qryAgendamento: TFDQuery;
+    cdsAgendamento: TClientDataSet;
   private
     { Private declarations }
   public
@@ -32,8 +38,10 @@ var
 
 implementation
 
-{%CLASSGROUP 'Vcl.Controls.TControl'}
+uses
+  UConsultaCliente;
 
+{%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
 
 end.
