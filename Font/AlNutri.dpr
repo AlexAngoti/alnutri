@@ -13,8 +13,6 @@ uses
   UCadastroProd in '..\Units\UCadastroProd.pas' {frmCadastroProd},
   uAgendamento in '..\Units\uAgendamento.pas' {frmAgendamento},
   UNovoAgendamento in '..\Units\UNovoAgendamento.pas' {frmNovoAgendamento},
-  UConsultaColab in '..\Units\UConsultaColab.pas' {FrmConsultaColab},
-  UCadastroColab in '..\Units\UCadastroColab.pas' {frmCadastroColab},
   UConsultaCargo in '..\Units\UConsultaCargo.pas' {FrmConsultaCargos},
   uCadastroCargo in '..\Units\uCadastroCargo.pas' {frmCadastroCargos},
   UPesquisaColab in '..\Units\UPesquisaColab.pas' {FrmPesquisaColab},
@@ -22,7 +20,9 @@ uses
   UCadastroUsuario in '..\Units\UCadastroUsuario.pas' {frmCadastroUsuario},
   UFuncoes in '..\Units\UFuncoes.pas',
   UMsgConfirmar in '..\Units\UMsgConfirmar.pas' {frmMsgConfirmar},
-  UFundo in '..\Units\UFundo.pas' {frmFundo};
+  UFundo in '..\Units\UFundo.pas' {frmFundo},
+  UManutencaoPagar in '..\Units\UManutencaoPagar.pas' {frmManutencaoPagar},
+  UContasReceber in '..\Units\UContasReceber.pas' {frmContasReceber};
 
 {$R *.res}
 
@@ -32,6 +32,7 @@ begin
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmFundo, frmFundo);
+  Application.CreateForm(TfrmManutencaoPagar, frmManutencaoPagar);
+  Application.CreateForm(TfrmContasReceber, frmContasReceber);
   Application.Run;
-
 end.

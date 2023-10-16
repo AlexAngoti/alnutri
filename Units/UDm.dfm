@@ -87,11 +87,11 @@ object dm: Tdm
     Left = 99
     Top = 80
   end
-  object qryConsultaCli: TFDQuery
+  object qryPessoa: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
       'select *'
-      '  from clientes')
+      '  from pessoa')
     Left = 40
     Top = 288
   end
@@ -102,22 +102,6 @@ object dm: Tdm
       '  from alimentos')
     Left = 104
     Top = 288
-  end
-  object qryConsultaColab: TFDQuery
-    Connection = FDConnection
-    SQL.Strings = (
-      'select *'
-      '  from colaboradores')
-    Left = 72
-    Top = 290
-  end
-  object qryConsultaCargos: TFDQuery
-    Connection = FDConnection
-    SQL.Strings = (
-      'select *'
-      '  from cargos')
-    Left = 136
-    Top = 290
   end
   object dspAgendamento: TDataSetProvider
     DataSet = qryAgendamento
@@ -166,17 +150,7 @@ object dm: Tdm
         ParamType = ptInput
       end>
     ProviderName = 'dspAgendamento'
-    AfterOpen = cdsAgendamentoAfterOpen
     Left = 72
     Top = 128
-  end
-  object qryConsultaUsuario: TFDQuery
-    Active = True
-    Connection = FDConnection
-    SQL.Strings = (
-      'select *'
-      '  from login')
-    Left = 8
-    Top = 290
   end
 end

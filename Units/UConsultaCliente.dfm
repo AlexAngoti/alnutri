@@ -20,28 +20,28 @@ inherited FrmConsultaCliente: TFrmConsultaCliente
           Expanded = False
           FieldName = 'id'
           Title.Caption = 'Id'
-          Width = 58
+          Width = 90
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'name'
-          Title.Caption = 'Nome'
-          Width = 512
+          FieldName = 'nomefantasia'
+          Title.Caption = 'Name'
+          Width = 411
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'cpf'
-          Title.Caption = 'CPF'
-          Width = 274
+          FieldName = 'cpfcnpj'
+          Title.Caption = 'Cpf / Cnpj'
+          Width = 258
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'cep'
-          Title.Caption = 'CEP'
-          Width = 239
+          FieldName = 'telefone'
+          Title.Caption = 'Numero'
+          Width = 257
           Visible = True
         end>
     end
@@ -100,6 +100,6 @@ inherited FrmConsultaCliente: TFrmConsultaCliente
     ExplicitWidth = 1093
   end
   inherited dspConsultaPadrao: TDataSetProvider
-    DataSet = dm.qryConsultaCli
+    DataSet = dm.qryPessoa
   end
 end

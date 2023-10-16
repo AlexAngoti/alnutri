@@ -70,7 +70,6 @@ object FrmConsultaPadrao: TFrmConsultaPadrao
       ParentBackground = False
       ParentFont = False
       TabOrder = 1
-      ExplicitTop = -2
       object lblPesquisar: TLabel
         Left = 21
         Top = 6
@@ -224,8 +223,8 @@ object FrmConsultaPadrao: TFrmConsultaPadrao
           000000000000}
       end
       object btnInserir: TSpeedButton
-        Left = 504
-        Top = 20
+        Left = 501
+        Top = 17
         Width = 41
         Height = 41
         Margins.Top = 5

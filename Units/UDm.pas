@@ -21,18 +21,12 @@ type
     cdsLoginsenha: TWideStringField;
     dspLogin: TDataSetProvider;
     dsLogin: TDataSource;
-    qryConsultaCli: TFDQuery;
+    qryPessoa: TFDQuery;
     qryConsultaProd: TFDQuery;
-    qryConsultaColab: TFDQuery;
-    qryConsultaCargos: TFDQuery;
     dspAgendamento: TDataSetProvider;
     dsAgendamento: TDataSource;
     qryAgendamento: TFDQuery;
     cdsAgendamento: TClientDataSet;
-    qryConsultaUsuario: TFDQuery;
-    procedure cdsConsultaCliAfterOpen(DataSet: TDataSet);
-    procedure cdsConsultaColabAfterOpen(DataSet: TDataSet);
-    procedure cdsAgendamentoAfterOpen(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -49,26 +43,5 @@ uses
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}
-
-procedure Tdm.cdsAgendamentoAfterOpen(DataSet: TDataSet);
-begin
-  {cdsAgendamento.FieldByName('diaagendamento').EditMask := '!99/99/9999;1;_';
-  cdsAgendamento.FieldByName('hora').EditMask := '!99:99;1;_';
-  cdsAgendamento.FieldByName('telefonecliente').EditMask :=
-    '!(99)99999-9999;0;_';}
-end;
-
-procedure Tdm.cdsConsultaCliAfterOpen(DataSet: TDataSet);
-begin
-  {cdsConsultaCli.FieldByName('cpf').EditMask := '!999.999.999-99;0;_';
-  cdsConsultaCli.FieldByName('cep').EditMask := '!99.999-999;0;_';
-  cdsConsultaCli.FieldByName('telefone').EditMask := '!(99)99999-9999;0;_';
-  cdsConsultaCli.FieldByName('datanasc').EditMask := '!99/99/9999;1;_'; }
-end;
-
-procedure Tdm.cdsConsultaColabAfterOpen(DataSet: TDataSet);
-begin
-  {cdsConsultaColab.FieldByName('cpf').EditMask := '!999.999.999-99;0;_';}
-end;
 
 end.

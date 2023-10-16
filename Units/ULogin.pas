@@ -91,7 +91,7 @@ begin
   else
   begin
     FrmMenu := TFrmMenu.Create(Self);
-    FrmMenu.Show ;
+    FrmMenu.Show;
   end;
 end;
 
@@ -105,7 +105,7 @@ end;
 
 procedure TFrmLogin.FormResize(Sender: TObject);
 begin
-  pnlPrincipal.Top := Round(FrmLogin.Height / 2 - pnlPrincipal.Height / 2);
+  pnlPrincipal.Top  := Round(FrmLogin.Height / 2 - pnlPrincipal.Height / 2);
   pnlPrincipal.Left := Round(FrmLogin.Width / 2 - pnlPrincipal.Width / 2);
 end;
 

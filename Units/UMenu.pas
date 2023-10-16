@@ -31,7 +31,6 @@ type
     btnBaixarTitu: TSpeedButton;
     btnAgendamentos: TSpeedButton;
     btnAvaliacao: TSpeedButton;
-    btnFuncionarios: TSpeedButton;
     btnCardapios: TSpeedButton;
     btnMensalidade: TSpeedButton;
     pnlRelatorio: TPanel;
@@ -41,11 +40,11 @@ type
     btnAlimentos: TSpeedButton;
     btnUsuarios: TSpeedButton;
     btnTrocarUser: TSpeedButton;
-    anvFundo: TApplicationEvents;
-    Panel1: TPanel;
+    pnlTop: TPanel;
     btnFechar: TSpeedButton;
     lblEmpresa: TLabel;
     pnlLinha: TPanel;
+    anvFundo: TApplicationEvents;
     procedure btnCadastrosMouseEnter(Sender: TObject);
     procedure pnlSubCentralMouseEnter(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
@@ -53,15 +52,17 @@ type
     procedure btnClientesClick(Sender: TObject);
     procedure brnAlimentosClick(Sender: TObject);
     procedure btnAgendamentosClick(Sender: TObject);
-    procedure btnFuncionariosClick(Sender: TObject);
     procedure btnCargosClick(Sender: TObject);
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnTrocarUserClick(Sender: TObject);
     procedure anvFundoModalBegin(Sender: TObject);
     procedure anvFundoModalEnd(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure btnAbrirMensClick(Sender: TObject);
   private
     procedure prcControlaMenu(botao: TSpeedButton; Ativar: Boolean);
+    procedure ArredondaPainel;
   public
     { Public declarations }
   end;
@@ -72,8 +73,9 @@ var
 implementation
 
 uses
-  UDm, UConsultaCliente, UConsultaProd, UAgendamento, UConsultaColab,
-  UConsultaCargo, UConsultaUsuario, ULogin, UFundo;
+  UDm, UConsultaCliente, UConsultaProd, UAgendamento,
+  UConsultaCargo, UConsultaUsuario, ULogin, UFundo, UFuncoes,
+  UContasReceber;
 
 {$R *.dfm}
 { TFrmMenu }
@@ -86,15 +88,10 @@ end;
 
 procedure TFrmMenu.btnFecharClick(Sender: TObject);
 begin
+  FrmLogin.Free;
+  frmFundo.Free;
   Application.Terminate;
 end;
-
-procedure TFrmMenu.btnFuncionariosClick(Sender: TObject);
-begin
-  FrmConsultaColab := TFrmConsultaColab.Create(Self);
-  FrmConsultaColab.ShowModal;
-end;
-
 
 procedure TFrmMenu.btnMinimizarClick(Sender: TObject);
 begin
@@ -110,6 +107,11 @@ end;
 procedure TFrmMenu.FormCreate(Sender: TObject);
 begin
   frmFundo.Visible := True;
+end;
+
+procedure TFrmMenu.FormResize(Sender: TObject);
+begin
+  Self.ArredondaPainel;
 end;
 
 procedure TFrmMenu.pnlSubCentralMouseEnter(Sender: TObject);
@@ -133,7 +135,7 @@ begin
         if (FrmMenu.Components[i] as TPanel).Tag = botao.Tag then
         begin
           (FrmMenu.Components[i] as TPanel).Visible := True;
-          (FrmMenu.Components[i] as TPanel).Left := botao.Left;
+          (FrmMenu.Components[i] as TPanel).Left    := botao.Left;
         end
         else
         begin
@@ -170,10 +172,22 @@ begin
   frmFundo.Hide;
 end;
 
+procedure TFrmMenu.ArredondaPainel;
+begin
+  RoundedPanel(pnlTop, 12);
+  RoundedPanel(pnlCentral, 12);
+end;
+
 procedure TFrmMenu.brnAlimentosClick(Sender: TObject);
 begin
   FrmConsultaProd := TFrmConsultaProd.Create(Self);
-  FrmConsultaProd.ShowModal;
+  FrmConsultaProd.Show;
+end;
+
+procedure TFrmMenu.btnAbrirMensClick(Sender: TObject);
+begin
+  frmContasReceber := TfrmContasReceber.Create(Self);
+  frmContasReceber.Show;
 end;
 
 procedure TFrmMenu.btnAgendamentosClick(Sender: TObject);

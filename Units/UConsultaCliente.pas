@@ -42,7 +42,12 @@ procedure TFrmConsultaCliente.OpenScreen;
 begin
   frmCadastroCliente := TfrmCadastroCliente.Create(Self);
   try
-    frmCadastroCliente.ShowModal;
+    frmCadastroCliente.Show;
+    frmCadastroCliente.BringToFront;
+    while not frmCadastroCliente.ModalResult <> mrNone do
+    begin
+      Application.ProcessMessages;
+    end;
   finally
     frmCadastroCliente.Free;
   end;

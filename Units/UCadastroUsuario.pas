@@ -7,7 +7,8 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   Vcl.Buttons, Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Mask,
-  Ucadastropadrao, Data.DB, Datasnap.DBClient, Datasnap.Provider, Vcl.ComCtrls;
+  Ucadastropadrao, Data.DB, Datasnap.DBClient, Datasnap.Provider, Vcl.ComCtrls,
+  SWHMaskEdit, SWHDBEdit, SWHComboBox;
 
 type
   TfrmCadastroUsuario = class(TfrmCadastroPadrao)
@@ -32,8 +33,6 @@ uses
 procedure TfrmCadastroUsuario.btnSalvarClick(Sender: TObject);
 begin
   inherited;
-  cdsCadastroPadrao.Post;
-  cdsCadastroPadrao.ApplyUpdates(-1);
 
   ShowMessage('Usuario criado com sucesso!!');
   Self.Close;

@@ -3,10 +3,12 @@ unit UFuncoes;
 interface
 
 uses
-  Vcl.ExtCtrls, Winapi.ActiveX, Winapi.Windows, System.SysUtils, Vcl.Forms;
+  Vcl.ExtCtrls, Winapi.ActiveX, Winapi.Windows, System.SysUtils, Vcl.Forms,
+  Vcl.ComCtrls;
 
-procedure RoundedPanel(Painel: TPanel; ITamanho: Integer);
-function MsgConfirmar(ATitulo: String; AMenssagem: String): Boolean;
+  procedure RoundedPanel(Painel: TPanel; ITamanho: Integer);
+  procedure PrcOcultarTabs(PageControl : TPageControl);
+  function MsgConfirmar(ATitulo: String; AMenssagem: String): Boolean;
 
 implementation
 
@@ -38,6 +40,18 @@ begin
   finally
     FreeAndNil(frmMsgConfirmar);
   end;
+end;
+
+procedure PrcOcultarTabs(PageControl : TPageControl);
+var
+  IPage: Integer;
+begin
+  for IPage := 0 to PageControl.PageCount - 1 do
+  begin
+    PageControl.Pages[IPage].TabVisible := False;
+  end;
+
+  PageControl.ActivePageIndex := 0;
 end;
 
 end.

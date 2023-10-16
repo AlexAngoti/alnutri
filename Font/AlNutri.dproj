@@ -145,14 +145,6 @@
             <Form>frmNovoAgendamento</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\Units\UConsultaColab.pas">
-            <Form>FrmConsultaColab</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="..\Units\UCadastroColab.pas">
-            <Form>frmCadastroColab</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="..\Units\UConsultaCargo.pas">
             <Form>FrmConsultaCargos</Form>
             <FormType>dfm</FormType>
@@ -180,6 +172,14 @@
         </DCCReference>
         <DCCReference Include="..\Units\UFundo.pas">
             <Form>frmFundo</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Units\UManutencaoPagar.pas">
+            <Form>frmManutencaoPagar</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Units\UContasReceber.pas">
+            <Form>frmContasReceber</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
