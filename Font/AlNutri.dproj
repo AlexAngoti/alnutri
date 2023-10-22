@@ -153,10 +153,6 @@
             <Form>frmCadastroCargos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\Units\UPesquisaColab.pas">
-            <Form>FrmPesquisaColab</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="..\Units\UConsultaUsuario.pas">
             <Form>FrmConsultaUsuario</Form>
             <FormType>dfm</FormType>
@@ -180,6 +176,18 @@
         </DCCReference>
         <DCCReference Include="..\Units\UContasReceber.pas">
             <Form>frmContasReceber</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Units\uMovContasReceber.pas">
+            <Form>frmMovReceber</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Units\uMsgNaoConfirmar.pas">
+            <Form>frmMsgSemConfir</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Units\uPesquisaPadrao.pas">
+            <Form>frmPesquisaPadrao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

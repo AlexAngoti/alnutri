@@ -1,6 +1,5 @@
 inherited FrmConsultaUsuario: TFrmConsultaUsuario
   Caption = 'FrmConsultaUsuario'
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlPrincipal: TPanel
@@ -30,12 +29,6 @@ inherited FrmConsultaUsuario: TFrmConsultaUsuario
     inherited pnlPesquisa: TPanel
       inherited btnPesquisa: TSpeedButton
         OnClick = btnPesquisaClick
-      end
-      inherited btnInserir: TSpeedButton
-        OnClick = btnInserirClick
-      end
-      inherited btnEditar: TSpeedButton
-        OnClick = btnEditarClick
       end
     end
   end

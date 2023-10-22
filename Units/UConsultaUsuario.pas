@@ -86,6 +86,7 @@ begin
 //  dm.cdsConsultaColab.Open;
 end;
 
+
 procedure TFrmConsultaUsuario.OpenScreen;
 begin
   frmCadastroUsuario := TfrmCadastroUsuario.Create(Self);

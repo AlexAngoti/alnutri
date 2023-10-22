@@ -529,7 +529,8 @@ object frmAgendamento: TfrmAgendamento
             0000000000000000000000000000000000000000000000000000000000000000
             000000000000}
           OnClick = btnPesquisaClick
-          ExplicitLeft = -1
+          ExplicitLeft = 4
+          ExplicitTop = 3
         end
       end
     end

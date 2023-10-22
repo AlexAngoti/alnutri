@@ -12,7 +12,9 @@ object frmContasReceber: TfrmContasReceber
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   OnResize = FormResize
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlCentral: TPanel
@@ -162,6 +164,8 @@ object frmContasReceber: TfrmContasReceber
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          OnClick = btnNovoLancamentoClick
+          ExplicitLeft = 3
           ExplicitTop = -1
         end
       end
@@ -225,7 +229,7 @@ object frmContasReceber: TfrmContasReceber
       TabOrder = 1
       object pnlLinha3: TPanel
         Left = 0
-        Top = 0
+        Top = 41
         Width = 1181
         Height = 1
         Align = alTop
@@ -236,15 +240,16 @@ object frmContasReceber: TfrmContasReceber
       object dbgRegistros: TDBGrid
         AlignWithMargins = True
         Left = 0
-        Top = 11
+        Top = 52
         Width = 1181
-        Height = 227
+        Height = 186
         Margins.Left = 0
         Margins.Top = 10
         Margins.Right = 0
         Margins.Bottom = 0
         Align = alClient
         BorderStyle = bsNone
+        DataSource = dsContasReceber
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 5855577
         Font.Height = -13
@@ -261,39 +266,143 @@ object frmContasReceber: TfrmContasReceber
         Columns = <
           item
             Expanded = False
-            FieldName = 'CUST_NO'
+            FieldName = 'datavencimento'
             Title.Caption = 'Data'
-            Width = 101
+            Width = 93
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'CUSTOMER'
+            FieldName = 'lancamento'
             Title.Caption = 'Lan'#231'amento'
-            Width = 111
+            Width = 100
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'PHONE_NO'
+            FieldName = 'valor'
             Title.Caption = 'Valor'
             Width = 134
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'ADDRESS_LINE1'
+            FieldName = 'formapgto'
             Title.Caption = 'Forma Pgto'
             Width = 165
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'ADDRESS_LINE2'
+            FieldName = 'descricao'
+            Title.Caption = 'Descri'#231#227'o'
+            Width = 300
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'nomecliente'
             Title.Caption = 'Cliente'
-            Width = 595
+            Width = 300
             Visible = True
           end>
+      end
+      object pnlSubPesquisa: TPanel
+        Left = 0
+        Top = 0
+        Width = 1181
+        Height = 41
+        Align = alTop
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 2
+        object pnlPesquisa: TPanel
+          Left = 8
+          Top = 6
+          Width = 633
+          Height = 28
+          BevelOuter = bvNone
+          TabOrder = 0
+          object shpPesquisa: TShape
+            Left = 0
+            Top = 0
+            Width = 633
+            Height = 28
+            Align = alClient
+            Pen.Color = clSilver
+            ExplicitLeft = 4
+            ExplicitTop = 5
+          end
+          object spbPesquisa: TSpeedButton
+            Left = 2
+            Top = 1
+            Width = 27
+            Height = 26
+            Cursor = crHandPoint
+            Flat = True
+            Glyph.Data = {
+              26040000424D2604000000000000360000002800000012000000120000000100
+              180000000000F0030000120B0000120B00000000000000000000E6E1DEE6E1DE
+              E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1
+              DEE6E1DEE6E1DEE6E1DEB3B0AECBC7C50000E6E1DEE6E1DEE6E1DEE6E1DEE6E1
+              DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE9B
+              99986C6C6CAFACAA0000E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6
+              E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE9F9D9B6C6C6C9D9B9ADED9D6
+              0000E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE
+              E6E1DEE6E1DEE6E1DE9E9C9B6C6C6CA19F9EE6E1DEE6E1DE0000E6E1DEE6E1DE
+              E6E1DEE6E1DEE5E0DDC1BEBCA3A09FA09E9CBBB8B6DDD8D6E6E1DEE6E1DE9C9A
+              996C6C6CA2A09FE6E1DEE6E1DEE6E1DE0000E6E1DEE6E1DEE6E1DEBAB6B46D6D
+              6D6C6C6C6C6C6C6C6C6C6C6C6C6C6C6CB1AEACA6A4A36C6C6CA3A19FE6E1DEE6
+              E1DEE6E1DEE6E1DE0000E6E1DEE6E1DEAAA7A66C6C6C7B7B7ABCB9B7D9D5D2DD
+              D8D6C5C1BF8D8C8B6C6C6C6C6C6CAEABA9E6E1DEE6E1DEE6E1DEE6E1DEE6E1DE
+              0000E6E1DEC7C3C16C6C6C92908FE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE
+              B0AEAC6C6C6CB5B2B0E6E1DEE6E1DEE6E1DEE6E1DEE6E1DE0000E1DCD9767675
+              6F6F6FE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE8B89896C6C
+              6CDFDBD8E6E1DEE6E1DEE6E1DEE6E1DE0000BAB7B56C6C6CA8A5A4E6E1DEE6E1
+              DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DECDC9C76C6C6CB8B5B3E6E1DEE6
+              E1DEE6E1DEE6E1DE0000A2A09F6C6C6CC6C3C0E6E1DEE6E1DEE6E1DEE6E1DEE6
+              E1DEE6E1DEE6E1DEE6E1DEE2DDDA6C6C6C9D9B9AE6E1DEE6E1DEE6E1DEE6E1DE
+              0000A5A3A26C6C6CC4C0BEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE
+              E6E1DEDFDBD86C6C6CA19F9EE6E1DEE6E1DEE6E1DEE6E1DE0000C4C0BE6C6C6C
+              9A9897E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEC1BDBB6C6C
+              6CC2BFBCE6E1DEE6E1DEE6E1DEE6E1DE0000E5E0DD8483826C6C6CDDD9D6E6E1
+              DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE7979796C6C6CE5E0DDE6E1DEE6
+              E1DEE6E1DEE6E1DE0000E6E1DED7D2D06C6C6C787777D9D4D1E6E1DEE6E1DEE6
+              E1DEE6E1DEE6E1DE9492916C6C6CBCB9B7E6E1DEE6E1DEE6E1DEE6E1DEE6E1DE
+              0000E6E1DEE6E1DEC1BDBB6C6C6C6C6C6C999796BEBAB8C3C0BDA6A4A36D6D6D
+              6C6C6CABA8A7E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE0000E6E1DEE6E1DE
+              E6E1DED1CDCA8A89886C6C6C6C6C6C6C6C6C6C6C6C7E7D7DC2BEBCE6E1DEE6E1
+              DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE0000E6E1DEE6E1DEE6E1DEE6E1DEE6E1
+              DEC4C0BEAAA8A6A6A4A2BDBAB8E1DCD9E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6
+              E1DEE6E1DEE6E1DE0000}
+          end
+          object edtPesquisa: TEdit
+            Left = 35
+            Top = 3
+            Width = 572
+            Height = 20
+            TabStop = False
+            BorderStyle = bsNone
+            CharCase = ecUpperCase
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clGray
+            Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+            TextHint = 'DIGITE O NOME DO CLIENTE  PARA PESQUISAR'
+          end
+          object pnlLinha4: TPanel
+            Left = 624
+            Top = 24
+            Width = 185
+            Height = 41
+            Caption = 'pnlLinha4'
+            TabOrder = 1
+          end
+        end
       end
     end
     object pnlCentralInfo: TPanel
@@ -368,11 +477,11 @@ object frmContasReceber: TfrmContasReceber
           ParentFont = False
         end
         object lblVlrRecebimentoAtrasado: TLabel
-          Left = 81
+          Left = 80
           Top = 56
-          Width = 89
+          Width = 14
           Height = 36
-          Caption = 'R$ 1550'
+          Caption = '0'
           Font.Charset = ANSI_CHARSET
           Font.Color = 16024898
           Font.Height = -26
@@ -407,9 +516,9 @@ object frmContasReceber: TfrmContasReceber
         object lblVlrRecebimentoHoje: TLabel
           Left = 81
           Top = 56
-          Width = 89
+          Width = 14
           Height = 36
-          Caption = 'R$ 1000'
+          Caption = '0'
           Font.Charset = ANSI_CHARSET
           Font.Color = 16024898
           Font.Height = -26
@@ -429,7 +538,7 @@ object frmContasReceber: TfrmContasReceber
         ParentBackground = False
         TabOrder = 3
         object lblTotalaReceber: TLabel
-          Left = 87
+          Left = 66
           Top = 29
           Width = 104
           Height = 21
@@ -442,11 +551,11 @@ object frmContasReceber: TfrmContasReceber
           ParentFont = False
         end
         object lblTotalReceber: TLabel
-          Left = 86
+          Left = 64
           Top = 56
-          Width = 107
+          Width = 14
           Height = 36
-          Caption = 'R$ 20000'
+          Caption = '0'
           Font.Charset = ANSI_CHARSET
           Font.Color = 16024898
           Font.Height = -26
@@ -481,9 +590,9 @@ object frmContasReceber: TfrmContasReceber
         object lblVlrRecebimentosFuturos: TLabel
           Left = 64
           Top = 56
-          Width = 107
+          Width = 14
           Height = 36
-          Caption = 'R$ 20000'
+          Caption = '0'
           Font.Charset = ANSI_CHARSET
           Font.Color = 16024898
           Font.Height = -26
@@ -491,92 +600,6 @@ object frmContasReceber: TfrmContasReceber
           Font.Style = [fsBold]
           ParentFont = False
         end
-      end
-    end
-    object pnlPesquisa: TPanel
-      Left = 8
-      Top = 201
-      Width = 633
-      Height = 28
-      BevelOuter = bvNone
-      TabOrder = 3
-      object shpPesquisa: TShape
-        Left = 0
-        Top = 0
-        Width = 633
-        Height = 28
-        Align = alClient
-        Pen.Color = clSilver
-        ExplicitLeft = 4
-        ExplicitTop = 5
-      end
-      object spbPesquisa: TSpeedButton
-        Left = 2
-        Top = 1
-        Width = 27
-        Height = 26
-        Cursor = crHandPoint
-        Flat = True
-        Glyph.Data = {
-          26040000424D2604000000000000360000002800000012000000120000000100
-          180000000000F0030000120B0000120B00000000000000000000E6E1DEE6E1DE
-          E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1
-          DEE6E1DEE6E1DEE6E1DEB3B0AECBC7C50000E6E1DEE6E1DEE6E1DEE6E1DEE6E1
-          DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE9B
-          99986C6C6CAFACAA0000E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6
-          E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE9F9D9B6C6C6C9D9B9ADED9D6
-          0000E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE
-          E6E1DEE6E1DEE6E1DE9E9C9B6C6C6CA19F9EE6E1DEE6E1DE0000E6E1DEE6E1DE
-          E6E1DEE6E1DEE5E0DDC1BEBCA3A09FA09E9CBBB8B6DDD8D6E6E1DEE6E1DE9C9A
-          996C6C6CA2A09FE6E1DEE6E1DEE6E1DE0000E6E1DEE6E1DEE6E1DEBAB6B46D6D
-          6D6C6C6C6C6C6C6C6C6C6C6C6C6C6C6CB1AEACA6A4A36C6C6CA3A19FE6E1DEE6
-          E1DEE6E1DEE6E1DE0000E6E1DEE6E1DEAAA7A66C6C6C7B7B7ABCB9B7D9D5D2DD
-          D8D6C5C1BF8D8C8B6C6C6C6C6C6CAEABA9E6E1DEE6E1DEE6E1DEE6E1DEE6E1DE
-          0000E6E1DEC7C3C16C6C6C92908FE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE
-          B0AEAC6C6C6CB5B2B0E6E1DEE6E1DEE6E1DEE6E1DEE6E1DE0000E1DCD9767675
-          6F6F6FE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE8B89896C6C
-          6CDFDBD8E6E1DEE6E1DEE6E1DEE6E1DE0000BAB7B56C6C6CA8A5A4E6E1DEE6E1
-          DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DECDC9C76C6C6CB8B5B3E6E1DEE6
-          E1DEE6E1DEE6E1DE0000A2A09F6C6C6CC6C3C0E6E1DEE6E1DEE6E1DEE6E1DEE6
-          E1DEE6E1DEE6E1DEE6E1DEE2DDDA6C6C6C9D9B9AE6E1DEE6E1DEE6E1DEE6E1DE
-          0000A5A3A26C6C6CC4C0BEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE
-          E6E1DEDFDBD86C6C6CA19F9EE6E1DEE6E1DEE6E1DEE6E1DE0000C4C0BE6C6C6C
-          9A9897E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEC1BDBB6C6C
-          6CC2BFBCE6E1DEE6E1DEE6E1DEE6E1DE0000E5E0DD8483826C6C6CDDD9D6E6E1
-          DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE7979796C6C6CE5E0DDE6E1DEE6
-          E1DEE6E1DEE6E1DE0000E6E1DED7D2D06C6C6C787777D9D4D1E6E1DEE6E1DEE6
-          E1DEE6E1DEE6E1DE9492916C6C6CBCB9B7E6E1DEE6E1DEE6E1DEE6E1DEE6E1DE
-          0000E6E1DEE6E1DEC1BDBB6C6C6C6C6C6C999796BEBAB8C3C0BDA6A4A36D6D6D
-          6C6C6CABA8A7E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE0000E6E1DEE6E1DE
-          E6E1DED1CDCA8A89886C6C6C6C6C6C6C6C6C6C6C6C7E7D7DC2BEBCE6E1DEE6E1
-          DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE0000E6E1DEE6E1DEE6E1DEE6E1DEE6E1
-          DEC4C0BEAAA8A6A6A4A2BDBAB8E1DCD9E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6
-          E1DEE6E1DEE6E1DE0000}
-      end
-      object edtPesquisa: TEdit
-        Left = 35
-        Top = 3
-        Width = 572
-        Height = 20
-        TabStop = False
-        BorderStyle = bsNone
-        CharCase = ecUpperCase
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clGray
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-        TextHint = 'DIGITE O NOME DO CLIENTE  PARA PESQUISAR'
-      end
-      object pnlLinha4: TPanel
-        Left = 624
-        Top = 24
-        Width = 185
-        Height = 41
-        Caption = 'pnlLinha4'
-        TabOrder = 1
       end
     end
     object pnlRodape: TPanel
@@ -588,7 +611,7 @@ object frmContasReceber: TfrmContasReceber
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
-      TabOrder = 4
+      TabOrder = 3
       object lblExcluir: TLabel
         AlignWithMargins = True
         Left = 10
@@ -652,7 +675,7 @@ object frmContasReceber: TfrmContasReceber
       Font.Style = []
       ParentBackground = False
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 4
       Visible = False
       object Label10: TLabel
         Left = 65
@@ -885,5 +908,75 @@ object frmContasReceber: TfrmContasReceber
       ParentColor = False
       ParentFont = False
     end
+  end
+  object dspContasReceber: TDataSetProvider
+    DataSet = dm.qryContasReceber
+    Left = 536
+    Top = 12
+  end
+  object cdsContasReceber: TClientDataSet
+    Aggregates = <>
+    Params = <
+      item
+        DataType = ftDate
+        Name = 'DATA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'COLAB'
+        ParamType = ptInput
+      end>
+    ProviderName = 'dspContasReceber'
+    Left = 568
+    Top = 8
+    object cdsContasReceberlancamento: TLargeintField
+      FieldName = 'lancamento'
+      Origin = 'lancamento'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object cdsContasReceberdatavencimento: TDateField
+      FieldName = 'datavencimento'
+      Origin = 'datavencimento'
+    end
+    object cdsContasRecebervalor: TBCDField
+      FieldName = 'valor'
+      Origin = 'valor'
+      Precision = 15
+      Size = 2
+    end
+    object cdsContasReceberformapgto: TWideStringField
+      FieldName = 'formapgto'
+      Origin = 'formapgto'
+      Size = 8190
+    end
+    object cdsContasReceberidcliente: TIntegerField
+      FieldName = 'idcliente'
+      Origin = 'idcliente'
+    end
+    object cdsContasRecebernomecliente: TWideStringField
+      FieldName = 'nomecliente'
+      Origin = 'nomecliente'
+      Size = 8190
+    end
+    object cdsContasReceberdatapgto: TDateField
+      FieldName = 'datapgto'
+      Origin = 'datapgto'
+    end
+    object cdsContasRecebersituacao: TWideStringField
+      FieldName = 'situacao'
+      Origin = 'situacao'
+      Size = 1
+    end
+    object cdsContasReceberdescricao: TWideStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 255
+    end
+  end
+  object dsContasReceber: TDataSource
+    DataSet = cdsContasReceber
+    Left = 595
+    Top = 12
   end
 end

@@ -1,10 +1,10 @@
-object frmMsgConfirmar: TfrmMsgConfirmar
+object frmMsgSemConfir: TfrmMsgSemConfir
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'frmMsgConfirmar'
-  ClientHeight = 288
-  ClientWidth = 676
+  Caption = 'frmMsgSemConfir'
+  ClientHeight = 258
+  ClientWidth = 614
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,8 +19,8 @@ object frmMsgConfirmar: TfrmMsgConfirmar
   object pnlBackGround: TPanel
     Left = 0
     Top = 0
-    Width = 676
-    Height = 288
+    Width = 614
+    Height = 258
     Align = alClient
     BevelOuter = bvNone
     Color = 15395562
@@ -244,7 +244,7 @@ object frmMsgConfirmar: TfrmMsgConfirmar
       ParentFont = False
     end
     object lblMenssagem: TLabel
-      Left = 167
+      Left = 161
       Top = 147
       Width = 387
       Height = 21
@@ -259,7 +259,7 @@ object frmMsgConfirmar: TfrmMsgConfirmar
     object pnlTop: TPanel
       Left = 0
       Top = 0
-      Width = 676
+      Width = 614
       Height = 49
       Align = alTop
       BevelOuter = bvNone
@@ -282,7 +282,7 @@ object frmMsgConfirmar: TfrmMsgConfirmar
       object pnlLine: TPanel
         Left = 0
         Top = 48
-        Width = 676
+        Width = 614
         Height = 1
         Align = alBottom
         Color = clGray
@@ -292,8 +292,8 @@ object frmMsgConfirmar: TfrmMsgConfirmar
     end
     object pnlSalvar: TPanel
       AlignWithMargins = True
-      Left = 344
-      Top = 234
+      Left = 434
+      Top = 210
       Width = 150
       Height = 36
       Margins.Top = 10
@@ -309,7 +309,7 @@ object frmMsgConfirmar: TfrmMsgConfirmar
         Width = 150
         Height = 36
         Align = alClient
-        Caption = 'Confirmar'
+        Caption = 'Entendido'
         Flat = True
         Font.Charset = ANSI_CHARSET
         Font.Color = 13750737
@@ -321,38 +321,6 @@ object frmMsgConfirmar: TfrmMsgConfirmar
         ExplicitTop = 16
         ExplicitWidth = 127
       end
-    end
-  end
-  object pnlCancelar: TPanel
-    AlignWithMargins = True
-    Left = 520
-    Top = 234
-    Width = 151
-    Height = 36
-    Margins.Top = 10
-    Margins.Right = 10
-    Margins.Bottom = 10
-    BevelOuter = bvNone
-    Color = 15395562
-    ParentBackground = False
-    TabOrder = 1
-    object btnCancelar: TSpeedButton
-      Left = 0
-      Top = 0
-      Width = 151
-      Height = 36
-      Align = alClient
-      Caption = 'Cancelar'
-      Flat = True
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clSilver
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentFont = False
-      OnClick = btnCancelarClick
-      ExplicitTop = 16
-      ExplicitWidth = 127
     end
   end
 end

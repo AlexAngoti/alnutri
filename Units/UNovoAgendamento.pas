@@ -54,7 +54,7 @@ var
 implementation
 
 uses
-  UDm, UPesquisaColab;
+  UDm;
 
 {$R *.dfm}
 
@@ -109,13 +109,6 @@ end;
 
 procedure TfrmNovoAgendamento.btnPesquisaColabClick(Sender: TObject);
 begin
-  FrmPesquisaColab := TFrmPesquisaColab.Create(Self);
-  try
-    FrmPesquisaColab.ShowModal;
-  finally
-    FrmPesquisaColab.Free;
-  end;
-
 //  dm.cdsAgendamento.FieldByName('idcolaborador').AsInteger :=
 //    dm.cdsConsultaColab.FieldByName('id').AsInteger;
 end;

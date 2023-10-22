@@ -51,7 +51,7 @@ var
 implementation
 
 uses
-  UNovoAgendamento, UDm, UPesquisaColab, UMsgConfirmar, UFuncoes;
+  UNovoAgendamento, UDm, UMsgConfirmar, UFuncoes;
 
 {$R *.dfm}
 
@@ -137,12 +137,6 @@ end;
 
 procedure TfrmAgendamento.btnPesquisaClick(Sender: TObject);
 begin
-  FrmPesquisaColab := TFrmPesquisaColab.Create(Self);
-  try
-    FrmPesquisaColab.ShowModal;
-  finally
-    FrmPesquisaColab.Free;
-  end;
 //  dbCbxColab.KeyValue := dm.cdsConsultaColab.FieldByName('id').AsInteger;
 //  dbCbxColabClick(Self);
 end;

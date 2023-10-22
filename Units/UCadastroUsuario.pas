@@ -13,7 +13,6 @@ uses
 type
   TfrmCadastroUsuario = class(TfrmCadastroPadrao)
     procedure btnSalvarClick(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -26,7 +25,7 @@ var
 implementation
 
 uses
-  Udm, UPesquisaColab;
+  Udm;
 
 {$R *.dfm}
 
@@ -36,17 +35,6 @@ begin
 
   ShowMessage('Usuario criado com sucesso!!');
   Self.Close;
-end;
-
-procedure TfrmCadastroUsuario.SpeedButton1Click(Sender: TObject);
-begin
-  inherited;
-  FrmPesquisaColab := TFrmPesquisaColab.Create(Self);
-  try
-    FrmPesquisaColab.ShowModal;
-  finally
-    FrmPesquisaColab.Free;
-  end;
 end;
 
 end.

@@ -9,11 +9,12 @@ uses
   procedure RoundedPanel(Painel: TPanel; ITamanho: Integer);
   procedure PrcOcultarTabs(PageControl : TPageControl);
   function MsgConfirmar(ATitulo: String; AMenssagem: String): Boolean;
+  function MsgNaoConfirmar(ATitulo: String; AMenssagem: String): Boolean;
 
 implementation
 
 uses
-  UMsgConfirmar, UDm;
+  UMsgConfirmar, UDm, uMsgNaoConfirmar;
 
 procedure RoundedPanel(Painel: TPanel; ITamanho: Integer);
 var
@@ -52,6 +53,23 @@ begin
   end;
 
   PageControl.ActivePageIndex := 0;
+end;
+
+function MsgNaoConfirmar(ATitulo: String; AMenssagem: String): Boolean;
+var
+  frmMsgSemConfir: TfrmMsgSemConfir;
+begin
+  begin
+    frmMsgSemConfir := TfrmMsgSemConfir.Create(nil);
+    try
+      frmMsgSemConfir.lblTitulo.Caption    := ATitulo;
+      frmMsgSemConfir.lblMenssagem.Caption := AMenssagem;
+      frmMsgSemConfir.ShowModal;
+      Result := frmMsgSemConfir.BResposta;
+    finally
+      FreeAndNil(frmMsgSemConfir);
+    end;
+  end;
 end;
 
 end.

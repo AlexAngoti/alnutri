@@ -27,6 +27,7 @@ type
     dsAgendamento: TDataSource;
     qryAgendamento: TFDQuery;
     cdsAgendamento: TClientDataSet;
+    qryContasReceber: TFDQuery;
   private
     { Private declarations }
   public

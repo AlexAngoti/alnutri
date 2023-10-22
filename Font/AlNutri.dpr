@@ -15,14 +15,16 @@ uses
   UNovoAgendamento in '..\Units\UNovoAgendamento.pas' {frmNovoAgendamento},
   UConsultaCargo in '..\Units\UConsultaCargo.pas' {FrmConsultaCargos},
   uCadastroCargo in '..\Units\uCadastroCargo.pas' {frmCadastroCargos},
-  UPesquisaColab in '..\Units\UPesquisaColab.pas' {FrmPesquisaColab},
   UConsultaUsuario in '..\Units\UConsultaUsuario.pas' {FrmConsultaUsuario},
   UCadastroUsuario in '..\Units\UCadastroUsuario.pas' {frmCadastroUsuario},
   UFuncoes in '..\Units\UFuncoes.pas',
   UMsgConfirmar in '..\Units\UMsgConfirmar.pas' {frmMsgConfirmar},
   UFundo in '..\Units\UFundo.pas' {frmFundo},
   UManutencaoPagar in '..\Units\UManutencaoPagar.pas' {frmManutencaoPagar},
-  UContasReceber in '..\Units\UContasReceber.pas' {frmContasReceber};
+  UContasReceber in '..\Units\UContasReceber.pas' {frmContasReceber},
+  uMovContasReceber in '..\Units\uMovContasReceber.pas' {frmMovReceber},
+  uMsgNaoConfirmar in '..\Units\uMsgNaoConfirmar.pas' {frmMsgSemConfir},
+  uPesquisaPadrao in '..\Units\uPesquisaPadrao.pas' {frmPesquisaPadrao};
 
 {$R *.res}
 
@@ -32,7 +34,5 @@ begin
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmFundo, frmFundo);
-  Application.CreateForm(TfrmManutencaoPagar, frmManutencaoPagar);
-  Application.CreateForm(TfrmContasReceber, frmContasReceber);
   Application.Run;
 end.
