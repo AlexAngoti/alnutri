@@ -48,6 +48,7 @@
       inherited pgcPessoa: TPageControl
         Width = 1195
         Height = 346
+        ActivePage = tabEndereço
         ExplicitWidth = 1195
         ExplicitHeight = 346
         inherited tbsDadosGerais: TTabSheet
@@ -712,11 +713,12 @@
                 DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE0000E6E1DEE6E1DEE6E1DEE6E1DEE6E1
                 DEC4C0BEAAA8A6A6A4A2BDBAB8E1DCD9E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6
                 E1DEE6E1DEE6E1DE0000}
+              OnClick = spb_pesquisaClick
               ExplicitLeft = 144
               ExplicitTop = -2
               ExplicitHeight = 26
             end
-            object dbe_cep: TSWHMaskEdit
+            object edtCep: TSWHMaskEdit
               Left = 2
               Top = 0
               Width = 80
@@ -747,5 +749,147 @@
   end
   inherited dsCadastroPadrao: TDataSource
     DataSet = FrmConsultaCliente.cdsConsultaPadrao
+  end
+  object RESTClient1: TRESTClient
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'utf-8, *;q=0.8'
+    BaseURL = 'https://viacep.com.br/ws'
+    Params = <>
+    Left = 496
+    Top = 16
+  end
+  object RESTRequest1: TRESTRequest
+    AssignedValues = [rvConnectTimeout, rvReadTimeout]
+    Client = RESTClient1
+    Params = <
+      item
+        Kind = pkURLSEGMENT
+        Name = 'cep'
+        Options = [poAutoCreated]
+        Value = '86804200'
+      end>
+    Resource = 'ws/{cep}/json'
+    Response = RESTResponse1
+    Left = 544
+    Top = 16
+  end
+  object RESTResponse1: TRESTResponse
+    ContentType = 'application/json'
+    Left = 576
+    Top = 16
+  end
+  object RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter
+    Active = True
+    Dataset = cdsEndereco
+    FieldDefs = <>
+    Response = RESTResponse1
+    TypesMode = Rich
+    Left = 616
+    Top = 16
+  end
+  object cdsEndereco: TClientDataSet
+    PersistDataPacket.Data = {
+      760100009619E0BD01000000180000000A000100000003000000010103636570
+      01004A00000001000557494454480200020012000A6C6F677261646F75726F01
+      004A00000001000557494454480200020016000B636F6D706C656D656E746F01
+      004A00000001000557494454480200020001000662616972726F01004A000000
+      01000557494454480200020020000A6C6F63616C696461646501004A00000001
+      0005574944544802000200120002756601004A00000001000557494454480200
+      02000400046962676504000100000000000367696101004A0000000100055749
+      4454480200020001000364646404000100000000000573696166690400010000
+      00000000000000000012380036003800300034002D0032003000300016520075
+      0061002000530065007200670069007000650000204A0061007200640069006D
+      00200041007000750063006100720061006E0061001241007000750063006100
+      720061006E006100045000520020953E00002B000000011D0000}
+    Active = True
+    Aggregates = <>
+    FieldDefs = <
+      item
+        Name = 'cep'
+        DataType = ftWideString
+        Size = 9
+      end
+      item
+        Name = 'logradouro'
+        DataType = ftWideString
+        Size = 11
+      end
+      item
+        Name = 'complemento'
+        DataType = ftWideString
+      end
+      item
+        Name = 'bairro'
+        DataType = ftWideString
+        Size = 16
+      end
+      item
+        Name = 'localidade'
+        DataType = ftWideString
+        Size = 9
+      end
+      item
+        Name = 'uf'
+        DataType = ftWideString
+        Size = 2
+      end
+      item
+        Name = 'ibge'
+        DataType = ftInteger
+      end
+      item
+        Name = 'gia'
+        DataType = ftWideString
+      end
+      item
+        Name = 'ddd'
+        DataType = ftInteger
+      end
+      item
+        Name = 'siafi'
+        DataType = ftInteger
+      end>
+    IndexDefs = <>
+    Params = <>
+    StoreDefs = True
+    Left = 661
+    Top = 11
+    object cdsEnderecocep: TWideStringField
+      FieldName = 'cep'
+      Size = 9
+    end
+    object cdsEnderecologradouro: TWideStringField
+      FieldName = 'logradouro'
+      Size = 11
+    end
+    object cdsEnderecocomplemento: TWideStringField
+      FieldName = 'complemento'
+      Size = 0
+    end
+    object cdsEnderecobairro: TWideStringField
+      FieldName = 'bairro'
+      Size = 16
+    end
+    object cdsEnderecolocalidade: TWideStringField
+      FieldName = 'localidade'
+      Size = 9
+    end
+    object cdsEnderecouf: TWideStringField
+      FieldName = 'uf'
+      Size = 2
+    end
+    object cdsEnderecoibge: TIntegerField
+      FieldName = 'ibge'
+    end
+    object cdsEnderecogia: TWideStringField
+      FieldName = 'gia'
+      Size = 0
+    end
+    object cdsEnderecoddd: TIntegerField
+      FieldName = 'ddd'
+    end
+    object cdsEnderecosiafi: TIntegerField
+      FieldName = 'siafi'
+    end
   end
 end

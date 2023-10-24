@@ -8,7 +8,9 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   Vcl.Buttons, Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask,
   Vcl.DBCtrls, MidasLib, StrUtils, Ucadastropadrao, Data.DB, Datasnap.DBClient,
-  Datasnap.Provider, SWHMaskEdit, SWHDBEdit, SWHComboBox;
+  Datasnap.Provider, SWHMaskEdit, SWHDBEdit, SWHComboBox, REST.Types,
+  REST.Response.Adapter, REST.Client, Data.Bind.Components,
+  Data.Bind.ObjectScope;
 
 type
   TfrmCadastroCliente = class(TfrmCadastroPadrao)
@@ -59,10 +61,26 @@ type
     lblTelefone2: TLabel;
     pnl_cep: TPanel;
     spb_pesquisa: TSpeedButton;
-    dbe_cep: TSWHMaskEdit;
+    edtCep: TSWHMaskEdit;
+    RESTClient1: TRESTClient;
+    RESTRequest1: TRESTRequest;
+    RESTResponse1: TRESTResponse;
+    RESTResponseDataSetAdapter1: TRESTResponseDataSetAdapter;
+    cdsEndereco: TClientDataSet;
+    cdsEnderecocep: TWideStringField;
+    cdsEnderecologradouro: TWideStringField;
+    cdsEnderecocomplemento: TWideStringField;
+    cdsEnderecobairro: TWideStringField;
+    cdsEnderecolocalidade: TWideStringField;
+    cdsEnderecouf: TWideStringField;
+    cdsEnderecoibge: TIntegerField;
+    cdsEnderecogia: TWideStringField;
+    cdsEnderecoddd: TIntegerField;
+    cdsEnderecosiafi: TIntegerField;
     procedure spb_enderecoClick(Sender: TObject);
     procedure rbFisicaClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure spb_pesquisaClick(Sender: TObject);
   private
     procedure ValidaPessoa;
     procedure GravaCampo;
@@ -107,6 +125,13 @@ procedure TfrmCadastroCliente.spb_enderecoClick(Sender: TObject);
 begin
   inherited;
   pgcPessoa.ActivePageIndex := 1;
+end;
+
+procedure TfrmCadastroCliente.spb_pesquisaClick(Sender: TObject);
+begin
+  inherited;
+  RESTRequest1.Params.ParameterByName('cep').Value := edtCep.Text;
+  RESTRequest1.Execute;
 end;
 
 procedure TfrmCadastroCliente.SpeedButton1Click(Sender: TObject);

@@ -77,6 +77,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnNovoLancamentoClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     procedure ArredondaPainel;
     procedure CentralizandoPanel;
@@ -116,6 +117,20 @@ end;
 procedure TfrmContasReceber.FormCreate(Sender: TObject);
 begin
   Self.OpenDataSet;
+end;
+
+procedure TfrmContasReceber.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key = VK_DELETE then
+  begin
+    if UFuncoes.MsgConfirmar('A data de vencimento e menor que data atual. Deseja Continuar ?',
+    'Se continuar esse lançamento entrará como atrasado ') then
+    begin
+      (dsContasReceber.DataSet as TClientDataSet).Delete;
+      (dsContasReceber.DataSet as TClientDataSet).ApplyUpdates(-1);
+    end;
+  end;
 end;
 
 procedure TfrmContasReceber.FormResize(Sender: TObject);

@@ -95,10 +95,15 @@ begin
   try
     frmPesquisaPadrao.qryPadrao.SQL.Clear;
     frmPesquisaPadrao.qryPadrao.SQL.Text := ('SELECT p.id as "Id", p.nomefantasia as "Nome" ' +
-                                          'FROM pessoa p ' +
-                                          'WHERE p.tipopessoa = ''CLIENTES'' ' +
-                                          'ORDER by p.nomefantasia asc');
+                                            'FROM pessoa p ' +
+                                            'WHERE p.tipopessoa = ''CLIENTES'' ' +
+                                            'ORDER by p.nomefantasia asc');
     frmPesquisaPadrao.ShowModal;
+    if frmPesquisaPadrao.ModalResult = 1 then
+    begin
+      edtCodCliente.Text := IntToStr(frmPesquisaPadrao.cdsPadrao.FieldByName('Id').AsInteger);
+      edtDescricao.Text  := frmPesquisaPadrao.cdsPadrao.FieldByName('Nome').AsString;
+    end;
   finally
     frmPesquisaPadrao.Free;
   end;
