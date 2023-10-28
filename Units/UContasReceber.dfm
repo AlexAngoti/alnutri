@@ -265,6 +265,7 @@ object frmContasReceber: TfrmContasReceber
         TitleFont.Height = -13
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
+        OnDblClick = dbgRegistrosDblClick
         Columns = <
           item
             Expanded = False
@@ -296,16 +297,9 @@ object frmContasReceber: TfrmContasReceber
           end
           item
             Expanded = False
-            FieldName = 'descricao'
-            Title.Caption = 'Descri'#231#227'o'
-            Width = 300
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'nomecliente'
             Title.Caption = 'Cliente'
-            Width = 300
+            Width = 309
             Visible = True
           end>
       end
@@ -429,8 +423,8 @@ object frmContasReceber: TfrmContasReceber
         ParentBackground = False
         TabOrder = 0
         object lblVlrQuantidade: TLabel
-          Left = 114
-          Top = 56
+          Left = 111
+          Top = 70
           Width = 14
           Height = 36
           Caption = '0'
@@ -442,8 +436,8 @@ object frmContasReceber: TfrmContasReceber
           ParentFont = False
         end
         object lblQuantidade: TLabel
-          Left = 84
-          Top = 29
+          Left = 77
+          Top = 44
           Width = 81
           Height = 21
           Caption = 'Quantidade'
@@ -466,8 +460,8 @@ object frmContasReceber: TfrmContasReceber
         ParentBackground = False
         TabOrder = 1
         object lblRecebimentoAtrasado: TLabel
-          Left = 47
-          Top = 29
+          Left = 39
+          Top = 44
           Width = 157
           Height = 21
           Caption = 'Recebimento Atrasado'
@@ -479,8 +473,8 @@ object frmContasReceber: TfrmContasReceber
           ParentFont = False
         end
         object lblVlrRecebimentoAtrasado: TLabel
-          Left = 80
-          Top = 56
+          Left = 110
+          Top = 70
           Width = 14
           Height = 36
           Caption = '0'
@@ -502,9 +496,11 @@ object frmContasReceber: TfrmContasReceber
         Color = clWhite
         ParentBackground = False
         TabOrder = 2
+        ExplicitLeft = 464
+        ExplicitTop = 6
         object lblRecebimentoHoje: TLabel
-          Left = 51
-          Top = 29
+          Left = 44
+          Top = 44
           Width = 148
           Height = 21
           Caption = 'Recebimento de Hoje'
@@ -516,8 +512,8 @@ object frmContasReceber: TfrmContasReceber
           ParentFont = False
         end
         object lblVlrRecebimentoHoje: TLabel
-          Left = 81
-          Top = 56
+          Left = 110
+          Top = 70
           Width = 14
           Height = 36
           Caption = '0'
@@ -541,7 +537,7 @@ object frmContasReceber: TfrmContasReceber
         TabOrder = 3
         object lblTotalaReceber: TLabel
           Left = 66
-          Top = 29
+          Top = 44
           Width = 104
           Height = 21
           Caption = 'Total a Receber'
@@ -553,8 +549,8 @@ object frmContasReceber: TfrmContasReceber
           ParentFont = False
         end
         object lblTotalReceber: TLabel
-          Left = 64
-          Top = 56
+          Left = 110
+          Top = 70
           Width = 14
           Height = 36
           Caption = '0'
@@ -576,9 +572,10 @@ object frmContasReceber: TfrmContasReceber
         Color = clWhite
         ParentBackground = False
         TabOrder = 4
+        ExplicitLeft = 711
         object lblRecebimentosFuturos: TLabel
           Left = 42
-          Top = 29
+          Top = 44
           Width = 152
           Height = 21
           Caption = 'Recebimentos futuros'
@@ -590,8 +587,8 @@ object frmContasReceber: TfrmContasReceber
           ParentFont = False
         end
         object lblVlrRecebimentosFuturos: TLabel
-          Left = 64
-          Top = 56
+          Left = 110
+          Top = 70
           Width = 14
           Height = 36
           Caption = '0'
@@ -661,8 +658,8 @@ object frmContasReceber: TfrmContasReceber
     object pnlInformacoes: TPanel
       Tag = 1
       AlignWithMargins = True
-      Left = 47
-      Top = 6
+      Left = 44
+      Top = 1
       Width = 185
       Height = 205
       Margins.Top = 165

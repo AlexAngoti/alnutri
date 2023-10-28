@@ -78,6 +78,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnNovoLancamentoClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure dbgRegistrosDblClick(Sender: TObject);
   private
     procedure ArredondaPainel;
     procedure CentralizandoPanel;
@@ -243,6 +244,13 @@ begin
   finally
     frmMovReceber.Free;
   end;
+end;
+
+procedure TfrmContasReceber.dbgRegistrosDblClick(Sender: TObject);
+begin
+  cdsContasReceber.Edit;
+  Self.ChamaTela;
+  Self.OpenDataSet;
 end;
 
 end.
