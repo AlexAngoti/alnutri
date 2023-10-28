@@ -17,9 +17,6 @@ type
     pnlPesquisa: TPanel;
     lblPesquisar: TLabel;
     btnPesquisa: TSpeedButton;
-    btnInserir: TSpeedButton;
-    btnExcluir: TSpeedButton;
-    btnEditar: TSpeedButton;
     edtPesquisa: TEdit;
     pnlSubTop: TPanel;
     btnFechar: TSpeedButton;
@@ -30,6 +27,7 @@ type
     qryPadrao: TFDQuery;
     procedure btnFecharClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure dbgdConsultaDblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,6 +47,11 @@ uses
 procedure TfrmPesquisaPadrao.btnFecharClick(Sender: TObject);
 begin
   Self.Close;
+end;
+
+procedure TfrmPesquisaPadrao.dbgdConsultaDblClick(Sender: TObject);
+begin
+  frmPesquisaPadrao.ModalResult := mrOk;
 end;
 
 procedure TfrmPesquisaPadrao.FormShow(Sender: TObject);
