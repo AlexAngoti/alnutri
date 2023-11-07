@@ -156,9 +156,12 @@ object dm: Tdm
   object qryContasReceber: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'SELECT * FROM contasreceber'
-      'WHERE situacao = '#39'a'#39
-      'ORDER BY datavencimento ASC, lancamento desc  ')
+      'SELECT *, '
+      
+        '       cast(concat(idcliente || '#39' '#39' || nomecliente || '#39' - '#39' || d' +
+        'escricao) as Varchar(255)) as NomeDesc FROM contasreceber'
+      ' WHERE situacao = '#39'a'#39
+      ' ORDER BY datavencimento ASC, lancamento desc  ')
     Left = 8
     Top = 184
   end

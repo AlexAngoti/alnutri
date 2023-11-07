@@ -24,7 +24,8 @@ uses
   UContasReceber in '..\Units\UContasReceber.pas' {frmContasReceber},
   uMovContasReceber in '..\Units\uMovContasReceber.pas' {frmMovReceber},
   uMsgNaoConfirmar in '..\Units\uMsgNaoConfirmar.pas' {frmMsgSemConfir},
-  uPesquisaPadrao in '..\Units\uPesquisaPadrao.pas' {frmPesquisaPadrao};
+  uPesquisaPadrao in '..\Units\uPesquisaPadrao.pas' {frmPesquisaPadrao},
+  uBaixaReceber in '..\Units\uBaixaReceber.pas' {frmMovBaixaReceber};
 
 {$R *.res}
 
