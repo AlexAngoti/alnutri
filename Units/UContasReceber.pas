@@ -48,9 +48,6 @@ type
     Label12: TLabel;
     Label13: TLabel;
     Label14: TLabel;
-    Label15: TLabel;
-    Label16: TLabel;
-    Label17: TLabel;
     btnInformacoes: TSpeedButton;
     dspContasReceber: TDataSetProvider;
     cdsContasReceber: TClientDataSet;
@@ -70,6 +67,7 @@ type
     spbPesquisa: TSpeedButton;
     edtPesquisa: TEdit;
     pnlLinha4: TPanel;
+    cdsContasRecebernomedesc: TWideStringField;
     procedure FormResize(Sender: TObject);
     procedure btnInformacoesMouseEnter(Sender: TObject);
     procedure btnInformacoesMouseLeave(Sender: TObject);
@@ -79,13 +77,18 @@ type
     procedure btnNovoLancamentoClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure dbgRegistrosDblClick(Sender: TObject);
+    procedure btnBaixarLancamentoClick(Sender: TObject);
+    procedure spbPesquisaClick(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     procedure ArredondaPainel;
     procedure CentralizandoPanel;
     procedure OpenDataSet;
     procedure CalculaPainel;
     procedure CentralizaResultado;
-    procedure ChamaTela;
+    procedure ChamaTelaAbertura;
+    procedure ChamaTelaFechar;
     { Private declarations }
   public
     { Public declarations }
@@ -97,7 +100,7 @@ var
 implementation
 
 uses
-  UDm, UFuncoes, uMovContasReceber;
+  UDm, UFuncoes, uMovContasReceber, uBaixaReceber;
 
 {$R *.dfm}
 
@@ -108,6 +111,14 @@ begin
   RoundedPanel(pnlCentral, 12);
   RoundedPanel(pnlNovoLanc, 12);
   RoundedPanel(pnlBaixaLanc, 12);
+end;
+
+procedure TfrmContasReceber.btnBaixarLancamentoClick(Sender: TObject);
+begin
+  cdsContasReceber.Edit;
+  Self.ChamaTelaFechar;
+  Self.OpenDataSet;
+  Self.CalculaPainel;
 end;
 
 procedure TfrmContasReceber.btnFecharClick(Sender: TObject);
@@ -134,10 +145,33 @@ begin
   end;
 end;
 
+procedure TfrmContasReceber.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #112 then
+  begin
+    btnNovoLancamentoClick(Self);
+  end;
+
+  if Key = #113 then
+  begin
+    btnBaixarLancamentoClick(Self);
+  end;
+end;
+
+procedure TfrmContasReceber.FormKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_F2 then
+  begin
+    btnBaixarLancamentoClick(Self);
+  end;
+end;
+
 procedure TfrmContasReceber.FormResize(Sender: TObject);
 begin
   Self.CentralizandoPanel;
   Self.ArredondaPainel;
+  Self.CentralizaResultado;
 end;
 
 procedure TfrmContasReceber.FormShow(Sender: TObject);
@@ -149,6 +183,17 @@ procedure TfrmContasReceber.OpenDataSet;
 begin
   (dsContasReceber.DataSet as TClientDataSet).Close;
   (dsContasReceber.DataSet as TClientDataSet).Open;
+end;
+
+procedure TfrmContasReceber.spbPesquisaClick(Sender: TObject);
+begin
+  dsContasReceber.DataSet.Filtered := False;
+  if edtPesquisa.Text <> EmptyStr then
+  begin
+    dsContasReceber.DataSet.Filter := 'UPPER(nomedesc) LIKE ' +
+      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
+    dsContasReceber.DataSet.Filtered := True;
+  end;
 end;
 
 procedure TfrmContasReceber.btnInformacoesMouseEnter(Sender: TObject);
@@ -164,8 +209,9 @@ end;
 procedure TfrmContasReceber.btnNovoLancamentoClick(Sender: TObject);
 begin
   cdsContasReceber.Insert;
-  Self.ChamaTela;
+  Self.ChamaTelaAbertura;
   Self.OpenDataSet;
+  Self.CalculaPainel;
 end;
 
 procedure TfrmContasReceber.CalculaPainel;
@@ -181,30 +227,26 @@ begin
   with (dsContasReceber.DataSet as TClientDataSet) do
   begin
     First;
-    try
-      while not Eof do
+    while not Eof do
+    begin
+      if FieldByName('datavencimento').AsDateTime < Date then
       begin
-        if FieldByName('datavencimento').AsDateTime < Date then
-        begin
-          cRecebeAtrasado := cRecebeAtrasado + FieldByName('valor').AsCurrency;
-        end;
-
-        if FieldByName('datavencimento').AsDateTime = Date then
-        begin
-          cRecebHoje := cRecebHoje + FieldByName('valor').AsCurrency;
-        end;
-
-        if FieldByName('datavencimento').AsDateTime > Date then
-        begin
-          cRecebFuturos := cRecebFuturos + FieldByName('valor').AsCurrency;
-        end;
-
-        cTotalRecebimento := cTotalRecebimento + FieldByName('valor').AsCurrency;
-        cQuantidade       := cQuantidade + 1;
-        Next;
+        cRecebeAtrasado := cRecebeAtrasado + FieldByName('valor').AsCurrency;
       end;
-    except
 
+      if FieldByName('datavencimento').AsDateTime = Date then
+      begin
+        cRecebHoje := cRecebHoje + FieldByName('valor').AsCurrency;
+      end;
+
+      if FieldByName('datavencimento').AsDateTime > Date then
+      begin
+        cRecebFuturos := cRecebFuturos + FieldByName('valor').AsCurrency;
+      end;
+
+      cTotalRecebimento := cTotalRecebimento + FieldByName('valor').AsCurrency;
+      cQuantidade       := cQuantidade + 1;
+      Next;
     end;
   end;
 
@@ -236,7 +278,7 @@ begin
   lblVlrRecebimentosFuturos.Left := Round(pnlRecebimentosFuturos.Width/2 - pnlRecebimentosFuturos.Width/2);
 end;
 
-procedure TfrmContasReceber.ChamaTela;
+procedure TfrmContasReceber.ChamaTelaAbertura;
 begin
   frmMovReceber := TfrmMovReceber.Create(Self);
   try
@@ -246,10 +288,20 @@ begin
   end;
 end;
 
+procedure TfrmContasReceber.ChamaTelaFechar;
+begin
+  frmMovBaixaReceber := TfrmMovBaixaReceber.Create(Self);
+  try
+    frmMovBaixaReceber.ShowModal;
+  finally
+    frmMovBaixaReceber.Free;
+  end;
+end;
+
 procedure TfrmContasReceber.dbgRegistrosDblClick(Sender: TObject);
 begin
   cdsContasReceber.Edit;
-  Self.ChamaTela;
+  Self.ChamaTelaAbertura;
   Self.OpenDataSet;
 end;
 

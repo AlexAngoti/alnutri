@@ -15,6 +15,8 @@ object frmContasReceber: TfrmContasReceber
   OldCreateOrder = False
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  OnKeyUp = FormKeyUp
   OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
@@ -211,6 +213,7 @@ object frmContasReceber: TfrmContasReceber
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
+          OnClick = btnBaixarLancamentoClick
           ExplicitTop = -1
         end
       end
@@ -266,6 +269,7 @@ object frmContasReceber: TfrmContasReceber
         TitleFont.Name = 'Segoe UI'
         TitleFont.Style = []
         OnDblClick = dbgRegistrosDblClick
+        OnKeyDown = FormKeyDown
         Columns = <
           item
             Expanded = False
@@ -297,9 +301,9 @@ object frmContasReceber: TfrmContasReceber
           end
           item
             Expanded = False
-            FieldName = 'nomecliente'
-            Title.Caption = 'Cliente'
-            Width = 309
+            FieldName = 'nomedesc'
+            Title.Caption = 'Cliente e Descri'#231#227'o'
+            Width = 400
             Visible = True
           end>
       end
@@ -372,6 +376,7 @@ object frmContasReceber: TfrmContasReceber
               DEE6E1DEE6E1DEE6E1DEE6E1DEE6E1DE0000E6E1DEE6E1DEE6E1DEE6E1DEE6E1
               DEC4C0BEAAA8A6A6A4A2BDBAB8E1DCD9E6E1DEE6E1DEE6E1DEE6E1DEE6E1DEE6
               E1DEE6E1DEE6E1DE0000}
+            OnClick = spbPesquisaClick
           end
           object edtPesquisa: TEdit
             Left = 35
@@ -496,8 +501,6 @@ object frmContasReceber: TfrmContasReceber
         Color = clWhite
         ParentBackground = False
         TabOrder = 2
-        ExplicitLeft = 464
-        ExplicitTop = 6
         object lblRecebimentoHoje: TLabel
           Left = 44
           Top = 44
@@ -572,7 +575,6 @@ object frmContasReceber: TfrmContasReceber
         Color = clWhite
         ParentBackground = False
         TabOrder = 4
-        ExplicitLeft = 711
         object lblRecebimentosFuturos: TLabel
           Left = 42
           Top = 44
@@ -661,7 +663,7 @@ object frmContasReceber: TfrmContasReceber
       Left = 44
       Top = 1
       Width = 185
-      Height = 205
+      Height = 106
       Margins.Top = 165
       Margins.Right = 0
       Margins.Bottom = 50
@@ -734,47 +736,6 @@ object frmContasReceber: TfrmContasReceber
         Width = 133
         Height = 13
         Caption = '4 - F2: Fechar Lan'#231'amento'
-        Font.Charset = ARABIC_CHARSET
-        Font.Color = 5855577
-        Font.Height = -11
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label15: TLabel
-        Left = 65
-        Top = 104
-        Width = 64
-        Height = 13
-        Caption = 'Informa'#231#245'es'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = 5855577
-        Font.Height = -11
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label16: TLabel
-        Left = 11
-        Top = 124
-        Width = 156
-        Height = 26
-        Caption = '1 - Recebimentos futuros: Info'#13#10'      dentro do mes atual'
-        Font.Charset = ARABIC_CHARSET
-        Font.Color = 5855577
-        Font.Height = -11
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-      end
-      object Label17: TLabel
-        Left = 11
-        Top = 157
-        Width = 134
-        Height = 39
-        Caption = 
-          '2 - Total a receber : Info'#13#10'      data atual at'#233' ultimo'#13#10'      l' +
-          'an'#231'amento disponivel'
         Font.Charset = ARABIC_CHARSET
         Font.Color = 5855577
         Font.Height = -11
@@ -970,6 +931,11 @@ object frmContasReceber: TfrmContasReceber
     object cdsContasReceberdescricao: TWideStringField
       FieldName = 'descricao'
       Origin = 'descricao'
+      Size = 255
+    end
+    object cdsContasRecebernomedesc: TWideStringField
+      FieldName = 'nomedesc'
+      ReadOnly = True
       Size = 255
     end
   end
