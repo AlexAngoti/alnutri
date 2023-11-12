@@ -165,4 +165,17 @@ object dm: Tdm
     Left = 8
     Top = 184
   end
+  object qryContasPagar: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT *, '
+      
+        '       CAST(CONCAT(IDFORNECEDOR  || '#39' '#39' || NOMEFORNECEDOR  || '#39' ' +
+        '- '#39' || DESCRICAO) AS VARCHAR(255)) AS NOMEDESC '
+      '  FROM CONTASPAGAR'
+      ' WHERE SITUACAO = '#39'A'#39
+      ' ORDER BY DATAVENCIMENTO ASC, LANCAMENTO DESC  ')
+    Left = 8
+    Top = 224
+  end
 end

@@ -1,7 +1,6 @@
-object frmContasReceber: TfrmContasReceber
+object frmContasPagar: TfrmContasPagar
   Left = 0
   Top = 0
-  Align = alClient
   BorderStyle = bsNone
   ClientHeight = 566
   ClientWidth = 1183
@@ -11,7 +10,6 @@ object frmContasReceber: TfrmContasReceber
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  KeyPreview = True
   OldCreateOrder = False
   OnCreate = FormCreate
   OnKeyUp = FormKeyUp
@@ -148,7 +146,7 @@ object frmContasReceber: TfrmContasReceber
         Margins.Bottom = 5
         Align = alRight
         BevelOuter = bvNone
-        Color = 16024898
+        Color = clRed
         ParentBackground = False
         TabOrder = 0
         object btnNovoLancamento: TSpeedButton
@@ -193,7 +191,7 @@ object frmContasReceber: TfrmContasReceber
         Margins.Bottom = 5
         Align = alRight
         BevelOuter = bvNone
-        Color = clRed
+        Color = 16024898
         ParentBackground = False
         TabOrder = 2
         object btnBaixarLancamento: TSpeedButton
@@ -252,7 +250,7 @@ object frmContasReceber: TfrmContasReceber
         Margins.Bottom = 0
         Align = alClient
         BorderStyle = bsNone
-        DataSource = dsContasReceber
+        DataSource = dsContasPagar
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 5855577
         Font.Height = -13
@@ -431,7 +429,7 @@ object frmContasReceber: TfrmContasReceber
           Height = 36
           Caption = '0'
           Font.Charset = ANSI_CHARSET
-          Font.Color = 16024898
+          Font.Color = clRed
           Font.Height = -26
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold]
@@ -451,7 +449,7 @@ object frmContasReceber: TfrmContasReceber
           ParentFont = False
         end
       end
-      object pnlRecebimentoAtrasado: TPanel
+      object pnlPagAtrasado: TPanel
         Left = 235
         Top = 0
         Width = 235
@@ -461,7 +459,7 @@ object frmContasReceber: TfrmContasReceber
         Color = clWhite
         ParentBackground = False
         TabOrder = 1
-        object lblRecebimentoAtrasado: TLabel
+        object lblPagAtrasado: TLabel
           Left = 39
           Top = 44
           Width = 157
@@ -474,21 +472,21 @@ object frmContasReceber: TfrmContasReceber
           Font.Style = []
           ParentFont = False
         end
-        object lblVlrRecebimentoAtrasado: TLabel
+        object lblVlrPagAtrasado: TLabel
           Left = 110
           Top = 70
           Width = 14
           Height = 36
           Caption = '0'
           Font.Charset = ANSI_CHARSET
-          Font.Color = 16024898
+          Font.Color = clRed
           Font.Height = -26
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold]
           ParentFont = False
         end
       end
-      object pnlRecebimentoHoje: TPanel
+      object pnlPagHoje: TPanel
         Left = 470
         Top = 0
         Width = 235
@@ -498,7 +496,7 @@ object frmContasReceber: TfrmContasReceber
         Color = clWhite
         ParentBackground = False
         TabOrder = 2
-        object lblRecebimentoHoje: TLabel
+        object lblPagHoje: TLabel
           Left = 44
           Top = 44
           Width = 148
@@ -511,21 +509,21 @@ object frmContasReceber: TfrmContasReceber
           Font.Style = []
           ParentFont = False
         end
-        object lblVlrRecebimentoHoje: TLabel
+        object lblVlrPagHoje: TLabel
           Left = 110
           Top = 70
           Width = 14
           Height = 36
           Caption = '0'
           Font.Charset = ANSI_CHARSET
-          Font.Color = 16024898
+          Font.Color = clRed
           Font.Height = -26
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold]
           ParentFont = False
         end
       end
-      object pnlTotalReceber: TPanel
+      object pnlTotalPag: TPanel
         Left = 940
         Top = 0
         Width = 235
@@ -535,7 +533,7 @@ object frmContasReceber: TfrmContasReceber
         Color = clWhite
         ParentBackground = False
         TabOrder = 3
-        object lblTotalaReceber: TLabel
+        object lblTotalaPag: TLabel
           Left = 66
           Top = 44
           Width = 104
@@ -548,21 +546,21 @@ object frmContasReceber: TfrmContasReceber
           Font.Style = []
           ParentFont = False
         end
-        object lblTotalReceber: TLabel
+        object lblTotalPag: TLabel
           Left = 110
           Top = 70
           Width = 14
           Height = 36
           Caption = '0'
           Font.Charset = ANSI_CHARSET
-          Font.Color = 16024898
+          Font.Color = clRed
           Font.Height = -26
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold]
           ParentFont = False
         end
       end
-      object pnlRecebimentosFuturos: TPanel
+      object pnlPagFuturos: TPanel
         Left = 705
         Top = 0
         Width = 235
@@ -572,7 +570,7 @@ object frmContasReceber: TfrmContasReceber
         Color = clWhite
         ParentBackground = False
         TabOrder = 4
-        object lblRecebimentosFuturos: TLabel
+        object lblPagFuturos: TLabel
           Left = 42
           Top = 44
           Width = 152
@@ -585,14 +583,14 @@ object frmContasReceber: TfrmContasReceber
           Font.Style = []
           ParentFont = False
         end
-        object lblVlrRecebimentosFuturos: TLabel
+        object lblVlrPagFuturos: TLabel
           Left = 110
           Top = 70
           Width = 14
           Height = 36
           Caption = '0'
           Font.Charset = ANSI_CHARSET
-          Font.Color = 16024898
+          Font.Color = clRed
           Font.Height = -26
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold]
@@ -657,7 +655,7 @@ object frmContasReceber: TfrmContasReceber
     object pnlInformacoes: TPanel
       Tag = 1
       AlignWithMargins = True
-      Left = 44
+      Left = 52
       Top = 1
       Width = 185
       Height = 106
@@ -866,12 +864,12 @@ object frmContasReceber: TfrmContasReceber
       ParentFont = False
     end
   end
-  object dspContasReceber: TDataSetProvider
-    DataSet = dm.qryContasReceber
+  object dspContasPagar: TDataSetProvider
+    DataSet = cdsContasPagar
     Left = 536
     Top = 12
   end
-  object cdsContasReceber: TClientDataSet
+  object cdsContasPagar: TClientDataSet
     Aggregates = <>
     Params = <
       item
@@ -884,60 +882,60 @@ object frmContasReceber: TfrmContasReceber
         Name = 'COLAB'
         ParamType = ptInput
       end>
-    ProviderName = 'dspContasReceber'
+    ProviderName = 'dspContasPagar'
     Left = 568
     Top = 8
-    object cdsContasReceberlancamento: TLargeintField
+    object cdsContasPagarlancamento: TLargeintField
       FieldName = 'lancamento'
       Origin = 'lancamento'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object cdsContasReceberdatavencimento: TDateField
+    object cdsContasPagardatavencimento: TDateField
       FieldName = 'datavencimento'
       Origin = 'datavencimento'
     end
-    object cdsContasRecebervalor: TBCDField
+    object cdsContasPagarvalor: TBCDField
       FieldName = 'valor'
       Origin = 'valor'
       Precision = 15
       Size = 2
     end
-    object cdsContasReceberformapgto: TWideStringField
+    object cdsContasPagarformapgto: TWideStringField
       FieldName = 'formapgto'
       Origin = 'formapgto'
       Size = 8190
     end
-    object cdsContasReceberidcliente: TIntegerField
+    object cdsContasPagaridcliente: TIntegerField
       FieldName = 'idcliente'
       Origin = 'idcliente'
     end
-    object cdsContasRecebernomecliente: TWideStringField
+    object cdsContasPagarnomecliente: TWideStringField
       FieldName = 'nomecliente'
       Origin = 'nomecliente'
       Size = 8190
     end
-    object cdsContasReceberdatapgto: TDateField
+    object cdsContasPagardatapgto: TDateField
       FieldName = 'datapgto'
       Origin = 'datapgto'
     end
-    object cdsContasRecebersituacao: TWideStringField
+    object cdsContasPagarsituacao: TWideStringField
       FieldName = 'situacao'
       Origin = 'situacao'
       Size = 1
     end
-    object cdsContasReceberdescricao: TWideStringField
+    object cdsContasPagardescricao: TWideStringField
       FieldName = 'descricao'
       Origin = 'descricao'
       Size = 255
     end
-    object cdsContasRecebernomedesc: TWideStringField
+    object cdsContasPagarnomedesc: TWideStringField
       FieldName = 'nomedesc'
       ReadOnly = True
       Size = 255
     end
   end
-  object dsContasReceber: TDataSource
-    DataSet = cdsContasReceber
+  object dsContasPagar: TDataSource
+    DataSet = cdsContasPagar
     Left = 595
     Top = 12
   end

@@ -75,11 +75,9 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnNovoLancamentoClick(Sender: TObject);
-    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure dbgRegistrosDblClick(Sender: TObject);
     procedure btnBaixarLancamentoClick(Sender: TObject);
     procedure spbPesquisaClick(Sender: TObject);
-    procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     procedure ArredondaPainel;
@@ -131,7 +129,7 @@ begin
   Self.OpenDataSet;
 end;
 
-procedure TfrmContasReceber.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TfrmContasReceber.FormKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if key = VK_DELETE then
@@ -143,27 +141,15 @@ begin
       (dsContasReceber.DataSet as TClientDataSet).ApplyUpdates(-1);
     end;
   end;
-end;
 
-procedure TfrmContasReceber.FormKeyPress(Sender: TObject; var Key: Char);
-begin
-  if Key = #112 then
-  begin
-    btnNovoLancamentoClick(Self);
-  end;
-
-  if Key = #113 then
-  begin
-    btnBaixarLancamentoClick(Self);
-  end;
-end;
-
-procedure TfrmContasReceber.FormKeyUp(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
   if Key = VK_F2 then
   begin
     btnBaixarLancamentoClick(Self);
+  end;
+
+  if Key = VK_F1 then
+  begin
+    btnNovoLancamentoClick(Self);
   end;
 end;
 

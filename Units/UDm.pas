@@ -28,6 +28,7 @@ type
     qryAgendamento: TFDQuery;
     cdsAgendamento: TClientDataSet;
     qryContasReceber: TFDQuery;
+    qryContasPagar: TFDQuery;
   private
     { Private declarations }
   public

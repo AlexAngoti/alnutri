@@ -25,7 +25,8 @@ uses
   uMovContasReceber in '..\Units\uMovContasReceber.pas' {frmMovReceber},
   uMsgNaoConfirmar in '..\Units\uMsgNaoConfirmar.pas' {frmMsgSemConfir},
   uPesquisaPadrao in '..\Units\uPesquisaPadrao.pas' {frmPesquisaPadrao},
-  uBaixaReceber in '..\Units\uBaixaReceber.pas' {frmMovBaixaReceber};
+  uBaixaReceber in '..\Units\uBaixaReceber.pas' {frmMovBaixaReceber},
+  uContasPagar in '..\Units\uContasPagar.pas' {frmContasPagar};
 
 {$R *.res}
 
@@ -35,5 +36,6 @@ begin
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmFundo, frmFundo);
+  Application.CreateForm(TfrmContasPagar, frmContasPagar);
   Application.Run;
 end.
