@@ -90,10 +90,7 @@ end;
 
 procedure TfrmNovoAgendamento.ClearDataSet;
 begin
-  dm.cdsAgendamento.Close;
-  dm.cdsAgendamento.ParamByName('DATA').AsDate := 0;
-  dm.cdsAgendamento.ParamByName('COLAB').AsInteger := 0;
-  dm.cdsAgendamento.Open;
+
 end;
 
 procedure TfrmNovoAgendamento.SaveReg;

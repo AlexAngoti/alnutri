@@ -265,7 +265,6 @@ object frmNovoAgendamento: TfrmNovoAgendamento
       Width = 297
       Height = 21
       DataField = 'idcolaborador'
-      DataSource = dm.dsAgendamento
       KeyField = 'id'
       ListField = 'name'
       TabOrder = 0
@@ -276,7 +275,6 @@ object frmNovoAgendamento: TfrmNovoAgendamento
       Width = 297
       Height = 21
       DataField = 'idcliente'
-      DataSource = dm.dsAgendamento
       KeyField = 'id'
       ListField = 'name'
       TabOrder = 3
@@ -287,7 +285,6 @@ object frmNovoAgendamento: TfrmNovoAgendamento
       Width = 137
       Height = 21
       DataField = 'hora'
-      DataSource = dm.dsAgendamento
       TabOrder = 2
     end
     object dbEdtTelefone: TDBEdit
@@ -296,7 +293,6 @@ object frmNovoAgendamento: TfrmNovoAgendamento
       Width = 137
       Height = 21
       DataField = 'telefonecliente'
-      DataSource = dm.dsAgendamento
       TabOrder = 4
     end
     object dbEdtEmail: TDBEdit
@@ -305,7 +301,6 @@ object frmNovoAgendamento: TfrmNovoAgendamento
       Width = 137
       Height = 21
       DataField = 'emailcliente'
-      DataSource = dm.dsAgendamento
       TabOrder = 5
     end
     object dbEdtObservacao: TDBEdit
@@ -314,7 +309,6 @@ object frmNovoAgendamento: TfrmNovoAgendamento
       Width = 297
       Height = 21
       DataField = 'observacao'
-      DataSource = dm.dsAgendamento
       TabOrder = 6
     end
     object dbEdtData: TDBEdit
@@ -323,7 +317,6 @@ object frmNovoAgendamento: TfrmNovoAgendamento
       Width = 137
       Height = 21
       DataField = 'diaagendamento'
-      DataSource = dm.dsAgendamento
       TabOrder = 1
     end
     object pnlPesquisaColab: TPanel

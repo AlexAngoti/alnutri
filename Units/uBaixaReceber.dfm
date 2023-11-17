@@ -98,6 +98,7 @@ object frmMovBaixaReceber: TfrmMovBaixaReceber
       BevelOuter = bvNone
       ParentColor = True
       TabOrder = 0
+      ExplicitTop = 268
       object pnlNovoLanc: TPanel
         AlignWithMargins = True
         Left = 430

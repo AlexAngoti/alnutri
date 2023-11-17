@@ -26,7 +26,10 @@ uses
   uMsgNaoConfirmar in '..\Units\uMsgNaoConfirmar.pas' {frmMsgSemConfir},
   uPesquisaPadrao in '..\Units\uPesquisaPadrao.pas' {frmPesquisaPadrao},
   uBaixaReceber in '..\Units\uBaixaReceber.pas' {frmMovBaixaReceber},
-  uContasPagar in '..\Units\uContasPagar.pas' {frmContasPagar};
+  uContasPagar in '..\Units\uContasPagar.pas' {frmContasPagar},
+  uBaixaPagar in '..\Units\uBaixaPagar.pas' {frmBaixaPagar},
+  uRelatorioRec in '..\Units\uRelatorioRec.pas' {frmRelatorioRec},
+  uBackup in '..\Units\uBackup.pas' {frmBackup};
 
 {$R *.res}
 
@@ -36,6 +39,6 @@ begin
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmFundo, frmFundo);
-  Application.CreateForm(TfrmContasPagar, frmContasPagar);
+  Application.CreateForm(TfrmBackup, frmBackup);
   Application.Run;
 end.

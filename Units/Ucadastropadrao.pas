@@ -29,6 +29,7 @@ type
     pgcPessoa: TPageControl;
     pnlLogoBotton: TLabel;
     pnlFundo: TPanel;
+    Image1: TImage;
     procedure FormShow(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -72,7 +73,7 @@ end;
 
 procedure TfrmCadastroPadrao.btnFecharClick(Sender: TObject);
 begin
-  Self.Close;
+  SpeedButton2Click(Self);
 end;
 
 procedure TfrmCadastroPadrao.EstadoQuery;
@@ -115,6 +116,7 @@ end;
 procedure TfrmCadastroPadrao.SpeedButton1Click(Sender: TObject);
 begin
   Self.SalvaRegistro;
+  Self.Close;
 end;
 
 procedure TfrmCadastroPadrao.SpeedButton2Click(Sender: TObject);

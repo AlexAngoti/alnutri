@@ -1,163 +1,24 @@
-object frmCadastroPadrao: TfrmCadastroPadrao
+object frmBackup: TfrmBackup
   Left = 0
   Top = 0
-  Align = alClient
   BorderStyle = bsNone
-  Caption = 'Cadastro'
-  ClientHeight = 548
-  ClientWidth = 1195
-  Color = 15395562
+  ClientHeight = 437
+  ClientWidth = 581
+  Color = 13750737
   Font.Charset = DEFAULT_CHARSET
-  Font.Color = 8011008
+  Font.Color = clWindowText
   Font.Height = -11
-  Font.Name = 'Segoe UI'
+  Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poScreenCenter
-  OnClose = FormClose
-  OnResize = FormResize
-  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object pnlTop: TPanel
-    AlignWithMargins = True
-    Left = 5
-    Top = 83
-    Width = 1185
-    Height = 41
-    Margins.Left = 5
-    Margins.Top = 0
-    Margins.Right = 5
-    Margins.Bottom = 0
-    Align = alTop
-    BevelOuter = bvNone
-    Color = clWhite
-    ParentBackground = False
-    TabOrder = 0
-    object btnDadosGerais: TSpeedButton
-      AlignWithMargins = True
-      Left = 10
-      Top = 5
-      Width = 90
-      Height = 30
-      Cursor = crHandPoint
-      Margins.Left = 10
-      Margins.Top = 5
-      Margins.Right = 0
-      Margins.Bottom = 5
-      Align = alLeft
-      GroupIndex = 1
-      Down = True
-      Caption = 'Dados Gerais'
-      Flat = True
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = 8011008
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      Margin = 5
-      ParentFont = False
-      OnClick = btnDadosGeraisClick
-      ExplicitLeft = 5
-      ExplicitHeight = 31
-    end
-    object pnl_botoes: TPanel
-      Left = 892
-      Top = 0
-      Width = 293
-      Height = 40
-      Align = alRight
-      BevelOuter = bvNone
-      TabOrder = 0
-      object pnl_confirmar: TPanel
-        AlignWithMargins = True
-        Left = 45
-        Top = 5
-        Width = 120
-        Height = 30
-        Margins.Left = 0
-        Margins.Top = 5
-        Margins.Bottom = 5
-        Align = alRight
-        BevelOuter = bvNone
-        Color = 16024898
-        ParentBackground = False
-        TabOrder = 0
-        object SpeedButton1: TSpeedButton
-          Left = 0
-          Top = 0
-          Width = 120
-          Height = 30
-          Cursor = crHandPoint
-          Align = alClient
-          Caption = 'Confirmar'
-          Flat = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          OnClick = SpeedButton1Click
-          ExplicitTop = -1
-        end
-      end
-      object pnl_cancelar: TPanel
-        AlignWithMargins = True
-        Left = 168
-        Top = 5
-        Width = 120
-        Height = 30
-        Margins.Left = 0
-        Margins.Top = 5
-        Margins.Right = 5
-        Margins.Bottom = 5
-        Align = alRight
-        BevelOuter = bvNone
-        Color = 16514043
-        ParentBackground = False
-        TabOrder = 1
-        object SpeedButton2: TSpeedButton
-          Left = 0
-          Top = 0
-          Width = 120
-          Height = 30
-          Cursor = crHandPoint
-          Align = alClient
-          Caption = 'Cancelar'
-          Flat = True
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clSilver
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          OnClick = SpeedButton2Click
-          ExplicitLeft = 16
-          ExplicitTop = 8
-          ExplicitWidth = 23
-          ExplicitHeight = 22
-        end
-      end
-    end
-    object pnlBarraBotao: TPanel
-      Left = 0
-      Top = 40
-      Width = 1185
-      Height = 1
-      Align = alBottom
-      BevelOuter = bvNone
-      Color = 15395562
-      ParentBackground = False
-      TabOrder = 1
-    end
-  end
   object pnlSubTop: TPanel
     AlignWithMargins = True
     Left = 5
     Top = 5
-    Width = 1185
-    Height = 73
+    Width = 571
+    Height = 71
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -166,13 +27,15 @@ object frmCadastroPadrao: TfrmCadastroPadrao
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
-    TabOrder = 1
+    TabOrder = 0
+    ExplicitLeft = 0
+    ExplicitTop = 0
     object btnFechar: TSpeedButton
       AlignWithMargins = True
-      Left = 1129
+      Left = 515
       Top = 10
       Width = 46
-      Height = 53
+      Height = 51
       Margins.Left = 15
       Margins.Top = 10
       Margins.Right = 10
@@ -255,14 +118,13 @@ object frmCadastroPadrao: TfrmCadastroPadrao
         0000000000000000000000000000000000000000000000000000000000000000
         0000000000000000000000000000000000000000000000000000000000000000
         000000000000}
-      OnClick = btnFecharClick
       ExplicitLeft = 887
       ExplicitTop = 0
       ExplicitHeight = 52
     end
     object lblEmpresa: TLabel
-      Left = 83
-      Top = 24
+      Left = 82
+      Top = 23
       Width = 60
       Height = 21
       Caption = 'Al Nutri'
@@ -279,7 +141,7 @@ object frmCadastroPadrao: TfrmCadastroPadrao
       Left = 0
       Top = 0
       Width = 83
-      Height = 73
+      Height = 71
       Align = alLeft
       Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000480000
@@ -586,81 +448,24 @@ object frmCadastroPadrao: TfrmCadastroPadrao
         88705D6E85733B47EEF00EE783BD1FC2BFDDF1C1B68F003A44FB08A043B48F00
         3A44FB08A043B48F003A44FB7FB5745D483391A4B80000000049454E44AE4260
         82}
-      ExplicitLeft = 8
+      ExplicitTop = 2
     end
   end
-  object pnlCentral: TPanel
+  object Panel1: TPanel
     AlignWithMargins = True
     Left = 5
-    Top = 124
-    Width = 1185
-    Height = 341
+    Top = 81
+    Width = 571
+    Height = 351
     Margins.Left = 5
     Margins.Top = 0
     Margins.Right = 5
-    Margins.Bottom = 0
+    Margins.Bottom = 5
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
-    TabOrder = 2
-    object pnlFundo: TPanel
-      Left = 0
-      Top = 0
-      Width = 1185
-      Height = 341
-      BevelOuter = bvNone
-      Color = clWhite
-      ParentBackground = False
-      TabOrder = 0
-      object pgcPessoa: TPageControl
-        Left = 0
-        Top = 0
-        Width = 1185
-        Height = 341
-        ActivePage = tbsDadosGerais
-        Align = alClient
-        Style = tsButtons
-        TabOrder = 0
-        object tbsDadosGerais: TTabSheet
-          Caption = 'tbsDadosGerais'
-        end
-      end
-    end
-  end
-  object pnlBotton: TPanel
-    AlignWithMargins = True
-    Left = 5
-    Top = 470
-    Width = 1185
-    Height = 73
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
-    Align = alBottom
-    BevelOuter = bvNone
-    Color = clWhite
-    ParentBackground = False
-    TabOrder = 3
-    object pnlLogoBotton: TLabel
-      Left = 89
-      Top = 24
-      Width = 60
-      Height = 21
-      Caption = 'Al Nutri'
-      Color = clWhite
-      Font.Charset = EASTEUROPE_CHARSET
-      Font.Color = 8011008
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentColor = False
-      ParentFont = False
-    end
-  end
-  object dsCadastroPadrao: TDataSource
-    Left = 317
-    Top = 13
+    TabOrder = 1
+    ExplicitLeft = 0
   end
 end

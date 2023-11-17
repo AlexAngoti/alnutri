@@ -103,16 +103,6 @@ object dm: Tdm
     Left = 104
     Top = 288
   end
-  object dspAgendamento: TDataSetProvider
-    DataSet = qryAgendamento
-    Left = 40
-    Top = 132
-  end
-  object dsAgendamento: TDataSource
-    DataSet = cdsAgendamento
-    Left = 99
-    Top = 132
-  end
   object qryAgendamento: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
@@ -136,23 +126,6 @@ object dm: Tdm
         ParamType = ptInput
       end>
   end
-  object cdsAgendamento: TClientDataSet
-    Aggregates = <>
-    Params = <
-      item
-        DataType = ftDate
-        Name = 'DATA'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'COLAB'
-        ParamType = ptInput
-      end>
-    ProviderName = 'dspAgendamento'
-    Left = 72
-    Top = 128
-  end
   object qryContasReceber: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
@@ -173,9 +146,9 @@ object dm: Tdm
         '       CAST(CONCAT(IDFORNECEDOR  || '#39' '#39' || NOMEFORNECEDOR  || '#39' ' +
         '- '#39' || DESCRICAO) AS VARCHAR(255)) AS NOMEDESC '
       '  FROM CONTASPAGAR'
-      ' WHERE SITUACAO = '#39'A'#39
+      ' WHERE SITUACAO = '#39'a'#39
       ' ORDER BY DATAVENCIMENTO ASC, LANCAMENTO DESC  ')
     Left = 8
-    Top = 224
+    Top = 232
   end
 end

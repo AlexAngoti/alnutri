@@ -10,7 +10,8 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Datasnap.Provider, Datasnap.DBClient,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, StrUtils, UConsulaPadrao;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, StrUtils, UConsulaPadrao,
+  Vcl.Imaging.pngimage;
 
 type
   TFrmConsultaCliente = class(TFrmConsultaPadrao)
@@ -34,7 +35,7 @@ uses
 
 procedure TFrmConsultaCliente.btnPesquisaClick(Sender: TObject);
 begin
-  Self.FiltrarPorCampo('name');
+  Self.FiltrarPorCampo('nomerazaosocial');
 end;
 
 

@@ -18,17 +18,12 @@ type
     btnContasPagar: TSpeedButton;
     btnCadastros: TSpeedButton;
     pnlContasPagar: TPanel;
-    btnConstTitu: TSpeedButton;
     btnAbriTitu: TSpeedButton;
     pnlCadastros: TPanel;
-    btnCargos: TSpeedButton;
     btnClientes: TSpeedButton;
     pnlMovimentacao: TPanel;
     pnlMensalidade: TPanel;
-    btnConsMens: TSpeedButton;
-    btnBaixarMens: TSpeedButton;
     btnAbrirMens: TSpeedButton;
-    btnBaixarTitu: TSpeedButton;
     btnAgendamentos: TSpeedButton;
     btnAvaliacao: TSpeedButton;
     btnCardapios: TSpeedButton;
@@ -45,6 +40,7 @@ type
     lblEmpresa: TLabel;
     pnlLinha: TPanel;
     anvFundo: TApplicationEvents;
+    Image1: TImage;
     procedure btnCadastrosMouseEnter(Sender: TObject);
     procedure pnlSubCentralMouseEnter(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
@@ -60,6 +56,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure btnAbrirMensClick(Sender: TObject);
+    procedure btnAbriTituClick(Sender: TObject);
+    procedure btnRel1Click(Sender: TObject);
   private
     procedure prcControlaMenu(botao: TSpeedButton; Ativar: Boolean);
     procedure ArredondaPainel;
@@ -75,7 +73,7 @@ implementation
 uses
   UDm, UConsultaCliente, UConsultaProd, UAgendamento,
   UConsultaCargo, UConsultaUsuario, ULogin, UFundo, UFuncoes,
-  UContasReceber;
+  UContasReceber, uContasPagar, uRelatorioRec;
 
 {$R *.dfm}
 { TFrmMenu }
@@ -96,6 +94,16 @@ end;
 procedure TFrmMenu.btnMinimizarClick(Sender: TObject);
 begin
   Application.Minimize;
+end;
+
+procedure TFrmMenu.btnRel1Click(Sender: TObject);
+begin
+  frmRelatorioRec := TfrmRelatorioRec.Create(Self);
+  try
+    frmRelatorioRec.ShowModal;
+  finally
+    frmRelatorioRec.Free;
+  end;
 end;
 
 procedure TFrmMenu.btnUsuariosClick(Sender: TObject);
@@ -159,6 +167,9 @@ end;
 
 procedure TFrmMenu.btnTrocarUserClick(Sender: TObject);
 begin
+  frmFundo.Visible := False;
+  FrmLogin.edtUsuario.Clear;
+  FrmLogin.edtSenha.Clear;
   Self.Close;
 end;
 
@@ -190,6 +201,12 @@ begin
   frmContasReceber.Show;
 end;
 
+procedure TFrmMenu.btnAbriTituClick(Sender: TObject);
+begin
+  frmContasPagar := TfrmContasPagar.Create(Self);
+  frmContasPagar.Show;
+end;
+
 procedure TFrmMenu.btnAgendamentosClick(Sender: TObject);
 begin
   frmAgendamento := TfrmAgendamento.Create(Self);
@@ -204,7 +221,7 @@ end;
 procedure TFrmMenu.btnCargosClick(Sender: TObject);
 begin
   FrmConsultaCargos := TFrmConsultaCargos.Create(Self);
-  FrmConsultaCargos.ShowModal;
+  FrmConsultaCargos.Show;
 end;
 
 end.

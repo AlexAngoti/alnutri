@@ -8,7 +8,8 @@ uses
   Datasnap.DBClient, Vcl.StdCtrls, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids,
   Vcl.ExtCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Vcl.Imaging.pngimage;
 
 type
   TfrmPesquisaPadrao = class(TForm)
@@ -25,6 +26,7 @@ type
     cdsPadrao: TClientDataSet;
     dspPadrao: TDataSetProvider;
     qryPadrao: TFDQuery;
+    Image1: TImage;
     procedure btnFecharClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure dbgdConsultaDblClick(Sender: TObject);

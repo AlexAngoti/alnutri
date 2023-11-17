@@ -23,10 +23,7 @@ type
     dsLogin: TDataSource;
     qryPessoa: TFDQuery;
     qryConsultaProd: TFDQuery;
-    dspAgendamento: TDataSetProvider;
-    dsAgendamento: TDataSource;
     qryAgendamento: TFDQuery;
-    cdsAgendamento: TClientDataSet;
     qryContasReceber: TFDQuery;
     qryContasPagar: TFDQuery;
   private
