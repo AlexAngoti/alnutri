@@ -5,7 +5,7 @@ object FrmConsultaPadrao: TFrmConsultaPadrao
   BorderStyle = bsNone
   ClientHeight = 479
   ClientWidth = 961
-  Color = 15395562
+  Color = 13750737
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

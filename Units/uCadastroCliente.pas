@@ -76,6 +76,7 @@ type
     procedure AlimentaCampoCep;
     procedure AlimentaCampo;
     procedure ValidaCampo;
+    procedure EstadoQuery;
     { Private declarations }
   public
     { Public declarations }
@@ -87,7 +88,7 @@ var
 implementation
 
 uses
-  UConsultaCliente, UFuncoes;
+  UConsultaCliente, UFuncoes, UDm;
 
 {$R *.dfm}
 
@@ -133,9 +134,23 @@ begin
     := cdsEndereco.FieldByName('uf').AsString;
 end;
 
+procedure TfrmCadastroCliente.EstadoQuery;
+begin
+  if dm.qryPessoa.State in [dsInsert] then
+  begin
+    (dsCadastroPadrao.DataSet as TDataSet).Insert;
+  end;
+
+  if dm.qryPessoa.State in [dsEdit] then
+  begin
+    (dsCadastroPadrao.DataSet as TDataSet).Edit;
+  end;
+end;
+
 procedure TfrmCadastroCliente.FormShow(Sender: TObject);
 begin
   inherited;
+  Self.EstadoQuery;
   Self.AlimentaCampo;
 end;
 

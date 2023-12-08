@@ -8,11 +8,14 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   Vcl.Buttons, Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Mask,
   Ucadastropadrao, Data.DB, Datasnap.DBClient, Datasnap.Provider, Vcl.ComCtrls,
-  SWHMaskEdit, SWHDBEdit, SWHComboBox;
+  SWHMaskEdit, SWHDBEdit, SWHComboBox, Vcl.Imaging.pngimage, SWHDBLookupComboBox;
 
 type
   TfrmCadastroUsuario = class(TfrmCadastroPadrao)
-    procedure btnSalvarClick(Sender: TObject);
+    SWHDBEdit1: TSWHDBEdit;
+    SWHDBEdit2: TSWHDBEdit;
+    Label1: TLabel;
+    Label2: TLabel;
   private
     { Private declarations }
   public
@@ -25,16 +28,8 @@ var
 implementation
 
 uses
-  Udm;
+  Udm, UConsultaUsuario;
 
 {$R *.dfm}
-
-procedure TfrmCadastroUsuario.btnSalvarClick(Sender: TObject);
-begin
-  inherited;
-
-  ShowMessage('Usuario criado com sucesso!!');
-  Self.Close;
-end;
 
 end.

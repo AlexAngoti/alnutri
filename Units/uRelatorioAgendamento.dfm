@@ -1,35 +1,39 @@
-object frmRelatorioRec: TfrmRelatorioRec
+object Form1: TForm1
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  ClientHeight = 330
-  ClientWidth = 540
-  Color = 13750737
+  Caption = 'Form1'
+  ClientHeight = 332
+  ClientWidth = 496
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object pnlCentral: TPanel
     Left = 0
     Top = 0
-    Width = 540
-    Height = 330
+    Width = 496
+    Height = 332
     Margins.Left = 5
     Margins.Right = 5
     Align = alClient
     Color = 13750737
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = -56
+    ExplicitTop = -148
+    ExplicitWidth = 503
+    ExplicitHeight = 349
     object pnlSubBot: TPanel
       AlignWithMargins = True
       Left = 6
-      Top = 283
-      Width = 528
+      Top = 285
+      Width = 484
       Height = 41
       Margins.Left = 5
       Margins.Top = 0
@@ -40,9 +44,11 @@ object frmRelatorioRec: TfrmRelatorioRec
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
+      ExplicitTop = 302
+      ExplicitWidth = 491
       object pnlNovoLanc: TPanel
         AlignWithMargins = True
-        Left = 398
+        Left = 354
         Top = 5
         Width = 127
         Height = 31
@@ -54,6 +60,7 @@ object frmRelatorioRec: TfrmRelatorioRec
         Color = 16024898
         ParentBackground = False
         TabOrder = 0
+        ExplicitLeft = 361
         object btnNovoLancamento: TSpeedButton
           Left = 0
           Top = 0
@@ -69,7 +76,6 @@ object frmRelatorioRec: TfrmRelatorioRec
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          OnClick = btnNovoLancamentoClick
           ExplicitLeft = 3
           ExplicitTop = -1
           ExplicitHeight = 30
@@ -77,7 +83,7 @@ object frmRelatorioRec: TfrmRelatorioRec
       end
       object pnlCancelar: TPanel
         AlignWithMargins = True
-        Left = 268
+        Left = 224
         Top = 5
         Width = 127
         Height = 31
@@ -89,6 +95,7 @@ object frmRelatorioRec: TfrmRelatorioRec
         Color = clWhite
         ParentBackground = False
         TabOrder = 1
+        ExplicitLeft = 231
         object btnCancelar: TSpeedButton
           Left = 0
           Top = 0
@@ -104,7 +111,6 @@ object frmRelatorioRec: TfrmRelatorioRec
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          OnClick = btnCancelarClick
           ExplicitLeft = 3
           ExplicitTop = -1
           ExplicitHeight = 30
@@ -115,7 +121,7 @@ object frmRelatorioRec: TfrmRelatorioRec
       AlignWithMargins = True
       Left = 6
       Top = 6
-      Width = 528
+      Width = 484
       Height = 51
       Margins.Left = 5
       Margins.Top = 5
@@ -126,9 +132,10 @@ object frmRelatorioRec: TfrmRelatorioRec
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 491
       object btnFechar: TSpeedButton
         AlignWithMargins = True
-        Left = 477
+        Left = 433
         Top = 5
         Width = 46
         Height = 41
@@ -214,7 +221,6 @@ object frmRelatorioRec: TfrmRelatorioRec
           0000000000000000000000000000000000000000000000000000000000000000
           0000000000000000000000000000000000000000000000000000000000000000
           000000000000}
-        OnClick = btnFecharClick
         ExplicitLeft = 673
         ExplicitTop = 0
         ExplicitHeight = 33
@@ -426,8 +432,8 @@ object frmRelatorioRec: TfrmRelatorioRec
       AlignWithMargins = True
       Left = 6
       Top = 62
-      Width = 528
-      Height = 216
+      Width = 484
+      Height = 218
       Margins.Left = 5
       Margins.Top = 0
       Margins.Right = 5
@@ -437,6 +443,8 @@ object frmRelatorioRec: TfrmRelatorioRec
       Color = clWhite
       ParentBackground = False
       TabOrder = 2
+      ExplicitWidth = 491
+      ExplicitHeight = 235
       object lblDataInicial: TLabel
         Left = 40
         Top = 45
@@ -518,6 +526,11 @@ object frmRelatorioRec: TfrmRelatorioRec
         DataType = ftDate
         Name = 'DATAFIN'
         ParamType = ptInputOutput
+      end
+      item
+        DataType = ftInteger
+        Name = 'situacao'
+        ParamType = ptUnknown
       end>
     ProviderName = 'dspRelatorio'
     Left = 198
@@ -542,13 +555,13 @@ object frmRelatorioRec: TfrmRelatorioRec
       Origin = 'formapgto'
       Size = 8190
     end
-    object cdsRelatorioidcliente: TIntegerField
-      FieldName = 'idcliente'
-      Origin = 'idcliente'
+    object cdsRelatorioidfornecedor: TIntegerField
+      FieldName = 'idfornecedor'
+      Origin = 'idfornecedor'
     end
-    object cdsRelatorionomecliente: TWideStringField
-      FieldName = 'nomecliente'
-      Origin = 'nomecliente'
+    object cdsRelatorionomefornecedor: TWideStringField
+      FieldName = 'nomefornecedor'
+      Origin = 'nomefornecedor'
       Size = 8190
     end
     object cdsRelatoriodatapgto: TDateField
@@ -574,9 +587,14 @@ object frmRelatorioRec: TfrmRelatorioRec
   object qryRelatorio: TFDQuery
     Connection = dm.FDConnection
     SQL.Strings = (
-      'select *'
-      '  from contasreceber c '
-      ' where c.datavencimento between :DATAINI and :DATAFIN')
+      'SELECT *'
+      'FROM contaspagar c'
+      'WHERE c.datavencimento BETWEEN :DATAINI AND :DATAFIN'
+      'AND ('
+      '    (:situacao = 0 AND c.situacao IN ('#39'a'#39', '#39'f'#39'))'
+      '    OR (:situacao = 1 AND c.situacao = '#39'f'#39')'
+      '    OR (:situacao = 2 AND c.situacao = '#39'a'#39')'
+      ')')
     Left = 262
     Top = 14
     ParamData = <
@@ -590,6 +608,12 @@ object frmRelatorioRec: TfrmRelatorioRec
         Position = 2
         Name = 'DATAFIN'
         DataType = ftDate
+        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = 'situacao'
+        DataType = ftInteger
         ParamType = ptInput
       end>
   end
@@ -689,7 +713,7 @@ object frmRelatorioRec: TfrmRelatorioRec
         DesignLayer = ppDesignLayer1
         UserName = 'Label1'
         Border.mmPadding = 0
-        Caption = 'Relatorio Contas a Receber'
+        Caption = 'Relatorio Contas a Pagar'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 17cpi'
@@ -699,9 +723,9 @@ object frmRelatorioRec: TfrmRelatorioRec
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
-        mmLeft = 80212
+        mmLeft = 79506
         mmTop = 5556
-        mmWidth = 41011
+        mmWidth = 37306
         BandType = 0
         LayerName = Foreground
       end
@@ -1445,7 +1469,7 @@ object frmRelatorioRec: TfrmRelatorioRec
       FieldName = 'lancamento'
       FieldLength = 0
       DataType = dtLargeInt
-      DisplayWidth = 0
+      DisplayWidth = 15
       Position = 0
     end
     object ppDbRelatorioppField2: TppField
@@ -1474,16 +1498,16 @@ object frmRelatorioRec: TfrmRelatorioRec
     end
     object ppDbRelatorioppField5: TppField
       Alignment = taRightJustify
-      FieldAlias = 'idcliente'
-      FieldName = 'idcliente'
+      FieldAlias = 'idfornecedor'
+      FieldName = 'idfornecedor'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
       Position = 4
     end
     object ppDbRelatorioppField6: TppField
-      FieldAlias = 'nomecliente'
-      FieldName = 'nomecliente'
+      FieldAlias = 'nomefornecedor'
+      FieldName = 'nomefornecedor'
       FieldLength = 8190
       DisplayWidth = 8190
       Position = 5

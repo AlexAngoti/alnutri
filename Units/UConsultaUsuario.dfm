@@ -26,10 +26,24 @@ inherited FrmConsultaUsuario: TFrmConsultaUsuario
           Visible = True
         end>
     end
-    inherited pnlPesquisa: TPanel
-      inherited btnPesquisa: TSpeedButton
-        OnClick = btnPesquisaClick
-      end
+  end
+  inherited cdsConsultaPadrao: TClientDataSet
+    object cdsConsultaPadraoid: TLargeintField
+      FieldName = 'id'
     end
+    object cdsConsultaPadraologin: TWideStringField
+      FieldName = 'login'
+      Size = 8190
+    end
+    object cdsConsultaPadraosenha: TWideStringField
+      FieldName = 'senha'
+      Size = 8190
+    end
+    object cdsConsultaPadraoidcolaborador: TIntegerField
+      FieldName = 'idcolaborador'
+    end
+  end
+  inherited dspConsultaPadrao: TDataSetProvider
+    DataSet = dm.qryUsuario
   end
 end

@@ -6,43 +6,49 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls,
-  Vcl.ComCtrls, Vcl.DBCtrls, Vcl.Mask;
+  Vcl.ComCtrls, Vcl.DBCtrls, Vcl.Mask, Data.DB, Datasnap.DBClient,
+  Vcl.Imaging.pngimage;
 
 type
   TfrmNovoAgendamento = class(TForm)
     pnlCentral: TPanel;
-    btnFechar: TSpeedButton;
-    lnlProfissional: TLabel;
+    dsNovoAgendamento: TDataSource;
+    pnlSubTop: TPanel;
+    SpeedButton1: TSpeedButton;
+    lblEmpresa: TLabel;
+    imgLogo: TImage;
+    dbCbxCli: TDBLookupComboBox;
+    dbCbxColab: TDBLookupComboBox;
+    dbEdtEmail: TDBEdit;
+    dbEdtHora: TDBEdit;
+    dbEdtObservacao: TDBEdit;
+    dbEdtTelefone: TDBEdit;
+    dtpData: TDateTimePicker;
+    lblCliente: TLabel;
     lblData: TLabel;
+    lblEmail: TLabel;
     lblHora: TLabel;
-    pnlConfirmar: TPanel;
-    btnConfirmar: TSpeedButton;
+    lblObs: TLabel;
+    lblTelefone: TLabel;
+    lnlProfissional: TLabel;
     pnlCancelar: TPanel;
     btnCancelar: TSpeedButton;
-    lblCliente: TLabel;
-    lblTelefone: TLabel;
-    lblEmail: TLabel;
-    lblObs: TLabel;
-    dbCbxColab: TDBLookupComboBox;
-    dbCbxCli: TDBLookupComboBox;
-    dbEdtHora: TDBEdit;
-    dbEdtTelefone: TDBEdit;
-    dbEdtEmail: TDBEdit;
-    dbEdtObservacao: TDBEdit;
-    dbEdtData: TDBEdit;
-    pnlPesquisaColab: TPanel;
-    btnPesquisaColab: TSpeedButton;
+    pnlConfirmar: TPanel;
+    btnConfirmar: TSpeedButton;
     pnlPesquisaCli: TPanel;
     btnPesquisaCli: TSpeedButton;
-    procedure btnFecharClick(Sender: TObject);
+    pnlPesquisaColab: TPanel;
+    btnPesquisaColab: TSpeedButton;
     procedure btnConfirmarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
-    procedure btnPesquisaColabClick(Sender: TObject);
     procedure btnPesquisaCliClick(Sender: TObject);
+    procedure btnPesquisaColabClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
-    procedure ClearDataSet;
-    procedure SaveReg;
     procedure ValidaTela;
+    procedure ArredondaPainel;
     { Private declarations }
   public
     { Public declarations }
@@ -54,85 +60,109 @@ var
 implementation
 
 uses
-  UDm;
+  UDm, UFuncoes, uAgendamento, uPesquisaPadrao;
 
 {$R *.dfm}
 
+procedure TfrmNovoAgendamento.ArredondaPainel;
+begin
+  RoundedPanel(pnlCentral, 12);
+  RoundedPanel(pnlConfirmar, 12);
+  RoundedPanel(pnlCancelar, 12);
+  RoundedPanel(pnlSubTop, 12);
+end;
+
 procedure TfrmNovoAgendamento.btnCancelarClick(Sender: TObject);
 begin
-  if Application.MessageBox('Realmente Deseja Cancelar esse Processo ?',
-    'Excluir', MB_YESNO + MB_ICONWARNING) = idYes then
+  if UFuncoes.MsgConfirmar('Realmente deseja cancelar processo atual ?',
+     'Se cancelar o processo atual nenhuma alteração sera salva') then
   begin
-    Self.ClearDataSet;
+    (dsNovoAgendamento.DataSet as TClientDataSet).Cancel;
     Self.Close;
   end;
 end;
 
 procedure TfrmNovoAgendamento.btnConfirmarClick(Sender: TObject);
 begin
-  Self.ValidaTela;
-  Self.SaveReg;
-  Self.ClearDataSet;
-
-  ShowMessage('Agendamento Feito Com Sucesso!!');
-
+  (dsNovoAgendamento.DataSet as TClientDataSet).FieldByName('diaagendamento').AsDateTime
+    := dtpData.Date;
+  (dsNovoAgendamento.DataSet as TClientDataSet).Post;
+  (dsNovoAgendamento.DataSet as TClientDataSet).ApplyUpdates(-1);
   Self.Close;
 end;
 
 procedure TfrmNovoAgendamento.btnFecharClick(Sender: TObject);
 begin
-  if Application.MessageBox('Ao Sair Poderá Perder o Processo ?', 'Excluir',
-    MB_YESNO + MB_ICONWARNING) = idYes then
-  begin
-    Self.Close;
-  end;
-end;
-
-procedure TfrmNovoAgendamento.ClearDataSet;
-begin
-
-end;
-
-procedure TfrmNovoAgendamento.SaveReg;
-begin
-//  dm.cdsAgendamento.FieldByName('nomecliente').AsString :=
-//    dm.cdsConsultaCli.FieldByName('name').AsString;
-//  dm.cdsAgendamento.FieldByName('nomecolaborador').AsString :=
-//    dm.cdsConsultaColab.FieldByName('name').AsString;
-//  dm.cdsAgendamento.FieldByName('situacao').AsString := 'A';
-//  dm.cdsAgendamento.Post;
-//  dm.cdsAgendamento.ApplyUpdates(-1);
-end;
-
-procedure TfrmNovoAgendamento.btnPesquisaColabClick(Sender: TObject);
-begin
-//  dm.cdsAgendamento.FieldByName('idcolaborador').AsInteger :=
-//    dm.cdsConsultaColab.FieldByName('id').AsInteger;
+  btnCancelarClick(Self);
 end;
 
 procedure TfrmNovoAgendamento.btnPesquisaCliClick(Sender: TObject);
 begin
-//  FrmPesquisaColab := TFrmPesquisaColab.Create(Self);
-//  try
-//    FrmPesquisaColab.dbgdConsulta.DataSource := dm.dsConsultaCli;
-//    FrmPesquisaColab.ShowModal;
-//  finally
-//    FrmPesquisaColab.Free;
-//  end;
-//
-//  dm.cdsAgendamento.FieldByName('idcliente').AsInteger :=
-//    dm.cdsConsultaCli.FieldByName('id').AsInteger;
+  frmPesquisaPadrao := TfrmPesquisaPadrao.Create(Self);
+  try
+    frmPesquisaPadrao.qryPadrao.SQL.Clear;
+    frmPesquisaPadrao.qryPadrao.SQL.Text := ('SELECT p.id as "Id", p.nomerazaosocial as "Nome" ' +
+                                            'FROM pessoa p ' +
+                                            'WHERE p.tipopessoa = ''CLIENTES'' ' +
+                                            'ORDER by p.nomerazaosocial asc');
+    frmPesquisaPadrao.ShowModal;
+    if frmPesquisaPadrao.ModalResult = 1 then
+    begin
+      (dsNovoAgendamento.DataSet as TClientDataSet).FieldByName('idcliente').AsInteger
+        := frmPesquisaPadrao.cdsPadrao.FieldByName('Id').AsInteger;
+    end;
+  finally
+    frmPesquisaPadrao.Free;
+  end;
+end;
+
+procedure TfrmNovoAgendamento.btnPesquisaColabClick(Sender: TObject);
+begin
+  frmPesquisaPadrao := TfrmPesquisaPadrao.Create(Self);
+  try
+    frmPesquisaPadrao.qryPadrao.SQL.Clear;
+    frmPesquisaPadrao.qryPadrao.SQL.Text := ('SELECT p.id as "Id", p.nomerazaosocial as "Nome" ' +
+                                            'FROM pessoa p ' +
+                                            'WHERE p.tipopessoa = ''FUNCIONARIOS'' ' +
+                                            'ORDER by p.nomerazaosocial asc');
+    frmPesquisaPadrao.ShowModal;
+    if frmPesquisaPadrao.ModalResult = 1 then
+    begin
+      (dsNovoAgendamento.DataSet as TClientDataSet).FieldByName('idcolaborador').AsInteger
+        := frmPesquisaPadrao.cdsPadrao.FieldByName('Id').AsInteger;
+    end;
+  finally
+    frmPesquisaPadrao.Free;
+  end;
+end;
+
+procedure TfrmNovoAgendamento.FormResize(Sender: TObject);
+begin
+  Self.ArredondaPainel;
+end;
+
+procedure TfrmNovoAgendamento.FormShow(Sender: TObject);
+begin
+  if (dsNovoAgendamento.DataSet as TClientDataSet).FieldByName('dataagendamento').AsDateTime
+    > 01/01/2000 then
+  begin
+      dtpData.Date := (dsNovoAgendamento.DataSet as TClientDataSet).FieldByName('dataagendamento').AsDateTime;
+  end
+  else
+  begin
+    dtpData.Date := Date;
+  end;
 end;
 
 procedure TfrmNovoAgendamento.ValidaTela;
 begin
-  if dbEdtData.Text = EmptyStr then
+  if dtpData.Date < 01-01-2000 then
   begin
     ShowMessage('Informe a Data do Agendamento!!');
     Abort;
   end;
 
-  if StrToDate(dbEdtData.Text) < Date then
+  if dtpData.Date < Date then
   begin
     ShowMessage('Data do Agendamento não Pode ser Menor que a Data de Hoje!!');
     Abort;

@@ -69,8 +69,8 @@ begin
     'Este registro será completamente excluido') then
   begin
     try
-      cdsConsultaPadrao.Delete;
-      cdsConsultaPadrao.ApplyUpdates(-1);
+      (dsConsultaPadrao.DataSet as TClientDataSet).Delete;
+      (dsConsultaPadrao.DataSet as TClientDataSet).ApplyUpdates(-1);
     except
       UFuncoes.MsgNaoConfirmar('Não foi possivel excluir esse cadastro!',
       'Esse cadastro já possui movimentação');
@@ -115,8 +115,8 @@ end;
 
 procedure TFrmConsultaPadrao.OpenDataSet;
 begin
-  cdsConsultaPadrao.Close;
-  cdsConsultaPadrao.Open;
+  (dsConsultaPadrao.DataSet as TClientDataSet).Close;
+  (dsConsultaPadrao.DataSet as TClientDataSet).Open;
 end;
 
 end.

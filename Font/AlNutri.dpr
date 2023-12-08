@@ -13,8 +13,6 @@ uses
   UCadastroProd in '..\Units\UCadastroProd.pas' {frmCadastroProd},
   uAgendamento in '..\Units\uAgendamento.pas' {frmAgendamento},
   UNovoAgendamento in '..\Units\UNovoAgendamento.pas' {frmNovoAgendamento},
-  UConsultaCargo in '..\Units\UConsultaCargo.pas' {FrmConsultaCargos},
-  uCadastroCargo in '..\Units\uCadastroCargo.pas' {frmCadastroCargos},
   UConsultaUsuario in '..\Units\UConsultaUsuario.pas' {FrmConsultaUsuario},
   UCadastroUsuario in '..\Units\UCadastroUsuario.pas' {frmCadastroUsuario},
   UFuncoes in '..\Units\UFuncoes.pas',
@@ -29,7 +27,12 @@ uses
   uContasPagar in '..\Units\uContasPagar.pas' {frmContasPagar},
   uBaixaPagar in '..\Units\uBaixaPagar.pas' {frmBaixaPagar},
   uRelatorioRec in '..\Units\uRelatorioRec.pas' {frmRelatorioRec},
-  uBackup in '..\Units\uBackup.pas' {frmBackup};
+  uBackup in '..\Units\uBackup.pas' {frmBackup},
+  uConsultaCardapio in '..\Units\uConsultaCardapio.pas' {frmConsultaCardapio},
+  uCadastroCardapio in '..\Units\uCadastroCardapio.pas' {frmCadastroCardapio},
+  uAvaliacao in '..\Units\uAvaliacao.pas' {frmAvaliacao},
+  URelatorioPag in '..\Units\URelatorioPag.pas' {frmRelatorioPag},
+  uRelatorioAgendamento in '..\Units\uRelatorioAgendamento.pas' {Form1};
 
 {$R *.res}
 
@@ -39,6 +42,5 @@ begin
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmFundo, frmFundo);
-  Application.CreateForm(TfrmBackup, frmBackup);
   Application.Run;
 end.

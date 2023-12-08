@@ -106,10 +106,13 @@ object dm: Tdm
   object qryAgendamento: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'select *'
+      'select a.*,'
+      '       p.nomerazaosocial'
       '  from agendamento a'
+      ' inner join pessoa p on a.idcliente = p.id '
       ' where a.diaagendamento =:DATA'
-      '   and a.idcolaborador =:COLAB')
+      '   and a.idcolaborador =:COLAB'
+      '   and a.situacao = '#39'A'#39)
     Left = 8
     Top = 130
     ParamData = <
@@ -118,6 +121,7 @@ object dm: Tdm
         Name = 'DATA'
         DataType = ftDate
         ParamType = ptInput
+        Value = Null
       end
       item
         Position = 2
@@ -150,5 +154,27 @@ object dm: Tdm
       ' ORDER BY DATAVENCIMENTO ASC, LANCAMENTO DESC  ')
     Left = 8
     Top = 232
+  end
+  object qryAlimentos: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select * from alimentos')
+    Left = 48
+    Top = 128
+  end
+  object qryPreCardapio: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select * from precardapio'
+      'order by id DESC')
+    Left = 88
+    Top = 128
+  end
+  object qryUsuario: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT * from login')
+    Left = 48
+    Top = 184
   end
 end

@@ -1,10 +1,11 @@
-object frmRelatorioRec: TfrmRelatorioRec
+object frmRelatorioPag: TfrmRelatorioPag
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  ClientHeight = 330
-  ClientWidth = 540
-  Color = 13750737
+  Caption = 'frmRelatorioContasPAgar'
+  ClientHeight = 349
+  ClientWidth = 503
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -17,8 +18,8 @@ object frmRelatorioRec: TfrmRelatorioRec
   object pnlCentral: TPanel
     Left = 0
     Top = 0
-    Width = 540
-    Height = 330
+    Width = 503
+    Height = 349
     Margins.Left = 5
     Margins.Right = 5
     Align = alClient
@@ -28,8 +29,8 @@ object frmRelatorioRec: TfrmRelatorioRec
     object pnlSubBot: TPanel
       AlignWithMargins = True
       Left = 6
-      Top = 283
-      Width = 528
+      Top = 302
+      Width = 491
       Height = 41
       Margins.Left = 5
       Margins.Top = 0
@@ -42,7 +43,7 @@ object frmRelatorioRec: TfrmRelatorioRec
       TabOrder = 0
       object pnlNovoLanc: TPanel
         AlignWithMargins = True
-        Left = 398
+        Left = 361
         Top = 5
         Width = 127
         Height = 31
@@ -70,14 +71,12 @@ object frmRelatorioRec: TfrmRelatorioRec
           Font.Style = []
           ParentFont = False
           OnClick = btnNovoLancamentoClick
-          ExplicitLeft = 3
-          ExplicitTop = -1
-          ExplicitHeight = 30
+          ExplicitTop = -2
         end
       end
       object pnlCancelar: TPanel
         AlignWithMargins = True
-        Left = 268
+        Left = 231
         Top = 5
         Width = 127
         Height = 31
@@ -115,7 +114,7 @@ object frmRelatorioRec: TfrmRelatorioRec
       AlignWithMargins = True
       Left = 6
       Top = 6
-      Width = 528
+      Width = 491
       Height = 51
       Margins.Left = 5
       Margins.Top = 5
@@ -128,7 +127,7 @@ object frmRelatorioRec: TfrmRelatorioRec
       TabOrder = 1
       object btnFechar: TSpeedButton
         AlignWithMargins = True
-        Left = 477
+        Left = 440
         Top = 5
         Width = 46
         Height = 41
@@ -426,8 +425,8 @@ object frmRelatorioRec: TfrmRelatorioRec
       AlignWithMargins = True
       Left = 6
       Top = 62
-      Width = 528
-      Height = 216
+      Width = 491
+      Height = 235
       Margins.Left = 5
       Margins.Top = 0
       Margins.Right = 5
@@ -507,17 +506,23 @@ object frmRelatorioRec: TfrmRelatorioRec
     Top = 14
   end
   object cdsRelatorio: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <
       item
         DataType = ftDate
         Name = 'DATAINI'
-        ParamType = ptInputOutput
+        ParamType = ptUnknown
       end
       item
         DataType = ftDate
         Name = 'DATAFIN'
-        ParamType = ptInputOutput
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftInteger
+        Name = 'situacao'
+        ParamType = ptUnknown
       end>
     ProviderName = 'dspRelatorio'
     Left = 198
@@ -542,13 +547,13 @@ object frmRelatorioRec: TfrmRelatorioRec
       Origin = 'formapgto'
       Size = 8190
     end
-    object cdsRelatorioidcliente: TIntegerField
-      FieldName = 'idcliente'
-      Origin = 'idcliente'
+    object cdsRelatorioidfornecedor: TIntegerField
+      FieldName = 'idfornecedor'
+      Origin = 'idfornecedor'
     end
-    object cdsRelatorionomecliente: TWideStringField
-      FieldName = 'nomecliente'
-      Origin = 'nomecliente'
+    object cdsRelatorionomefornecedor: TWideStringField
+      FieldName = 'nomefornecedor'
+      Origin = 'nomefornecedor'
       Size = 8190
     end
     object cdsRelatoriodatapgto: TDateField
@@ -574,9 +579,14 @@ object frmRelatorioRec: TfrmRelatorioRec
   object qryRelatorio: TFDQuery
     Connection = dm.FDConnection
     SQL.Strings = (
-      'select *'
-      '  from contasreceber c '
-      ' where c.datavencimento between :DATAINI and :DATAFIN')
+      'SELECT *'
+      'FROM contaspagar c'
+      'WHERE c.datavencimento BETWEEN :DATAINI AND :DATAFIN'
+      'AND ('
+      '    (:situacao = 0 AND c.situacao IN ('#39'a'#39', '#39'f'#39'))'
+      '    OR (:situacao = 1 AND c.situacao = '#39'f'#39')'
+      '    OR (:situacao = 2 AND c.situacao = '#39'a'#39')'
+      ')')
     Left = 262
     Top = 14
     ParamData = <
@@ -584,13 +594,16 @@ object frmRelatorioRec: TfrmRelatorioRec
         Position = 1
         Name = 'DATAINI'
         DataType = ftDate
-        ParamType = ptInput
       end
       item
         Position = 2
         Name = 'DATAFIN'
         DataType = ftDate
-        ParamType = ptInput
+      end
+      item
+        Position = 3
+        Name = 'situacao'
+        DataType = ftInteger
       end>
   end
   object ppRelatorio: TppReport
@@ -689,7 +702,7 @@ object frmRelatorioRec: TfrmRelatorioRec
         DesignLayer = ppDesignLayer1
         UserName = 'Label1'
         Border.mmPadding = 0
-        Caption = 'Relatorio Contas a Receber'
+        Caption = 'Relatorio Contas a Pagar'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Draft 17cpi'
@@ -699,9 +712,9 @@ object frmRelatorioRec: TfrmRelatorioRec
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
-        mmLeft = 80212
+        mmLeft = 79506
         mmTop = 5556
-        mmWidth = 41011
+        mmWidth = 37306
         BandType = 0
         LayerName = Foreground
       end
@@ -863,286 +876,11 @@ object frmRelatorioRec: TfrmRelatorioRec
     object ppFooterBand1: TppFooterBand
       Border.mmPadding = 0
       mmBottomOffset = 0
-      mmHeight = 5556
+      mmHeight = 0
       mmPrintPosition = 0
-      object ppSubReport1: TppSubReport
-        DesignLayer = ppDesignLayer1
-        UserName = 'SubReport1'
-        ExpandAll = False
-        NewPrintJob = False
-        OutlineSettings.CreateNode = True
-        TraverseAllData = False
-        DataPipelineName = 'ppDbRelatorio'
-        mmHeight = 5027
-        mmLeft = 0
-        mmTop = 529
-        mmWidth = 197300
-        BandType = 8
-        LayerName = Foreground
-        mmBottomOffset = 0
-        mmOverFlowOffset = 0
-        mmStopPosition = 0
-        mmMinHeight = 0
-        object ppChildReport1: TppChildReport
-          AutoStop = False
-          DataPipeline = ppDbRelatorio
-          PrinterSetup.BinName = 'Default'
-          PrinterSetup.DocumentName = 'Report'
-          PrinterSetup.PaperName = 'A4'
-          PrinterSetup.PrinterName = 'Default'
-          PrinterSetup.SaveDeviceSettings = False
-          PrinterSetup.mmMarginBottom = 6350
-          PrinterSetup.mmMarginLeft = 6350
-          PrinterSetup.mmMarginRight = 6350
-          PrinterSetup.mmMarginTop = 6350
-          PrinterSetup.mmPaperHeight = 297000
-          PrinterSetup.mmPaperWidth = 210000
-          PrinterSetup.PaperSize = 9
-          Version = '22.0'
-          mmColumnWidth = 0
-          DataPipelineName = 'ppDbRelatorio'
-          object ppTitleBand1: TppTitleBand
-            Border.mmPadding = 0
-            mmBottomOffset = 0
-            mmHeight = 10848
-            mmPrintPosition = 0
-            object ppLabel10: TppLabel
-              DesignLayer = ppDesignLayer2
-              UserName = 'Label10'
-              Border.mmPadding = 0
-              Caption = 'Resumo Final'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Name = 'Draft 17cpi'
-              Font.Size = 8
-              Font.Style = [fsBold]
-              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-              FormFieldSettings.FormFieldType = fftNone
-              TextAlignment = taCentered
-              Transparent = True
-              mmHeight = 3704
-              mmLeft = 88110
-              mmTop = 7144
-              mmWidth = 19579
-              BandType = 1
-              LayerName = Foreground1
-            end
-          end
-          object ppDetailBand2: TppDetailBand
-            Border.mmPadding = 0
-            mmBottomOffset = 0
-            mmHeight = 53446
-            mmPrintPosition = 0
-            object ppLabel11: TppLabel
-              DesignLayer = ppDesignLayer2
-              UserName = 'Label101'
-              Border.mmPadding = 0
-              Caption = 'Formas de Pagamentos'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Name = 'Draft 17cpi'
-              Font.Size = 8
-              Font.Style = [fsBold]
-              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-              FormFieldSettings.FormFieldType = fftNone
-              TextAlignment = taCentered
-              Transparent = True
-              mmHeight = 3704
-              mmLeft = 80533
-              mmTop = 265
-              mmWidth = 34660
-              BandType = 4
-              LayerName = Foreground1
-            end
-            object ppLabel12: TppLabel
-              DesignLayer = ppDesignLayer2
-              UserName = 'Label12'
-              Border.mmPadding = 0
-              Caption = '1 - Pix:'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Name = 'Draft 17cpi'
-              Font.Size = 8
-              Font.Style = [fsBold]
-              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-              FormFieldSettings.FormFieldType = fftNone
-              TextAlignment = taCentered
-              Transparent = True
-              mmHeight = 3704
-              mmLeft = 67889
-              mmTop = 7673
-              mmWidth = 9260
-              BandType = 4
-              LayerName = Foreground1
-            end
-            object ppLabel13: TppLabel
-              DesignLayer = ppDesignLayer2
-              UserName = 'Label13'
-              Border.mmPadding = 0
-              Caption = '2 -Dinheiro:'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Name = 'Draft 17cpi'
-              Font.Size = 8
-              Font.Style = [fsBold]
-              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-              FormFieldSettings.FormFieldType = fftNone
-              TextAlignment = taCentered
-              Transparent = True
-              mmHeight = 3704
-              mmLeft = 61010
-              mmTop = 13581
-              mmWidth = 16404
-              BandType = 4
-              LayerName = Foreground1
-            end
-            object ppLabel14: TppLabel
-              DesignLayer = ppDesignLayer2
-              UserName = 'Label14'
-              Border.mmPadding = 0
-              Caption = '2 - Boleto:'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Name = 'Draft 17cpi'
-              Font.Size = 8
-              Font.Style = [fsBold]
-              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-              FormFieldSettings.FormFieldType = fftNone
-              TextAlignment = taCentered
-              Transparent = True
-              mmHeight = 3704
-              mmLeft = 62862
-              mmTop = 19050
-              mmWidth = 14288
-              BandType = 4
-              LayerName = Foreground1
-            end
-            object ppLabel15: TppLabel
-              DesignLayer = ppDesignLayer2
-              UserName = 'Label15'
-              Border.mmPadding = 0
-              Caption = '5 - Cartao Credito:'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Name = 'Draft 17cpi'
-              Font.Size = 8
-              Font.Style = [fsBold]
-              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-              FormFieldSettings.FormFieldType = fftNone
-              TextAlignment = taCentered
-              Transparent = True
-              mmHeight = 3704
-              mmLeft = 50955
-              mmTop = 30075
-              mmWidth = 26194
-              BandType = 4
-              LayerName = Foreground1
-            end
-            object ppLabel16: TppLabel
-              DesignLayer = ppDesignLayer2
-              UserName = 'Label16'
-              Border.mmPadding = 0
-              Caption = '4 - Cartao Debito:'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Name = 'Draft 17cpi'
-              Font.Size = 8
-              Font.Style = [fsBold]
-              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-              FormFieldSettings.FormFieldType = fftNone
-              TextAlignment = taCentered
-              Transparent = True
-              mmHeight = 3704
-              mmLeft = 52543
-              mmTop = 24606
-              mmWidth = 24606
-              BandType = 4
-              LayerName = Foreground1
-            end
-            object ppLabel17: TppLabel
-              DesignLayer = ppDesignLayer2
-              UserName = 'Label17'
-              Border.mmPadding = 0
-              Caption = 'Total Baixado'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Name = 'Draft 17cpi'
-              Font.Size = 8
-              Font.Style = [fsBold]
-              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-              FormFieldSettings.FormFieldType = fftNone
-              TextAlignment = taCentered
-              Transparent = True
-              mmHeight = 3704
-              mmLeft = 53601
-              mmTop = 41804
-              mmWidth = 19050
-              BandType = 4
-              LayerName = Foreground1
-            end
-            object ppLabel18: TppLabel
-              DesignLayer = ppDesignLayer2
-              UserName = 'Label18'
-              Border.mmPadding = 0
-              Caption = 'Total Aberto'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Name = 'Draft 17cpi'
-              Font.Size = 8
-              Font.Style = [fsBold]
-              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-              FormFieldSettings.FormFieldType = fftNone
-              TextAlignment = taCentered
-              Transparent = True
-              mmHeight = 3704
-              mmLeft = 129801
-              mmTop = 41804
-              mmWidth = 17992
-              BandType = 4
-              LayerName = Foreground1
-            end
-            object ppLabel19: TppLabel
-              DesignLayer = ppDesignLayer2
-              UserName = 'Label19'
-              Border.mmPadding = 0
-              Caption = 'Total'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clBlack
-              Font.Name = 'Draft 17cpi'
-              Font.Size = 8
-              Font.Style = [fsBold]
-              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-              FormFieldSettings.FormFieldType = fftNone
-              TextAlignment = taCentered
-              Transparent = True
-              mmHeight = 3704
-              mmLeft = 87163
-              mmTop = 48419
-              mmWidth = 7144
-              BandType = 4
-              LayerName = Foreground1
-            end
-          end
-          object ppSummaryBand1: TppSummaryBand
-            Border.mmPadding = 0
-            mmBottomOffset = 0
-            mmHeight = 0
-            mmPrintPosition = 0
-          end
-          object raCodeModule1: TraCodeModule
-          end
-          object ppDesignLayers2: TppDesignLayers
-            object ppDesignLayer2: TppDesignLayer
-              UserName = 'Foreground1'
-              LayerType = ltBanded
-              Index = 0
-            end
-          end
-        end
-      end
     end
     object ppGroup1: TppGroup
-      BreakName = 'idcliente'
+      BreakName = 'idfornecedor'
       DataPipeline = ppDbRelatorio
       GroupFileSettings.NewFile = False
       GroupFileSettings.EmailFile = False
@@ -1163,7 +901,7 @@ object frmRelatorioRec: TfrmRelatorioRec
           DesignLayer = ppDesignLayer1
           UserName = 'DBText1'
           Border.mmPadding = 0
-          DataField = 'idcliente'
+          DataField = 'idfornecedor'
           DataPipeline = ppDbRelatorio
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1197,7 +935,7 @@ object frmRelatorioRec: TfrmRelatorioRec
           DesignLayer = ppDesignLayer1
           UserName = 'DBText2'
           Border.mmPadding = 0
-          DataField = 'nomecliente'
+          DataField = 'nomefornecedor'
           DataPipeline = ppDbRelatorio
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1474,16 +1212,16 @@ object frmRelatorioRec: TfrmRelatorioRec
     end
     object ppDbRelatorioppField5: TppField
       Alignment = taRightJustify
-      FieldAlias = 'idcliente'
-      FieldName = 'idcliente'
+      FieldAlias = 'idfornecedor'
+      FieldName = 'idfornecedor'
       FieldLength = 0
       DataType = dtInteger
       DisplayWidth = 10
       Position = 4
     end
     object ppDbRelatorioppField6: TppField
-      FieldAlias = 'nomecliente'
-      FieldName = 'nomecliente'
+      FieldAlias = 'nomefornecedor'
+      FieldName = 'nomefornecedor'
       FieldLength = 8190
       DisplayWidth = 8190
       Position = 5

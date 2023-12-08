@@ -16,6 +16,7 @@ uses
 type
   TFrmConsultaCliente = class(TFrmConsultaPadrao)
     procedure btnPesquisaClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
   private
     procedure OpenScreen; override;
     { Private declarations }
@@ -32,6 +33,16 @@ uses
   UDm, UCadastroCliente, UMsgConfirmar, UFuncoes;
 
 {$R *.dfm}
+
+procedure TFrmConsultaCliente.btnExcluirClick(Sender: TObject);
+begin
+  try
+    inherited;
+  except
+    UFuncoes.MsgNaoConfirmar('Erro ao deletar!!',
+    'Cliente ja possui movimentação');
+  end;
+end;
 
 procedure TFrmConsultaCliente.btnPesquisaClick(Sender: TObject);
 begin

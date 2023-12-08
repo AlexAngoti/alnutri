@@ -17,6 +17,7 @@ type
     pnl_botoes: TPanel;
     pnl_confirmar: TPanel;
     SpeedButton1: TSpeedButton;
+    tbsDadosGerais: TTabSheet;
     pnl_cancelar: TPanel;
     SpeedButton2: TSpeedButton;
     pnlBarraBotao: TPanel;
@@ -40,7 +41,6 @@ type
   private
     procedure SalvaRegistro;
     procedure ArredondaPainel;
-    procedure EstadoQuery;
     { Private declarations }
   public
     { Public declarations }
@@ -76,19 +76,6 @@ begin
   SpeedButton2Click(Self);
 end;
 
-procedure TfrmCadastroPadrao.EstadoQuery;
-begin
-  if dm.qryPessoa.State in [dsInsert] then
-  begin
-    (dsCadastroPadrao.DataSet as TDataSet).Insert;
-  end;
-
-  if dm.qryPessoa.State in [dsEdit] then
-  begin
-    (dsCadastroPadrao.DataSet as TDataSet).Edit;
-  end;
-end;
-
 procedure TfrmCadastroPadrao.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
@@ -104,7 +91,6 @@ end;
 procedure TfrmCadastroPadrao.FormShow(Sender: TObject);
 begin
   PrcOcultarTabs(pgcPessoa);
-  Self.EstadoQuery;
 end;
 
 procedure TfrmCadastroPadrao.SalvaRegistro;

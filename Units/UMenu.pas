@@ -25,11 +25,9 @@ type
     pnlMensalidade: TPanel;
     btnAbrirMens: TSpeedButton;
     btnAgendamentos: TSpeedButton;
-    btnAvaliacao: TSpeedButton;
     btnCardapios: TSpeedButton;
     btnMensalidade: TSpeedButton;
     pnlRelatorio: TPanel;
-    btnRel3: TSpeedButton;
     btnReal2: TSpeedButton;
     btnRel1: TSpeedButton;
     btnAlimentos: TSpeedButton;
@@ -41,6 +39,8 @@ type
     pnlLinha: TPanel;
     anvFundo: TApplicationEvents;
     Image1: TImage;
+    Image2: TImage;
+    Panel1: TPanel;
     procedure btnCadastrosMouseEnter(Sender: TObject);
     procedure pnlSubCentralMouseEnter(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
@@ -48,7 +48,6 @@ type
     procedure btnClientesClick(Sender: TObject);
     procedure brnAlimentosClick(Sender: TObject);
     procedure btnAgendamentosClick(Sender: TObject);
-    procedure btnCargosClick(Sender: TObject);
     procedure btnUsuariosClick(Sender: TObject);
     procedure btnTrocarUserClick(Sender: TObject);
     procedure anvFundoModalBegin(Sender: TObject);
@@ -58,6 +57,8 @@ type
     procedure btnAbrirMensClick(Sender: TObject);
     procedure btnAbriTituClick(Sender: TObject);
     procedure btnRel1Click(Sender: TObject);
+    procedure btnCardapiosClick(Sender: TObject);
+    procedure btnReal2Click(Sender: TObject);
   private
     procedure prcControlaMenu(botao: TSpeedButton; Ativar: Boolean);
     procedure ArredondaPainel;
@@ -72,8 +73,9 @@ implementation
 
 uses
   UDm, UConsultaCliente, UConsultaProd, UAgendamento,
-  UConsultaCargo, UConsultaUsuario, ULogin, UFundo, UFuncoes,
-  UContasReceber, uContasPagar, uRelatorioRec;
+  UConsultaUsuario, ULogin, UFundo, UFuncoes,
+  UContasReceber, uContasPagar, uRelatorioRec, uConsultaCardapio, UCadastroUsuario,
+  uRelatorioPag;
 
 {$R *.dfm}
 { TFrmMenu }
@@ -94,6 +96,16 @@ end;
 procedure TFrmMenu.btnMinimizarClick(Sender: TObject);
 begin
   Application.Minimize;
+end;
+
+procedure TFrmMenu.btnReal2Click(Sender: TObject);
+begin
+  frmRelatorioPag := TfrmRelatorioPag.Create(Self);
+  try
+    frmRelatorioPag.ShowModal;
+  finally
+    frmRelatorioPag.Free;
+  end;
 end;
 
 procedure TFrmMenu.btnRel1Click(Sender: TObject);
@@ -120,6 +132,7 @@ end;
 procedure TFrmMenu.FormResize(Sender: TObject);
 begin
   Self.ArredondaPainel;
+  Image2.Left := Round(pnlSubCentral.Width/2 - Image2.Width/2);
 end;
 
 procedure TFrmMenu.pnlSubCentralMouseEnter(Sender: TObject);
@@ -218,10 +231,10 @@ begin
   prcControlaMenu(TComponent(Sender) as TSpeedButton, True);
 end;
 
-procedure TFrmMenu.btnCargosClick(Sender: TObject);
+procedure TFrmMenu.btnCardapiosClick(Sender: TObject);
 begin
-  FrmConsultaCargos := TFrmConsultaCargos.Create(Self);
-  FrmConsultaCargos.Show;
+  frmConsultaCardapio := TfrmConsultaCardapio.Create(Self);
+  frmConsultaCardapio.Show;
 end;
 
 end.

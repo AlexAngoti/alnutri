@@ -7,18 +7,16 @@ uses
   System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls,
   Vcl.Grids, Vcl.DBGrids, Vcl.Imaging.jpeg, Vcl.ExtCtrls, Vcl.Buttons,
-  UConsulaPadrao, Datasnap.Provider, Datasnap.DBClient;
+  UConsulaPadrao, Datasnap.Provider, Datasnap.DBClient, Vcl.Imaging.pngimage;
 
 type
   TFrmConsultaUsuario = class(TFrmConsultaPadrao)
-    procedure btnExcluirClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure btnInserirClick(Sender: TObject);
-    procedure btnEditarClick(Sender: TObject);
-    procedure btnPesquisaClick(Sender: TObject);
+    cdsConsultaPadraoid: TLargeintField;
+    cdsConsultaPadraologin: TWideStringField;
+    cdsConsultaPadraosenha: TWideStringField;
+    cdsConsultaPadraoidcolaborador: TIntegerField;
   private
-    procedure OpenDataSet;
-    procedure OpenScreen;
+    procedure OpenScreen; override;
     { Private declarations }
   public
     { Public declarations }
@@ -33,65 +31,17 @@ uses
   Udm, UCadastroUsuario;
 {$R *.dfm}
 
-procedure TFrmConsultaUsuario.btnEditarClick(Sender: TObject);
-begin
-  inherited;
-  cdsConsultaPadrao.Edit;
-  Self.OpenScreen;
-end;
-
-procedure TFrmConsultaUsuario.btnExcluirClick(Sender: TObject);
-begin
-  inherited;
-  if Application.MessageBox('Tem certeza que deseja excluir?', 'Excluir',
-    MB_YESNO + MB_ICONWARNING) = idYes then
-  begin
-    cdsConsultaPadrao.Delete;
-    cdsConsultaPadrao.ApplyUpdates(-1);
-  end;
-end;
-
-procedure TFrmConsultaUsuario.btnInserirClick(Sender: TObject);
-begin
-  inherited;
-  cdsConsultaPadrao.Insert;
-  Self.OpenScreen;
-  Self.OpenDataSet;
-end;
-
-procedure TFrmConsultaUsuario.btnPesquisaClick(Sender: TObject);
-begin
-  inherited;
-//  dm.dsConsultaUsuario.DataSet.Filtered := False;
-//  if edtPesquisa.Text <> EmptyStr then
-//  begin
-//    dm.dsConsultaUsuario.DataSet.Filter := 'UPPER(name) LIKE ' +
-//      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
-//    dm.dsConsultaUsuario.DataSet.Filtered := True;
-//  end;
-end;
-
-procedure TFrmConsultaUsuario.FormCreate(Sender: TObject);
-begin
-  inherited;
-  Self.OpenDataSet;
-end;
-
-procedure TFrmConsultaUsuario.OpenDataSet;
-begin
-//  dm.cdsConsultaPadrao.Close;
-//  dm.cdsConsultaPadrao.Open;
-//
-//  dm.cdsConsultaColab.Close;
-//  dm.cdsConsultaColab.Open;
-end;
-
 
 procedure TFrmConsultaUsuario.OpenScreen;
 begin
   frmCadastroUsuario := TfrmCadastroUsuario.Create(Self);
   try
-    frmCadastroUsuario.ShowModal;
+    frmCadastroUsuario.Show;
+    frmCadastroUsuario.BringToFront;
+    while not frmCadastroUsuario.ModalResult <> mrNone do
+    begin
+      Application.ProcessMessages;
+    end;
   finally
     frmCadastroUsuario.Free;
   end;
