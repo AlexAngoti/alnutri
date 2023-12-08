@@ -23,12 +23,12 @@ type
     dsLogin: TDataSource;
     qryPessoa: TFDQuery;
     qryConsultaProd: TFDQuery;
-    dspAgendamento: TDataSetProvider;
-    dsAgendamento: TDataSource;
     qryAgendamento: TFDQuery;
-    cdsAgendamento: TClientDataSet;
     qryContasReceber: TFDQuery;
     qryContasPagar: TFDQuery;
+    qryAlimentos: TFDQuery;
+    qryPreCardapio: TFDQuery;
+    qryUsuario: TFDQuery;
   private
     { Private declarations }
   public
@@ -39,9 +39,6 @@ var
   dm: Tdm;
 
 implementation
-
-uses
-  UConsultaCliente;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 {$R *.dfm}

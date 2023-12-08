@@ -21,6 +21,7 @@ type
     btnSalvar: TSpeedButton;
     pnlCancelar: TPanel;
     btnCancelar: TSpeedButton;
+    Image1: TImage;
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);

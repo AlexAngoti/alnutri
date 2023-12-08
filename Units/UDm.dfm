@@ -103,23 +103,16 @@ object dm: Tdm
     Left = 104
     Top = 288
   end
-  object dspAgendamento: TDataSetProvider
-    DataSet = qryAgendamento
-    Left = 40
-    Top = 132
-  end
-  object dsAgendamento: TDataSource
-    DataSet = cdsAgendamento
-    Left = 99
-    Top = 132
-  end
   object qryAgendamento: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'select *'
+      'select a.*,'
+      '       p.nomerazaosocial'
       '  from agendamento a'
+      ' inner join pessoa p on a.idcliente = p.id '
       ' where a.diaagendamento =:DATA'
-      '   and a.idcolaborador =:COLAB')
+      '   and a.idcolaborador =:COLAB'
+      '   and a.situacao = '#39'A'#39)
     Left = 8
     Top = 130
     ParamData = <
@@ -128,6 +121,7 @@ object dm: Tdm
         Name = 'DATA'
         DataType = ftDate
         ParamType = ptInput
+        Value = Null
       end
       item
         Position = 2
@@ -135,23 +129,6 @@ object dm: Tdm
         DataType = ftInteger
         ParamType = ptInput
       end>
-  end
-  object cdsAgendamento: TClientDataSet
-    Aggregates = <>
-    Params = <
-      item
-        DataType = ftDate
-        Name = 'DATA'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'COLAB'
-        ParamType = ptInput
-      end>
-    ProviderName = 'dspAgendamento'
-    Left = 72
-    Top = 128
   end
   object qryContasReceber: TFDQuery
     Connection = FDConnection
@@ -173,9 +150,31 @@ object dm: Tdm
         '       CAST(CONCAT(IDFORNECEDOR  || '#39' '#39' || NOMEFORNECEDOR  || '#39' ' +
         '- '#39' || DESCRICAO) AS VARCHAR(255)) AS NOMEDESC '
       '  FROM CONTASPAGAR'
-      ' WHERE SITUACAO = '#39'A'#39
+      ' WHERE SITUACAO = '#39'a'#39
       ' ORDER BY DATAVENCIMENTO ASC, LANCAMENTO DESC  ')
     Left = 8
-    Top = 224
+    Top = 232
+  end
+  object qryAlimentos: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select * from alimentos')
+    Left = 48
+    Top = 128
+  end
+  object qryPreCardapio: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select * from precardapio'
+      'order by id DESC')
+    Left = 88
+    Top = 128
+  end
+  object qryUsuario: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT * from login')
+    Left = 48
+    Top = 184
   end
 end

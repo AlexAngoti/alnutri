@@ -29,11 +29,14 @@ type
     dsConsultaPadrao: TDataSource;
     cdsConsultaPadrao: TClientDataSet;
     dspConsultaPadrao: TDataSetProvider;
+    Image1: TImage;
+    Image2: TImage;
     procedure btnFecharClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure OpenDataSet;
     { Private declarations }
@@ -65,8 +68,14 @@ begin
   if UFuncoes.MsgConfirmar('Deseja realmente excluir ?',
     'Este registro será completamente excluido') then
   begin
-    cdsConsultaPadrao.Delete;
-    cdsConsultaPadrao.ApplyUpdates(-1);
+    try
+      (dsConsultaPadrao.DataSet as TClientDataSet).Delete;
+      (dsConsultaPadrao.DataSet as TClientDataSet).ApplyUpdates(-1);
+    except
+      UFuncoes.MsgNaoConfirmar('Não foi possivel excluir esse cadastro!',
+      'Esse cadastro já possui movimentação');
+      abort;
+    end;
   end;
 end;
 
@@ -93,6 +102,12 @@ begin
   end;
 end;
 
+procedure TFrmConsultaPadrao.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
 procedure TFrmConsultaPadrao.FormCreate(Sender: TObject);
 begin
   Self.OpenDataSet;
@@ -100,8 +115,8 @@ end;
 
 procedure TFrmConsultaPadrao.OpenDataSet;
 begin
-  cdsConsultaPadrao.Close;
-  cdsConsultaPadrao.Open;
+  (dsConsultaPadrao.DataSet as TClientDataSet).Close;
+  (dsConsultaPadrao.DataSet as TClientDataSet).Open;
 end;
 
 end.

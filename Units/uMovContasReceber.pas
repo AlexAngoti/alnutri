@@ -40,6 +40,7 @@ type
     procedure EstadoQuery;
     procedure ValidaCampo;
     procedure AlimentaCampo;
+    procedure ConsultaCliente;
     { Private declarations }
   public
     { Public declarations }
@@ -91,18 +92,23 @@ end;
 
 procedure TfrmMovReceber.btnPesquisaClick(Sender: TObject);
 begin
+  Self.ConsultaCliente;
+end;
+
+procedure TfrmMovReceber.ConsultaCliente;
+begin
   frmPesquisaPadrao := TfrmPesquisaPadrao.Create(Self);
   try
     frmPesquisaPadrao.qryPadrao.SQL.Clear;
-    frmPesquisaPadrao.qryPadrao.SQL.Text := ('SELECT p.id as "Id", p.nomefantasia as "Nome" ' +
+    frmPesquisaPadrao.qryPadrao.SQL.Text := ('SELECT p.id as "Id", p.nomerazaosocial as "Nome" ' +
                                             'FROM pessoa p ' +
                                             'WHERE p.tipopessoa = ''CLIENTES'' ' +
-                                            'ORDER by p.nomefantasia asc');
+                                            'ORDER by p.nomerazaosocial asc');
     frmPesquisaPadrao.ShowModal;
     if frmPesquisaPadrao.ModalResult = 1 then
     begin
-      edtCodCliente.Text := IntToStr(frmPesquisaPadrao.cdsPadrao.FieldByName('Id').AsInteger);
-      edtDescricao.Text  := frmPesquisaPadrao.cdsPadrao.FieldByName('Nome').AsString;
+      edtCodCliente.Text   := IntToStr(frmPesquisaPadrao.cdsPadrao.FieldByName('Id').AsInteger);
+      edtNomeCliente.Text  := frmPesquisaPadrao.cdsPadrao.FieldByName('Nome').AsString;
     end;
   finally
     frmPesquisaPadrao.Free;
@@ -169,7 +175,6 @@ begin
     cbxTipoPgto.SetFocus;
     Abort;
   end;
-
 end;
 
 end.

@@ -10,11 +10,13 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, Datasnap.Provider, Datasnap.DBClient,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, StrUtils, UConsulaPadrao;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, StrUtils, UConsulaPadrao,
+  Vcl.Imaging.pngimage;
 
 type
   TFrmConsultaCliente = class(TFrmConsultaPadrao)
     procedure btnPesquisaClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
   private
     procedure OpenScreen; override;
     { Private declarations }
@@ -32,9 +34,19 @@ uses
 
 {$R *.dfm}
 
+procedure TFrmConsultaCliente.btnExcluirClick(Sender: TObject);
+begin
+  try
+    inherited;
+  except
+    UFuncoes.MsgNaoConfirmar('Erro ao deletar!!',
+    'Cliente ja possui movimentação');
+  end;
+end;
+
 procedure TFrmConsultaCliente.btnPesquisaClick(Sender: TObject);
 begin
-  Self.FiltrarPorCampo('name');
+  Self.FiltrarPorCampo('nomerazaosocial');
 end;
 
 

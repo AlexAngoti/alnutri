@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient,
   Datasnap.Provider, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids,
-  Vcl.Buttons;
+  Vcl.Buttons, Vcl.Imaging.pngimage;
 
 type
   TfrmContasPagar = class(TForm)
@@ -57,28 +57,29 @@ type
     lblEmpresa: TLabel;
     dspContasPagar: TDataSetProvider;
     cdsContasPagar: TClientDataSet;
+    dsContasPagar: TDataSource;
     cdsContasPagarlancamento: TLargeintField;
     cdsContasPagardatavencimento: TDateField;
     cdsContasPagarvalor: TBCDField;
     cdsContasPagarformapgto: TWideStringField;
-    cdsContasPagaridcliente: TIntegerField;
-    cdsContasPagarnomecliente: TWideStringField;
+    cdsContasPagaridfornecedor: TIntegerField;
+    cdsContasPagarnomefornecedor: TWideStringField;
     cdsContasPagardatapgto: TDateField;
     cdsContasPagarsituacao: TWideStringField;
     cdsContasPagardescricao: TWideStringField;
     cdsContasPagarnomedesc: TWideStringField;
-    dsContasPagar: TDataSource;
+    Image1: TImage;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure spbPesquisaClick(Sender: TObject);
-    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure btnNovoLancamentoClick(Sender: TObject);
     procedure btnBaixarLancamentoClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure dbgRegistrosDblClick(Sender: TObject);
     procedure btnInformacoesMouseEnter(Sender: TObject);
     procedure btnInformacoesMouseLeave(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     procedure OpenDataSet;
     procedure CalculaPainel;
@@ -98,7 +99,7 @@ var
 implementation
 
 uses
-  UDm, UFuncoes;
+  UDm, UFuncoes, UManutencaoPagar, uBaixaPagar;
 
 {$R *.dfm}
 
@@ -210,21 +211,21 @@ end;
 
 procedure TfrmContasPagar.ChamaTelaAbertura;
 begin
-  frmMovReceber := TfrmMovReceber.Create(Self);
+  frmManutencaoPagar := TfrmManutencaoPagar.Create(Self);
   try
-    frmMovReceber.ShowModal;
+    frmManutencaoPagar.ShowModal;
   finally
-    frmMovReceber.Free;
+    frmManutencaoPagar.Free;
   end;
 end;
 
 procedure TfrmContasPagar.ChamaTelaFechar;
 begin
-  frmMovReceber := TfrmMovReceber.Create(Self);
+  frmBaixaPagar := TfrmBaixaPagar.Create(Self);
   try
-    frmMovReceber.ShowModal;
+    frmBaixaPagar.ShowModal;
   finally
-    frmMovReceber.Free;
+    frmBaixaPagar.Free;
   end;
 end;
 
@@ -250,6 +251,7 @@ begin
     begin
       (dsContasPagar.DataSet as TClientDataSet).Delete;
       (dsContasPagar.DataSet as TClientDataSet).ApplyUpdates(-1);
+      Self.CalculaPainel;
     end;
   end;
 
@@ -268,7 +270,7 @@ procedure TfrmContasPagar.FormResize(Sender: TObject);
 begin
   Self.CentralizaTela;
   Self.ArredondaPanel;
-  Self.CentralizaTela;
+  Self.CentralizaResultado;
 end;
 
 procedure TfrmContasPagar.FormShow(Sender: TObject);

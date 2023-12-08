@@ -68,6 +68,7 @@ type
     edtPesquisa: TEdit;
     pnlLinha4: TPanel;
     cdsContasRecebernomedesc: TWideStringField;
+    Image1: TImage;
     procedure FormResize(Sender: TObject);
     procedure btnInformacoesMouseEnter(Sender: TObject);
     procedure btnInformacoesMouseLeave(Sender: TObject);
@@ -77,8 +78,8 @@ type
     procedure btnNovoLancamentoClick(Sender: TObject);
     procedure dbgRegistrosDblClick(Sender: TObject);
     procedure btnBaixarLancamentoClick(Sender: TObject);
-    procedure spbPesquisaClick(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure spbPesquisaClick(Sender: TObject);
   private
     procedure ArredondaPainel;
     procedure CentralizandoPanel;
@@ -87,6 +88,7 @@ type
     procedure CentralizaResultado;
     procedure ChamaTelaAbertura;
     procedure ChamaTelaFechar;
+    procedure FiltraTitulo;
     { Private declarations }
   public
     { Public declarations }
@@ -124,6 +126,17 @@ begin
   Self.Close;
 end;
 
+procedure TfrmContasReceber.FiltraTitulo;
+begin
+  dsContasReceber.DataSet.Filtered := False;
+  if edtPesquisa.Text <> EmptyStr then
+  begin
+    dsContasReceber.DataSet.Filter := 'UPPER(nomedesc) LIKE ' +
+      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
+    dsContasReceber.DataSet.Filtered := True;
+  end;
+end;
+
 procedure TfrmContasReceber.FormCreate(Sender: TObject);
 begin
   Self.OpenDataSet;
@@ -139,6 +152,7 @@ begin
     begin
       (dsContasReceber.DataSet as TClientDataSet).Delete;
       (dsContasReceber.DataSet as TClientDataSet).ApplyUpdates(-1);
+      Self.CalculaPainel;
     end;
   end;
 
@@ -173,13 +187,7 @@ end;
 
 procedure TfrmContasReceber.spbPesquisaClick(Sender: TObject);
 begin
-  dsContasReceber.DataSet.Filtered := False;
-  if edtPesquisa.Text <> EmptyStr then
-  begin
-    dsContasReceber.DataSet.Filter := 'UPPER(nomedesc) LIKE ' +
-      QuotedStr('%' + UpperCase(edtPesquisa.Text) + '%');
-    dsContasReceber.DataSet.Filtered := True;
-  end;
+  Self.FiltraTitulo;
 end;
 
 procedure TfrmContasReceber.btnInformacoesMouseEnter(Sender: TObject);

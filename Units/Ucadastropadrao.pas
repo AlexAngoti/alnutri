@@ -17,6 +17,7 @@ type
     pnl_botoes: TPanel;
     pnl_confirmar: TPanel;
     SpeedButton1: TSpeedButton;
+    tbsDadosGerais: TTabSheet;
     pnl_cancelar: TPanel;
     SpeedButton2: TSpeedButton;
     pnlBarraBotao: TPanel;
@@ -29,6 +30,7 @@ type
     pgcPessoa: TPageControl;
     pnlLogoBotton: TLabel;
     pnlFundo: TPanel;
+    Image1: TImage;
     procedure FormShow(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
@@ -39,7 +41,6 @@ type
   private
     procedure SalvaRegistro;
     procedure ArredondaPainel;
-    procedure EstadoQuery;
     { Private declarations }
   public
     { Public declarations }
@@ -72,20 +73,7 @@ end;
 
 procedure TfrmCadastroPadrao.btnFecharClick(Sender: TObject);
 begin
-  Self.Close;
-end;
-
-procedure TfrmCadastroPadrao.EstadoQuery;
-begin
-  if dm.qryPessoa.State in [dsInsert] then
-  begin
-    (dsCadastroPadrao.DataSet as TDataSet).Insert;
-  end;
-
-  if dm.qryPessoa.State in [dsEdit] then
-  begin
-    (dsCadastroPadrao.DataSet as TDataSet).Edit;
-  end;
+  SpeedButton2Click(Self);
 end;
 
 procedure TfrmCadastroPadrao.FormClose(Sender: TObject;
@@ -103,7 +91,6 @@ end;
 procedure TfrmCadastroPadrao.FormShow(Sender: TObject);
 begin
   PrcOcultarTabs(pgcPessoa);
-  Self.EstadoQuery;
 end;
 
 procedure TfrmCadastroPadrao.SalvaRegistro;
@@ -115,6 +102,7 @@ end;
 procedure TfrmCadastroPadrao.SpeedButton1Click(Sender: TObject);
 begin
   Self.SalvaRegistro;
+  Self.Close;
 end;
 
 procedure TfrmCadastroPadrao.SpeedButton2Click(Sender: TObject);

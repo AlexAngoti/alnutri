@@ -25,7 +25,7 @@ inherited FrmConsultaCliente: TFrmConsultaCliente
         end
         item
           Expanded = False
-          FieldName = 'nomefantasia'
+          FieldName = 'nomerazaosocial'
           Title.Caption = 'Name'
           Width = 411
           Visible = True
